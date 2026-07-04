@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Divan
 
-## Getting Started
+Wikipedia-for-Iranian-entrepreneurship: browsable directories of People and Startups wrapped in
+News, Insights, Hackathon, Community, Events, Perks, About, and Contribute. Next.js (App Router) +
+TypeScript + Tailwind v4 + shadcn/ui (`base-nova` style, Base UI primitives).
 
-First, run the development server:
+Live at: https://github.com/alisinafakhraei-pixel/divan (deployed via Vercel)
+
+## Status
+
+All 12 planned phases (0-11) are built. Data is static mock data in `lib/data/*` behind a
+`lib/data-access/*` seam — no backend yet. See `PROGRESS.md` for full build history, known quirks,
+and fixed bugs.
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Note: `.npmrc` sets `legacy-peer-deps=true` — required because `react-simple-maps` only declares
+React ≤18 as a peer dependency; the app runs fine on React 19.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key paths
 
-## Learn More
+- `app/` — routes (App Router)
+- `components/ui/` — shadcn primitives
+- `components/shared/`, `components/<feature>/` — app components
+- `lib/types.ts` — entity types
+- `lib/data/*` — mock fixtures
+- `lib/data-access/*` — the seam a real backend integration will replace
+- `lib/hooks/use-url-filters.ts` — shared URL-driven filter/sort/pagination contract used by every directory page
 
-To learn more about Next.js, take a look at the following resources:
+## Deploying
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Deployed on Vercel from the `main` branch of
+[alisinafakhraei-pixel/divan](https://github.com/alisinafakhraei-pixel/divan).

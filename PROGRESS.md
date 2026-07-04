@@ -1,5 +1,9 @@
 # Divan Build Progress
 
+**Deployed**: GitHub `alisinafakhraei-pixel/divan` (main), Vercel. `.npmrc` (`legacy-peer-deps=true`)
+required for `react-simple-maps` (React ≤18 peer dep only; runs fine on React 19).
+
+
 Local-only Next.js build. Plan file: `~/.claude/plans/users-alisinafakhraei-documents-1-work-delightful-donut.md`.
 Dev server: `npm run dev` (or Claude Preview `divan-web` config in `.claude/launch.json`).
 
