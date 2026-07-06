@@ -2,6 +2,12 @@
 
 import { Button } from "@/components/ui/button";
 import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import {
   Sheet,
   SheetClose,
   SheetContent,
@@ -10,22 +16,28 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
-import { Menu, Search } from "lucide-react";
+import { ChevronDown, Menu, Search } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const allLinks = [
+const primaryLinks = [
   { label: "Entrepreneurs", href: "/entrepreneurs" },
   { label: "Startups", href: "/startups" },
   { label: "Ecosystem map", href: "/ecosystem-map" },
+  { label: "News", href: "/news" },
+  { label: "About", href: "/about" },
+];
+
+const moreLinks = [
   { label: "Hackathon", href: "/hackathon" },
   { label: "Community", href: "/community/discussions" },
   { label: "Events", href: "/events" },
   { label: "Perks", href: "/perks" },
-  { label: "About", href: "/about" },
   { label: "Contribute", href: "/contribute" },
 ];
+
+const allLinks = [...primaryLinks, ...moreLinks];
 
 export function Header() {
   const router = useRouter();
@@ -34,13 +46,13 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <div className="mx-auto flex min-h-16 max-w-[1200px] flex-wrap items-center gap-y-1 gap-x-6 px-4 py-2 sm:px-6">
-        <Link href="/" className="flex items-center">
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-6 px-4 sm:px-6">
+        <Link href="/" className="flex shrink-0 items-center">
           <img src="/logo.svg" alt="Divan" className="h-8 w-auto" />
         </Link>
 
-        <nav className="hidden flex-1 flex-wrap items-center gap-0.5 lg:flex">
-          {allLinks.map((link) => (
+        <nav className="hidden flex-1 items-center gap-0.5 lg:flex">
+          {primaryLinks.map((link) => (
             <Button
               key={link.href}
               variant="ghost"
@@ -51,9 +63,25 @@ export function Header() {
               {link.label}
             </Button>
           ))}
+          <DropdownMenu>
+            <DropdownMenuTrigger
+              render={
+                <Button variant="ghost" size="sm" className="whitespace-nowrap">
+                  More <ChevronDown className="size-3.5" />
+                </Button>
+              }
+            />
+            <DropdownMenuContent>
+              {moreLinks.map((link) => (
+                <DropdownMenuItem key={link.href} render={<Link href={link.href} />}>
+                  {link.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </nav>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex shrink-0 items-center gap-2">
           {searchOpen ? (
             <form
               onSubmit={(e) => {

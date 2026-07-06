@@ -36,7 +36,14 @@ export type OperatingStatus = "Active" | "Public Company" | "Acquired or M&A" | 
 
 export type CompanyType = "Startup" | "Big Company";
 
-export type NewsType = "Funding News" | "Article" | "News" | "Podcast";
+export type NewsType =
+  | "Funding News"
+  | "Article"
+  | "News"
+  | "Podcast"
+  | "Interview"
+  | "Talk/Speech"
+  | "Event";
 
 export interface Person {
   id: string;

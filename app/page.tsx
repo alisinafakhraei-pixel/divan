@@ -1,14 +1,16 @@
 import { CTABanner } from "@/components/shared/cta-banner";
 import { EventCard } from "@/components/shared/event-card";
-import { FeaturedCarousel } from "@/components/shared/featured-carousel";
 import { HackathonPromoBanner } from "@/components/shared/hackathon-promo-banner";
 import { HeroSearchBar } from "@/components/shared/hero-search-bar";
 import { WorldMap } from "@/components/insights/world-map";
+import { NewsCard } from "@/components/shared/news-card";
+import { PersonCard } from "@/components/shared/person-card";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { StartupCard } from "@/components/shared/startup-card";
 import { StatsBar } from "@/components/shared/stats-bar";
 import { getSiteStats } from "@/lib/data-access/stats";
 import { getUpcomingEvents } from "@/lib/data-access/events";
+import { getLatestNews } from "@/lib/data-access/news";
 import { getFeaturedPeople } from "@/lib/data-access/people";
 import { getFeaturedStartups } from "@/lib/data-access/startups";
 import Link from "next/link";
@@ -37,6 +39,7 @@ export default function Home() {
   const featuredPeople = getFeaturedPeople(6);
   const featuredStartups = getFeaturedStartups(6);
   const upcomingEvents = getUpcomingEvents(3);
+  const latestNews = getLatestNews(4);
 
   return (
     <div className="mx-auto flex max-w-[1200px] flex-col gap-16 px-4 py-12 sm:px-6 sm:py-16">
@@ -61,7 +64,11 @@ export default function Home() {
 
       <section className="space-y-6">
         <SectionHeader bold="Featured" muted="entrepreneurs" href="/entrepreneurs" />
-        <FeaturedCarousel people={featuredPeople} />
+        <div className="stagger-fade grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {featuredPeople.map((person) => (
+            <PersonCard key={person.id} person={person} />
+          ))}
+        </div>
       </section>
 
       <section className="space-y-6">
@@ -97,6 +104,15 @@ export default function Home() {
       <section className="space-y-6">
         <SectionHeading bold="Global" muted="reach, at a glance" />
         <WorldMap />
+      </section>
+
+      <section className="space-y-6">
+        <SectionHeader bold="Latest" muted="news" href="/news" />
+        <div className="stagger-fade grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {latestNews.map((item) => (
+            <NewsCard key={item.id} item={item} />
+          ))}
+        </div>
       </section>
     </div>
   );
