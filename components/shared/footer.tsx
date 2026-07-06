@@ -1,6 +1,5 @@
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import packageJson from "@/package.json";
 
 const columns = [
   {
@@ -8,8 +7,7 @@ const columns = [
     links: [
       { label: "Entrepreneurs", href: "/entrepreneurs" },
       { label: "Startups", href: "/startups" },
-      { label: "News", href: "/news" },
-      { label: "Insights", href: "/insights" },
+      { label: "Ecosystem map", href: "/ecosystem-map" },
     ],
   },
   {
@@ -47,12 +45,6 @@ export function Footer() {
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
             Meet Iranian entrepreneurs of the world.
           </p>
-          <div className="mt-4 flex gap-2">
-            <Input placeholder="Your email" className="max-w-[180px]" />
-            <Button size="sm" variant="accent">
-              Subscribe
-            </Button>
-          </div>
         </div>
         {columns.map((col) => (
           <div key={col.heading}>
@@ -70,7 +62,7 @@ export function Footer() {
         ))}
       </div>
       <div className="border-t border-border py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Divan.
+        © {new Date().getFullYear()} Divan. v{packageJson.version}
       </div>
     </footer>
   );

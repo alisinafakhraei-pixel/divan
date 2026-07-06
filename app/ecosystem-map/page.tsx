@@ -12,22 +12,22 @@ import {
 } from "@/lib/data-access/insights";
 import { getSiteStats } from "@/lib/data-access/stats";
 
-export default function InsightsPage() {
+export default function EcosystemMapPage() {
   const stats = getSiteStats();
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-8 px-4 py-12 sm:px-6">
       <SectionHeading
         as="h1"
-        bold="Insights &"
-        muted="charts"
-        subhead="Computed live from the Entrepreneurs and Startups directories — click any segment to jump to the filtered view."
+        bold="Ecosystem"
+        muted="map"
+        subhead="Computed live from the Startups and Entrepreneurs directories — click any segment to jump to the filtered view."
       />
 
       <StatsBar
         stats={[
-          { label: "Entrepreneurs", value: stats.totalEntrepreneurs },
           { label: "Startups", value: stats.totalStartups },
+          { label: "Entrepreneurs", value: stats.totalEntrepreneurs },
           { label: "Countries", value: stats.countriesRepresented },
           { label: "Tracked valuation", value: stats.combinedTrackedValuation },
         ]}

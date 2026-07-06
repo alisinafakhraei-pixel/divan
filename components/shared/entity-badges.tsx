@@ -6,7 +6,8 @@ export function SegmentBadge({ segment }: { segment: Segment }) {
 }
 
 export function FundingRoundBadge({ round }: { round: FundingRound }) {
-  const isSeries = round === "Series A" || round === "Series B" || round === "Series C+" || round === "Public";
+  const isSeries =
+    round === "Series A" || round === "Series B" || round === "Series D" || round === "Series E" || round === "Post-IPO";
   return <Badge variant={isSeries ? "success" : "warning"}>{round}</Badge>;
 }
 
@@ -20,6 +21,7 @@ export function IndustryBadge({ industry }: { industry: string }) {
 
 export function OperatingStatusBadge({ status }: { status: OperatingStatus }) {
   if (status === "Active") return <Badge variant="success">Active</Badge>;
-  if (status === "Acquired") return <Badge variant="sky">Acquired</Badge>;
-  return <Badge variant="destructive">Shut down</Badge>;
+  if (status === "Public Company") return <Badge variant="sky">Public Company</Badge>;
+  if (status === "Acquired or M&A") return <Badge variant="secondary">Acquired or M&A</Badge>;
+  return <Badge variant="destructive">Closed</Badge>;
 }

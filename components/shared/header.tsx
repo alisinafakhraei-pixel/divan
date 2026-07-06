@@ -2,12 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   Sheet,
   SheetClose,
   SheetContent,
@@ -15,21 +9,17 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { cn } from "@/lib/utils";
-import { ChevronDown, Menu, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Menu, Search } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
-const primaryLinks = [
+const allLinks = [
   { label: "Entrepreneurs", href: "/entrepreneurs" },
   { label: "Startups", href: "/startups" },
-  { label: "News", href: "/news" },
-  { label: "Insights", href: "/insights" },
+  { label: "Ecosystem map", href: "/ecosystem-map" },
   { label: "Hackathon", href: "/hackathon" },
-  // Temporary — pulled from nav once all pages are built.
-  { label: "Style guide", href: "/style-guide" },
-];
-
-const moreLinks = [
   { label: "Community", href: "/community/discussions" },
   { label: "Events", href: "/events" },
   { label: "Perks", href: "/perks" },
@@ -37,47 +27,63 @@ const moreLinks = [
   { label: "Contribute", href: "/contribute" },
 ];
 
-const allLinks = [...primaryLinks, ...moreLinks];
-
 export function Header() {
+  const router = useRouter();
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
+
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/80">
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-6 px-4 sm:px-6">
-        <Link href="/" className="text-lg font-extrabold tracking-tight text-foreground">
-          Divan
+      <div className="mx-auto flex min-h-16 max-w-[1200px] flex-wrap items-center gap-y-1 gap-x-6 px-4 py-2 sm:px-6">
+        <Link href="/" className="flex items-center">
+          <img src="/logo.svg" alt="Divan" className="h-8 w-auto" />
         </Link>
 
-        <nav className="hidden flex-1 items-center gap-1 lg:flex">
-          {primaryLinks.map((link) => (
-            <Button key={link.href} variant="ghost" size="sm" render={<Link href={link.href} />}>
+        <nav className="hidden flex-1 flex-wrap items-center gap-0.5 lg:flex">
+          {allLinks.map((link) => (
+            <Button
+              key={link.href}
+              variant="ghost"
+              size="sm"
+              className="whitespace-nowrap"
+              render={<Link href={link.href} />}
+            >
               {link.label}
             </Button>
           ))}
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={
-                <Button variant="ghost" size="sm">
-                  More <ChevronDown className="size-3.5" />
-                </Button>
-              }
-            />
-            <DropdownMenuContent>
-              {moreLinks.map((link) => (
-                <DropdownMenuItem key={link.href} render={<Link href={link.href} />}>
-                  {link.label}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <Button variant="ghost" size="icon-sm" aria-label="Search" render={<Link href="/search" />}>
-            <Search />
-          </Button>
-          <Button variant="outline" size="sm" className={cn("hidden sm:inline-flex")}>
-            Sign in
-          </Button>
+          {searchOpen ? (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                setSearchOpen(false);
+                router.push(`/search?q=${encodeURIComponent(query)}`);
+              }}
+              className="flex items-center"
+            >
+              <Input
+                autoFocus
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                onBlur={() => {
+                  if (!query) setSearchOpen(false);
+                }}
+                placeholder="Search entrepreneurs, startups, news..."
+                className="h-9 w-40 origin-right animate-in duration-200 fade-in-0 zoom-in-95 sm:w-56"
+              />
+            </form>
+          ) : (
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="Search"
+              onClick={() => setSearchOpen(true)}
+            >
+              <Search />
+            </Button>
+          )}
 
           <Sheet>
             <SheetTrigger

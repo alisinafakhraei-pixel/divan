@@ -6,7 +6,7 @@ import type { Startup } from "@/lib/types";
 export function StartupProfileHeader({ startup }: { startup: Startup }) {
   return (
     <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-      <EntityAvatar name={startup.name} image={startup.logo} size="lg" square className="size-20" />
+      <EntityAvatar name={startup.name} image={startup.logo} size="lg" square className="!size-28 sm:!size-36" />
       <div>
         <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
           {startup.name}

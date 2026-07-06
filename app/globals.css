@@ -145,3 +145,18 @@
 [data-slot="tabs-content"][inert] {
   display: none;
 }
+
+/* Staggers the mount-in animation of direct children (cards, list rows) so grids feel
+   like they're settling into place rather than popping in all at once. */
+.stagger-fade > * {
+  animation-delay: calc(var(--stagger-index, 0) * 40ms);
+}
+.stagger-fade > *:nth-child(1) { --stagger-index: 1; }
+.stagger-fade > *:nth-child(2) { --stagger-index: 2; }
+.stagger-fade > *:nth-child(3) { --stagger-index: 3; }
+.stagger-fade > *:nth-child(4) { --stagger-index: 4; }
+.stagger-fade > *:nth-child(5) { --stagger-index: 5; }
+.stagger-fade > *:nth-child(6) { --stagger-index: 6; }
+.stagger-fade > *:nth-child(7) { --stagger-index: 7; }
+.stagger-fade > *:nth-child(8) { --stagger-index: 8; }
+.stagger-fade > *:nth-child(n + 9) { --stagger-index: 9; }

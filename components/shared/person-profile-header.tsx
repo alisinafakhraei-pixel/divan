@@ -6,7 +6,7 @@ import type { Person } from "@/lib/types";
 export function PersonProfileHeader({ person }: { person: Person }) {
   return (
     <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-      <EntityAvatar name={person.name} image={person.picture} size="lg" className="size-20" />
+      <EntityAvatar name={person.name} image={person.picture} size="lg" className="!size-28 sm:!size-36" />
       <div>
         <h1 className="text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl">
           {person.name}

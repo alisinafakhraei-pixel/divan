@@ -18,8 +18,8 @@ const GEO_URL = "/world-110m.json";
 
 const MODES: { value: MapMode; label: string }[] = [
   { value: "both", label: "Both" },
-  { value: "people", label: "Entrepreneurs" },
   { value: "startups", label: "Startups" },
+  { value: "people", label: "Entrepreneurs" },
 ];
 
 // Reverse of COUNTRY_TOPOJSON_ALIASES — topojson name -> our fixture's country name.
@@ -180,27 +180,6 @@ export function WorldMap() {
         </div>
 
         <div className="space-y-6 p-4">
-          {selectedPeople.length > 0 ? (
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <p className="text-sm text-muted-foreground">{selectedPeople.length} entrepreneurs</p>
-                {selectedFixtureName ? (
-                  <Link
-                    href={`/entrepreneurs?country=${encodeURIComponent(selectedFixtureName)}`}
-                    className="text-sm font-medium text-action-blue hover:underline"
-                  >
-                    View all
-                  </Link>
-                ) : null}
-              </div>
-              <div className="space-y-3">
-                {selectedPeople.map((p) => (
-                  <PersonCard key={p.id} person={p} />
-                ))}
-              </div>
-            </div>
-          ) : null}
-
           {selectedStartups.length > 0 ? (
             <div className="space-y-3">
               <div className="flex items-center justify-between">
@@ -217,6 +196,27 @@ export function WorldMap() {
               <div className="space-y-3">
                 {selectedStartups.map((s) => (
                   <StartupCard key={s.id} startup={s} />
+                ))}
+              </div>
+            </div>
+          ) : null}
+
+          {selectedPeople.length > 0 ? (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-muted-foreground">{selectedPeople.length} entrepreneurs</p>
+                {selectedFixtureName ? (
+                  <Link
+                    href={`/entrepreneurs?country=${encodeURIComponent(selectedFixtureName)}`}
+                    className="text-sm font-medium text-action-blue hover:underline"
+                  >
+                    View all
+                  </Link>
+                ) : null}
+              </div>
+              <div className="space-y-3">
+                {selectedPeople.map((p) => (
+                  <PersonCard key={p.id} person={p} />
                 ))}
               </div>
             </div>

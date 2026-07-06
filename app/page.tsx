@@ -4,14 +4,11 @@ import { FeaturedCarousel } from "@/components/shared/featured-carousel";
 import { HackathonPromoBanner } from "@/components/shared/hackathon-promo-banner";
 import { HeroSearchBar } from "@/components/shared/hero-search-bar";
 import { WorldMap } from "@/components/insights/world-map";
-import { NewsCard } from "@/components/shared/news-card";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { StartupCard } from "@/components/shared/startup-card";
 import { StatsBar } from "@/components/shared/stats-bar";
-import { Button } from "@/components/ui/button";
 import { getSiteStats } from "@/lib/data-access/stats";
 import { getUpcomingEvents } from "@/lib/data-access/events";
-import { getLatestNews } from "@/lib/data-access/news";
 import { getFeaturedPeople } from "@/lib/data-access/people";
 import { getFeaturedStartups } from "@/lib/data-access/startups";
 import Link from "next/link";
@@ -39,7 +36,6 @@ export default function Home() {
   const stats = getSiteStats();
   const featuredPeople = getFeaturedPeople(6);
   const featuredStartups = getFeaturedStartups(6);
-  const latestNews = getLatestNews(4);
   const upcomingEvents = getUpcomingEvents(3);
 
   return (
@@ -70,18 +66,9 @@ export default function Home() {
 
       <section className="space-y-6">
         <SectionHeader bold="Featured" muted="startups" href="/startups" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="stagger-fade grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {featuredStartups.map((startup) => (
             <StartupCard key={startup.id} startup={startup} />
-          ))}
-        </div>
-      </section>
-
-      <section className="space-y-6">
-        <SectionHeader bold="Latest" muted="news" href="/news" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {latestNews.map((item) => (
-            <NewsCard key={item.id} item={item} />
           ))}
         </div>
       </section>
@@ -92,7 +79,7 @@ export default function Home() {
 
       <section className="space-y-6">
         <SectionHeader bold="Upcoming" muted="events" href="/events" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="stagger-fade grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {upcomingEvents.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}
@@ -111,12 +98,6 @@ export default function Home() {
         <SectionHeading bold="Global" muted="reach, at a glance" />
         <WorldMap />
       </section>
-
-      <div className="pb-8 text-center">
-        <Button variant="outline" render={<Link href="/style-guide" />}>
-          View style guide
-        </Button>
-      </div>
     </div>
   );
 }

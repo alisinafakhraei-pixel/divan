@@ -4,20 +4,24 @@
 
 export type Segment =
   | "Unicorn"
-  | "VC"
+  | "Decacorn"
+  | "Emerging Unicorn"
   | "Emerging Startups"
+  | "VC"
   | "Public Company"
-  | "Investor"
-  | "Operator";
+  | "Acquired or M&A"
+  | "NGO";
 
 export type FundingRound =
-  | "Pre-seed"
+  | "Pre-Seed"
   | "Seed"
   | "Series A"
   | "Series B"
-  | "Series C+"
-  | "Public"
-  | "Acquired";
+  | "Series D"
+  | "Series E"
+  | "Multiple Rounds"
+  | "Post-IPO"
+  | "Unknown";
 
 export type ValuationTier =
   | "+$10B"
@@ -26,9 +30,9 @@ export type ValuationTier =
   | "$10M-$100M"
   | "Under $10M";
 
-export type BusinessModel = "B2B" | "B2C" | "B2B2C";
+export type BusinessModel = "B2B" | "B2C" | "B2B / B2C";
 
-export type OperatingStatus = "Active" | "Acquired" | "Shut down";
+export type OperatingStatus = "Active" | "Public Company" | "Acquired or M&A" | "Closed";
 
 export type CompanyType = "Startup" | "Big Company";
 
