@@ -10,8 +10,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://divan-delta.vercel.app"),
   title: "Divan",
   description: "Meet Iranian entrepreneurs of the world.",
+  openGraph: {
+    title: "Divan",
+    description: "Meet Iranian entrepreneurs of the world.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Divan",
+    description: "Meet Iranian entrepreneurs of the world.",
+  },
 };
 
 export default function RootLayout({
