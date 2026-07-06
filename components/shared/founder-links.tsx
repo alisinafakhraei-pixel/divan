@@ -10,7 +10,7 @@ export function FounderLinks({ founderIds }: { founderIds: string[] }) {
   return (
     <div className="space-y-3">
       <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
-        {founders.length > 1 ? "Founders" : "Founder"}
+        Key people
       </h2>
       <div className="flex flex-wrap gap-3">
         {founders.map((founder) => (

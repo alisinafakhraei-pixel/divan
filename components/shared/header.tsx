@@ -25,15 +25,12 @@ const primaryLinks = [
   { label: "Entrepreneurs", href: "/entrepreneurs" },
   { label: "Startups", href: "/startups" },
   { label: "Ecosystem map", href: "/ecosystem-map" },
-  { label: "News", href: "/news" },
   { label: "About", href: "/about" },
 ];
 
 const moreLinks = [
   { label: "Hackathon", href: "/hackathon" },
-  { label: "Community", href: "/community/discussions" },
   { label: "Events", href: "/events" },
-  { label: "Perks", href: "/perks" },
   { label: "Contribute", href: "/contribute" },
 ];
 

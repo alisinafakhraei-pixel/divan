@@ -1,4 +1,5 @@
 import { EmptyState } from "@/components/shared/empty-state";
+import { HeroSearchBar } from "@/components/shared/hero-search-bar";
 import { NewsCard } from "@/components/shared/news-card";
 import { PersonCard } from "@/components/shared/person-card";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -22,6 +23,8 @@ export default async function SearchPage({
   return (
     <div className="mx-auto max-w-[1200px] space-y-10 px-4 py-12 sm:px-6">
       <SectionHeading as="h1" bold="Search" muted={q ? `results for "${q}"` : ""} />
+
+      <HeroSearchBar defaultValue={q} />
 
       {!q || totalResults === 0 ? (
         <EmptyState

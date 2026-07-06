@@ -6,9 +6,9 @@ import { Search } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-export function HeroSearchBar() {
+export function HeroSearchBar({ defaultValue = "" }: { defaultValue?: string }) {
   const router = useRouter();
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(defaultValue);
 
   return (
     <form

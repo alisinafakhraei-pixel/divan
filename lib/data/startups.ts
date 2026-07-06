@@ -420,9 +420,9 @@ export const startups: Startup[] = [
     hqRegion: "Tallinn, Estonia",
     operatingStatus: "Active",
     companyType: "Startup",
-    foundedYear: 2016,
-    notes: "",
-    founderIds: [],
+    foundedYear: 2020,
+    notes: "Co-founded in 2020 by Farokh Shahabi, Noosh Baratpour, Hasan Noori, and Amir Hashemi, Formaloo started out of Iran before establishing operational headquarters in Tallinn, Estonia, with additional offices in London and Toronto. The company raised a €2M seed round led by Change Ventures to scale its product-led, no-code data platform globally.",
+    founderIds: ["pp-62"],
   },
   {
     id: "st-20",

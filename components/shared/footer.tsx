@@ -15,13 +15,11 @@ const columns = [
     links: [
       { label: "Hackathon", href: "/hackathon" },
       { label: "Events", href: "/events" },
-      { label: "Perks", href: "/perks" },
     ],
   },
   {
     heading: "Community",
     links: [
-      { label: "Discussions", href: "/community/discussions" },
       { label: "Ask the Community", href: "/community/ask" },
       { label: "Job Market", href: "/community/jobs" },
     ],

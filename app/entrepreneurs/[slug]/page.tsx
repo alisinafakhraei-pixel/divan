@@ -6,8 +6,29 @@ import { getRelatedNews } from "@/lib/data-access/news";
 import { getPersonBySlug } from "@/lib/data-access/people";
 import { getStartupById } from "@/lib/data-access/startups";
 import { ArrowRight } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const person = getPersonBySlug(slug);
+  if (!person) return {};
+
+  const title = `${person.name} - ${person.knownFor} | Divan`;
+  const description = `${person.title} at ${person.knownFor}. ${person.bio}`;
+
+  return {
+    title,
+    description,
+    openGraph: { title, description },
+    twitter: { title, description },
+  };
+}
 
 export default async function PersonDetailPage({
   params,

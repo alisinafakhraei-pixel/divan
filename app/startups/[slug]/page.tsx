@@ -5,8 +5,29 @@ import { StartupInfoPanel } from "@/components/shared/startup-info-panel";
 import { StartupProfileHeader } from "@/components/shared/startup-profile-header";
 import { getRelatedNews } from "@/lib/data-access/news";
 import { getStartupBySlug } from "@/lib/data-access/startups";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const startup = getStartupBySlug(slug);
+  if (!startup) return {};
+
+  const title = `${startup.name} | Divan`;
+  const description = startup.tagline;
+
+  return {
+    title,
+    description,
+    openGraph: { title, description },
+    twitter: { title, description },
+  };
+}
 
 export default async function StartupDetailPage({
   params,

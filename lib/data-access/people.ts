@@ -59,7 +59,11 @@ export function getPersonById(id: string): Person | undefined {
 }
 
 export function getFeaturedPeople(limit = 6): Person[] {
-  return people.filter((p) => p.featured).slice(0, limit);
+  // Farokh is pinned first among featured entrepreneurs on the homepage.
+  return people
+    .filter((p) => p.featured)
+    .sort((a, b) => (a.slug === "farokh-shahabi" ? -1 : b.slug === "farokh-shahabi" ? 1 : 0))
+    .slice(0, limit);
 }
 
 export function getPeopleCount(): number {
