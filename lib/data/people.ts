@@ -1,11 +1,11 @@
-import { readJson, writeJson } from "@/lib/server/json-store";
+import { readJsonFile, writeJsonFile } from "@/lib/server/github-store";
 import type { Person } from "@/lib/types";
 
-// GitHub-backed "database" — data/people.json is the source of truth, read fresh on every call, no in-memory caching.
-export function readPeople(): Person[] {
-  return readJson<Person[]>("people.json");
+// GitHub-backed "database" — data/people.json is the source of truth, fetched via the GitHub API (see lib/server/github-store.ts).
+export async function readPeople(): Promise<Person[]> {
+  return readJsonFile<Person[]>("data/people.json");
 }
 
-export function writePeople(people: Person[]): void {
-  writeJson("people.json", people);
+export async function writePeople(people: Person[], message = "Update data/people.json"): Promise<void> {
+  return writeJsonFile("data/people.json", people, message);
 }

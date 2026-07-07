@@ -3,8 +3,8 @@ import { getPersonFields, getStartupFields } from "@/components/contribute/sugge
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getStartups } from "@/lib/data-access/startups";
 
-export default function AdminAddPage() {
-  const companyOptions = getStartups().map((startup) => startup.name);
+export default async function AdminAddPage() {
+  const companyOptions = (await getStartups()).map((startup) => startup.name);
 
   return (
     <div className="space-y-4 pt-6">

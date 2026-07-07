@@ -4,8 +4,8 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getStartups } from "@/lib/data-access/startups";
 
-export default function ContributePage() {
-  const companyOptions = getStartups().map((startup) => startup.name);
+export default async function ContributePage() {
+  const companyOptions = (await getStartups()).map((startup) => startup.name);
 
   return (
     <div className="mx-auto max-w-[800px] space-y-10 px-4 py-12 sm:px-6">

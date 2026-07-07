@@ -13,12 +13,12 @@ const FORMAT_STEPS = [
   { title: "Week 3 — Demo Day", body: "Pitch to a panel of investors and operators from the Divan network." },
 ];
 
-export default function HackathonPage() {
+export default async function HackathonPage() {
   const currentCohort = getCurrentCohort();
   const lastCohort = getPastCohorts()[0];
-  const mentors = (lastCohort?.mentorIds ?? [])
-    .map(getPersonById)
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const mentors = (await Promise.all((lastCohort?.mentorIds ?? []).map(getPersonById))).filter(
+    (p): p is NonNullable<typeof p> => Boolean(p)
+  );
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-12 px-4 py-12 sm:px-6">

@@ -8,7 +8,7 @@ export const contentType = "image/png";
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const person = getPersonBySlug(slug);
+  const person = await getPersonBySlug(slug);
 
   const photo = person ? await resolveOgImageSrc(person.picture) : null;
 

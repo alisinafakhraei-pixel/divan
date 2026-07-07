@@ -18,7 +18,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const person = getPersonBySlug(slug);
+  const person = await getPersonBySlug(slug);
   if (!person) return {};
 
   const title = `${person.name} - ${person.knownFor} | Divan`;
@@ -38,10 +38,13 @@ export default async function PersonDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const person = getPersonBySlug(slug);
+  const person = await getPersonBySlug(slug);
   if (!person) notFound();
 
-  const knownForStartup = person.knownForStartupId ? getStartupById(person.knownForStartupId) : undefined;
+  const [knownForStartup, companyOptions] = await Promise.all([
+    person.knownForStartupId ? getStartupById(person.knownForStartupId) : undefined,
+    getStartups().then((startups) => startups.map((s) => s.name)),
+  ]);
   const relatedNews = getRelatedNews(person.id, 3);
 
   return (
@@ -83,7 +86,7 @@ export default async function PersonDetailPage({
           <div className="flex items-center justify-between border-t border-border pt-6">
             <ShareButtons title={person.name} />
             <SuggestEditSheet
-              fields={getPersonFields(getStartups().map((s) => s.name))}
+              fields={getPersonFields(companyOptions)}
               kind="person"
               targetId={person.id}
               defaultValues={personToFieldValues(person)}

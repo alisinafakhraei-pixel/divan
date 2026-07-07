@@ -18,12 +18,12 @@ export default async function NewsDetailPage({
   const item = getNewsBySlug(slug);
   if (!item) notFound();
 
-  const relatedPeople = item.relatedEntityIds
-    .map(getPersonById)
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
-  const relatedStartups = item.relatedEntityIds
-    .map(getStartupById)
-    .filter((s): s is NonNullable<typeof s> => Boolean(s));
+  const [relatedPeopleResults, relatedStartupsResults] = await Promise.all([
+    Promise.all(item.relatedEntityIds.map(getPersonById)),
+    Promise.all(item.relatedEntityIds.map(getStartupById)),
+  ]);
+  const relatedPeople = relatedPeopleResults.filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const relatedStartups = relatedStartupsResults.filter((s): s is NonNullable<typeof s> => Boolean(s));
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-8 px-4 py-12 sm:px-6">

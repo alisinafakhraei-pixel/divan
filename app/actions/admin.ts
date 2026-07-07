@@ -35,13 +35,13 @@ async function resolveImage(
 
 /** Admin publishes a brand-new person/startup submission — writes straight to data/people.json or data/startups.json, no approval chain beyond this click. */
 export async function adminPublishSubmission(submissionId: string, formData: FormData): Promise<void> {
-  const submission = getSubmissionById(submissionId);
+  const submission = await getSubmissionById(submissionId);
   if (!submission || submission.mode !== "new") return;
 
   const payload = payloadFromFormData(formData);
 
   if (submission.kind === "person") {
-    const id = nextSequentialId("pp", getPeople().map((p) => p.id));
+    const id = nextSequentialId("pp", (await getPeople()).map((p) => p.id));
     const picture = await resolveImage("person", formData, submission.payload.picture, id);
     const person = {
       id,
@@ -50,54 +50,54 @@ export async function adminPublishSubmission(submissionId: string, formData: For
       featured: false,
       publishStatus: "published",
       viewCount: 0,
-      ...toPersonPatch(payload),
+      ...(await toPersonPatch(payload)),
     } as Person;
-    addPerson(person);
+    await addPerson(person);
   } else {
-    const id = nextSequentialId("st", getStartups().map((s) => s.id));
+    const id = nextSequentialId("st", (await getStartups()).map((s) => s.id));
     const logo = await resolveImage("startup", formData, submission.payload.logo, id);
     const startup = {
       id,
       slug: slugify(payload.name),
       logo: logo ?? "",
       companyType: "Startup",
-      ...toStartupPatch(payload),
+      ...(await toStartupPatch(payload)),
     } as Startup;
-    addStartup(startup);
+    await addStartup(startup);
   }
 
-  updateSubmissionStatus(submissionId, "approved");
+  await updateSubmissionStatus(submissionId, "approved");
   revalidateEntityPaths();
 }
 
 export async function adminDeclineSubmission(submissionId: string): Promise<void> {
-  updateSubmissionStatus(submissionId, "declined");
+  await updateSubmissionStatus(submissionId, "declined");
   revalidatePath("/admin");
 }
 
 /** Admin approves a suggested edit — merges the (possibly further-edited) values into the existing record. */
 export async function adminApproveEdit(submissionId: string, formData: FormData): Promise<void> {
-  const submission = getSubmissionById(submissionId);
+  const submission = await getSubmissionById(submissionId);
   if (!submission || submission.mode !== "edit" || !submission.targetId) return;
 
   const payload = payloadFromFormData(formData);
 
   if (submission.kind === "person") {
-    const target = getPersonById(submission.targetId);
+    const target = await getPersonById(submission.targetId);
     const picture = await resolveImage("person", formData, target?.picture, submission.targetId);
-    updatePerson(submission.targetId, { ...toPersonPatch(payload), picture });
+    await updatePerson(submission.targetId, { ...(await toPersonPatch(payload)), picture });
   } else {
-    const target = getStartupById(submission.targetId);
+    const target = await getStartupById(submission.targetId);
     const logo = await resolveImage("startup", formData, target?.logo, submission.targetId);
-    updateStartup(submission.targetId, { ...toStartupPatch(payload), logo });
+    await updateStartup(submission.targetId, { ...(await toStartupPatch(payload)), logo });
   }
 
-  updateSubmissionStatus(submissionId, "approved");
+  await updateSubmissionStatus(submissionId, "approved");
   revalidateEntityPaths();
 }
 
 export async function adminCancelEdit(submissionId: string): Promise<void> {
-  updateSubmissionStatus(submissionId, "declined");
+  await updateSubmissionStatus(submissionId, "declined");
   revalidatePath("/admin");
 }
 
@@ -107,7 +107,7 @@ export async function adminPublishDirect(kind: SubmissionKind, formData: FormDat
   const file = getUploadedFile(formData, imageFieldFor(kind));
 
   if (kind === "person") {
-    const id = nextSequentialId("pp", getPeople().map((p) => p.id));
+    const id = nextSequentialId("pp", (await getPeople()).map((p) => p.id));
     const picture = file ? await saveUploadedImage(file, "people", id) : "";
     const person = {
       id,
@@ -116,20 +116,20 @@ export async function adminPublishDirect(kind: SubmissionKind, formData: FormDat
       featured: false,
       publishStatus: "published",
       viewCount: 0,
-      ...toPersonPatch(payload),
+      ...(await toPersonPatch(payload)),
     } as Person;
-    addPerson(person);
+    await addPerson(person);
   } else {
-    const id = nextSequentialId("st", getStartups().map((s) => s.id));
+    const id = nextSequentialId("st", (await getStartups()).map((s) => s.id));
     const logo = file ? await saveUploadedImage(file, "startups", id) : "";
     const startup = {
       id,
       slug: slugify(payload.name),
       logo,
       companyType: "Startup",
-      ...toStartupPatch(payload),
+      ...(await toStartupPatch(payload)),
     } as Startup;
-    addStartup(startup);
+    await addStartup(startup);
   }
 
   revalidateEntityPaths();

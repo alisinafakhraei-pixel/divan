@@ -33,7 +33,7 @@ export async function submitNewEntity(kind: SubmissionKind, formData: FormData):
     submittedAt: new Date().toISOString().slice(0, 10),
     status: "pending",
   };
-  addSubmission(submission);
+  await addSubmission(submission);
   revalidatePath("/admin");
 }
 
@@ -52,6 +52,6 @@ export async function submitEditSuggestion(kind: SubmissionKind, targetId: strin
     submittedAt: new Date().toISOString().slice(0, 10),
     status: "pending",
   };
-  addSubmission(submission);
+  await addSubmission(submission);
   revalidatePath("/admin");
 }

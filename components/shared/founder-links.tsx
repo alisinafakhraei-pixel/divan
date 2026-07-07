@@ -2,8 +2,10 @@ import { EntityAvatar } from "@/components/shared/entity-avatar";
 import { getPersonById } from "@/lib/data-access/people";
 import Link from "next/link";
 
-export function FounderLinks({ founderIds }: { founderIds: string[] }) {
-  const founders = founderIds.map(getPersonById).filter((p): p is NonNullable<typeof p> => Boolean(p));
+export async function FounderLinks({ founderIds }: { founderIds: string[] }) {
+  const founders = (await Promise.all(founderIds.map(getPersonById))).filter(
+    (p): p is NonNullable<typeof p> => Boolean(p)
+  );
 
   if (founders.length === 0) return null;
 

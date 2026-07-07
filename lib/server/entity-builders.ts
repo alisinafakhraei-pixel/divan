@@ -20,8 +20,9 @@ function deriveValuationTier(valuation?: string): ValuationTier {
 }
 
 /** Maps contribute-form field values onto Person fields — the inverse of personToFieldValues. */
-export function toPersonPatch(payload: Record<string, string>): Partial<Person> {
-  const knownForStartup = getStartups().find(
+export async function toPersonPatch(payload: Record<string, string>): Promise<Partial<Person>> {
+  const startups = await getStartups();
+  const knownForStartup = startups.find(
     (s) => s.name.toLowerCase() === (payload.knownFor ?? "").toLowerCase()
   );
 
@@ -41,9 +42,10 @@ export function toPersonPatch(payload: Record<string, string>): Partial<Person> 
 
 /** Maps contribute-form field values onto Startup fields — the inverse of startupToFieldValues.
  *  `valuationTier` and `companyType` aren't collected by the form, so they're derived/defaulted here. */
-export function toStartupPatch(payload: Record<string, string>): Partial<Startup> {
+export async function toStartupPatch(payload: Record<string, string>): Promise<Partial<Startup>> {
+  const people = await getPeople();
   const founderIds = splitList(payload.founders)
-    .map((name) => getPeople().find((p) => p.name.toLowerCase() === name.toLowerCase())?.id)
+    .map((name) => people.find((p) => p.name.toLowerCase() === name.toLowerCase())?.id)
     .filter((id): id is string => Boolean(id));
 
   return {

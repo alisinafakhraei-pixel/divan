@@ -1,7 +1,4 @@
-import { mkdirSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
-
-const UPLOADS_DIR = join(process.cwd(), "public", "uploads");
+import { writeBinaryFile } from "@/lib/server/github-store";
 
 function extensionFromMime(type: string): string {
   if (type === "image/png") return "png";
@@ -10,12 +7,13 @@ function extensionFromMime(type: string): string {
   return "jpg";
 }
 
-/** Saves an uploaded image into this repo (public/uploads/...) so it's tracked the same way as the JSON data — GitHub is the database, including pictures. */
+/** Commits an uploaded image into this repo (public/uploads/...) via the GitHub API — GitHub is the database, including pictures. */
 export async function saveUploadedImage(file: File, folder: "people" | "startups", id: string): Promise<string> {
-  const dir = join(UPLOADS_DIR, folder);
-  mkdirSync(dir, { recursive: true });
   const filename = `${id}.${extensionFromMime(file.type)}`;
+  const path = `public/uploads/${folder}/${filename}`;
   const buffer = Buffer.from(await file.arrayBuffer());
-  writeFileSync(join(dir, filename), buffer);
-  return `/uploads/${folder}/${filename}`;
+  await writeBinaryFile(path, buffer, `Upload ${folder} image: ${filename}`);
+  // Served dynamically from GitHub (not /public) — a static /public URL wouldn't update until the next
+  // deploy, since Vercel's filesystem is a frozen build snapshot.
+  return `/api/uploads/${folder}/${filename}`;
 }

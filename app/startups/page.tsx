@@ -30,19 +30,37 @@ export default async function StartupsPage({
   const page = Math.max(1, Number(params.page ?? "1"));
   const view = params.view === "table" ? "table" : "grid";
 
-  const results = getStartups(
-    {
-      search: params.q,
-      valuationTier: params.valuationTier as ValuationTier | undefined,
-      fundingRound: params.fundingRound as FundingRound | undefined,
-      industry: params.industry,
-      businessModel: params.businessModel as BusinessModel | undefined,
-      hqCountry: params.hqCountry,
-      operatingStatus: params.operatingStatus as OperatingStatus | undefined,
-      companyType: params.companyType as CompanyType | undefined,
-    },
-    (params.sort as StartupSort) ?? "valuation-desc"
-  );
+  const [
+    results,
+    valuationTiers,
+    fundingRounds,
+    industries,
+    businessModels,
+    countries,
+    operatingStatuses,
+    companyTypes,
+  ] = await Promise.all([
+    getStartups(
+      {
+        search: params.q,
+        valuationTier: params.valuationTier as ValuationTier | undefined,
+        fundingRound: params.fundingRound as FundingRound | undefined,
+        industry: params.industry,
+        businessModel: params.businessModel as BusinessModel | undefined,
+        hqCountry: params.hqCountry,
+        operatingStatus: params.operatingStatus as OperatingStatus | undefined,
+        companyType: params.companyType as CompanyType | undefined,
+      },
+      (params.sort as StartupSort) ?? "valuation-desc"
+    ),
+    getStartupValuationTiers(),
+    getStartupFundingRounds(),
+    getStartupIndustries(),
+    getStartupBusinessModels(),
+    getStartupCountries(),
+    getStartupOperatingStatuses(),
+    getStartupCompanyTypes(),
+  ]);
 
   const pageCount = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
   const pageItems = results.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -62,13 +80,13 @@ export default async function StartupsPage({
       </div>
 
       <StartupsToolbar
-        valuationTiers={getStartupValuationTiers()}
-        fundingRounds={getStartupFundingRounds()}
-        industries={getStartupIndustries()}
-        businessModels={getStartupBusinessModels()}
-        countries={getStartupCountries()}
-        operatingStatuses={getStartupOperatingStatuses()}
-        companyTypes={getStartupCompanyTypes()}
+        valuationTiers={valuationTiers}
+        fundingRounds={fundingRounds}
+        industries={industries}
+        businessModels={businessModels}
+        countries={countries}
+        operatingStatuses={operatingStatuses}
+        companyTypes={companyTypes}
       />
 
       {pageItems.length === 0 ? (

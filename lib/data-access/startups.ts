@@ -23,11 +23,11 @@ export interface StartupFilters {
 
 export type StartupSort = "valuation-desc" | "newest" | "name-asc";
 
-export function getStartups(
+export async function getStartups(
   filters?: StartupFilters,
   sort: StartupSort = "valuation-desc"
-): Startup[] {
-  let result = readStartups();
+): Promise<Startup[]> {
+  let result = await readStartups();
 
   if (filters?.valuationTier) result = result.filter((s) => s.valuationTier === filters.valuationTier);
   if (filters?.fundingRound) result = result.filter((s) => s.fundingRound === filters.fundingRound);
@@ -53,64 +53,64 @@ export function getStartups(
   return result;
 }
 
-export function getStartupBySlug(slug: string): Startup | undefined {
-  return readStartups().find((s) => s.slug === slug);
+export async function getStartupBySlug(slug: string): Promise<Startup | undefined> {
+  return (await readStartups()).find((s) => s.slug === slug);
 }
 
-export function getStartupById(id: string): Startup | undefined {
-  return readStartups().find((s) => s.id === id);
+export async function getStartupById(id: string): Promise<Startup | undefined> {
+  return (await readStartups()).find((s) => s.id === id);
 }
 
-export function getFeaturedStartups(limit = 6): Startup[] {
-  return getStartups(undefined, "valuation-desc").slice(0, limit);
+export async function getFeaturedStartups(limit = 6): Promise<Startup[]> {
+  return (await getStartups(undefined, "valuation-desc")).slice(0, limit);
 }
 
-export function getStartupsCount(): number {
-  return readStartups().length;
+export async function getStartupsCount(): Promise<number> {
+  return (await readStartups()).length;
 }
 
-export function getTotalTrackedValuationMillions(): number {
-  return readStartups().reduce((sum, s) => sum + parseValuationToMillions(s.valuation), 0);
+export async function getTotalTrackedValuationMillions(): Promise<number> {
+  return (await readStartups()).reduce((sum, s) => sum + parseValuationToMillions(s.valuation), 0);
 }
 
-export function getStartupCountries(): string[] {
-  return Array.from(new Set(readStartups().map((s) => s.hqCountry))).sort();
+export async function getStartupCountries(): Promise<string[]> {
+  return Array.from(new Set((await readStartups()).map((s) => s.hqCountry))).sort();
 }
 
-export function getStartupIndustries(): string[] {
-  return Array.from(new Set(readStartups().flatMap((s) => s.industries))).sort();
+export async function getStartupIndustries(): Promise<string[]> {
+  return Array.from(new Set((await readStartups()).flatMap((s) => s.industries))).sort();
 }
 
-export function getStartupValuationTiers(): ValuationTier[] {
-  return Array.from(new Set(readStartups().map((s) => s.valuationTier)));
+export async function getStartupValuationTiers(): Promise<ValuationTier[]> {
+  return Array.from(new Set((await readStartups()).map((s) => s.valuationTier)));
 }
 
-export function getStartupFundingRounds(): FundingRound[] {
-  return Array.from(new Set(readStartups().map((s) => s.fundingRound)));
+export async function getStartupFundingRounds(): Promise<FundingRound[]> {
+  return Array.from(new Set((await readStartups()).map((s) => s.fundingRound)));
 }
 
-export function getStartupBusinessModels(): BusinessModel[] {
-  return Array.from(new Set(readStartups().map((s) => s.businessModel)));
+export async function getStartupBusinessModels(): Promise<BusinessModel[]> {
+  return Array.from(new Set((await readStartups()).map((s) => s.businessModel)));
 }
 
-export function getStartupOperatingStatuses(): OperatingStatus[] {
-  return Array.from(new Set(readStartups().map((s) => s.operatingStatus)));
+export async function getStartupOperatingStatuses(): Promise<OperatingStatus[]> {
+  return Array.from(new Set((await readStartups()).map((s) => s.operatingStatus)));
 }
 
-export function getStartupCompanyTypes(): CompanyType[] {
-  return Array.from(new Set(readStartups().map((s) => s.companyType)));
+export async function getStartupCompanyTypes(): Promise<CompanyType[]> {
+  return Array.from(new Set((await readStartups()).map((s) => s.companyType)));
 }
 
-export function addStartup(startup: Startup): void {
-  const startups = readStartups();
+export async function addStartup(startup: Startup): Promise<void> {
+  const startups = await readStartups();
   startups.push(startup);
-  writeStartups(startups);
+  await writeStartups(startups, `Add startup: ${startup.name}`);
 }
 
-export function updateStartup(id: string, patch: Partial<Startup>): void {
-  const startups = readStartups();
+export async function updateStartup(id: string, patch: Partial<Startup>): Promise<void> {
+  const startups = await readStartups();
   const index = startups.findIndex((s) => s.id === id);
   if (index === -1) return;
   startups[index] = { ...startups[index], ...patch };
-  writeStartups(startups);
+  await writeStartups(startups, `Edit startup: ${startups[index].name}`);
 }

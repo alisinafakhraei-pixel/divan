@@ -32,11 +32,15 @@ function SectionHeader({
   );
 }
 
-export default function Home() {
-  const stats = getSiteStats();
-  const featuredPeople = getFeaturedPeople(9);
-  const featuredStartups = getFeaturedStartups(6);
-  const upcomingEvents = getUpcomingEvents(3);
+export default async function Home() {
+  const [stats, featuredPeople, featuredStartups, upcomingEvents, allPeople, allStartups] = await Promise.all([
+    getSiteStats(),
+    getFeaturedPeople(9),
+    getFeaturedStartups(6),
+    getUpcomingEvents(3),
+    getPeople(),
+    getStartups(),
+  ]);
 
   return (
     <div className="mx-auto flex max-w-[1200px] flex-col gap-16 px-4 py-12 sm:px-6 sm:py-16">
@@ -100,7 +104,7 @@ export default function Home() {
 
       <section className="space-y-6">
         <SectionHeading bold="Global" muted="reach, at a glance" />
-        <WorldMap people={getPeople()} startups={getStartups()} />
+        <WorldMap people={allPeople} startups={allStartups} />
       </section>
     </div>
   );

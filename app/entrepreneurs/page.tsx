@@ -26,15 +26,20 @@ export default async function EntrepreneursPage({
   const page = Math.max(1, Number(params.page ?? "1"));
   const view = params.view === "table" ? "table" : "grid";
 
-  const people = getPeople(
-    {
-      search: params.q,
-      country: params.country,
-      segment: params.segment as Segment | undefined,
-      industry: params.industry,
-    },
-    (params.sort as PeopleSort) ?? "name-asc"
-  );
+  const [people, countries, segments, industries] = await Promise.all([
+    getPeople(
+      {
+        search: params.q,
+        country: params.country,
+        segment: params.segment as Segment | undefined,
+        industry: params.industry,
+      },
+      (params.sort as PeopleSort) ?? "name-asc"
+    ),
+    getPeopleCountries(),
+    getPeopleSegments(),
+    getPeopleIndustries(),
+  ]);
 
   const pageCount = Math.max(1, Math.ceil(people.length / PAGE_SIZE));
   const pageItems = people.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -53,11 +58,7 @@ export default async function EntrepreneursPage({
         </Button>
       </div>
 
-      <EntrepreneursToolbar
-        countries={getPeopleCountries()}
-        segments={getPeopleSegments()}
-        industries={getPeopleIndustries()}
-      />
+      <EntrepreneursToolbar countries={countries} segments={segments} industries={industries} />
 
       {pageItems.length === 0 ? (
         <EmptyState

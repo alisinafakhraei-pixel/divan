@@ -14,10 +14,10 @@ import { notFound } from "next/navigation";
 
 export default async function AdminSuggestionDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const submission = getSubmissionById(id);
+  const submission = await getSubmissionById(id);
   if (!submission) notFound();
 
-  const companyOptions = getStartups().map((s) => s.name);
+  const companyOptions = (await getStartups()).map((s) => s.name);
   const fields = submission.kind === "person" ? getPersonFields(companyOptions) : getStartupFields();
 
   if (submission.mode === "new") {
@@ -35,16 +35,16 @@ export default async function AdminSuggestionDetailPage({ params }: { params: Pr
   let oldValues: Record<string, string>;
 
   if (submission.kind === "person") {
-    const target = submission.targetId ? getPersonById(submission.targetId) : undefined;
+    const target = submission.targetId ? await getPersonById(submission.targetId) : undefined;
     if (!target) notFound();
     targetName = target.name;
     oldValues = personToFieldValues(target);
   } else {
-    const target = submission.targetId ? getStartupById(submission.targetId) : undefined;
+    const target = submission.targetId ? await getStartupById(submission.targetId) : undefined;
     if (!target) notFound();
-    const founderNames = target.founderIds
-      .map((founderId) => getPersonById(founderId)?.name)
-      .filter((name): name is string => Boolean(name));
+    const founderNames = (await Promise.all(target.founderIds.map((founderId) => getPersonById(founderId)))).map(
+      (p) => p?.name
+    ).filter((name): name is string => Boolean(name));
     targetName = target.name;
     oldValues = startupToFieldValues(target, founderNames);
   }

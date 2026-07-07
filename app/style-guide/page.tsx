@@ -54,10 +54,9 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
   );
 }
 
-export default function StyleGuidePage() {
-  const stats = getSiteStats();
-  const person = getPeople()[0];
-  const startup = getStartups()[0];
+export default async function StyleGuidePage() {
+  const [stats, people, startup] = await Promise.all([getSiteStats(), getPeople(), getStartups().then((s) => s[0])]);
+  const person = people[0];
   const discussion = getPosts("discussion")[0];
   const question = getPosts("question")[0];
   const upcomingEvent = getUpcomingEvents(1)[0];
@@ -66,7 +65,7 @@ export default function StyleGuidePage() {
   const newsItem = getLatestNews(1)[0];
   const featuredPerk = getPerks().find((p) => p.featured)!;
   const normalPerk = getPerks().find((p) => !p.featured)!;
-  const mentor = getPeople()[3];
+  const mentor = people[3];
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-2 px-4 py-12 sm:px-6">

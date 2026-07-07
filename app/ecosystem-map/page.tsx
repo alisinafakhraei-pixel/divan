@@ -14,8 +14,17 @@ import { getPeople } from "@/lib/data-access/people";
 import { getSiteStats } from "@/lib/data-access/stats";
 import { getStartups } from "@/lib/data-access/startups";
 
-export default function EcosystemMapPage() {
-  const stats = getSiteStats();
+export default async function EcosystemMapPage() {
+  const [stats, people, startups, hqLocationBreakdown, businessModelBreakdown, industryBreakdown, fundingStageBreakdown] =
+    await Promise.all([
+      getSiteStats(),
+      getPeople(),
+      getStartups(),
+      getHqLocationBreakdown(),
+      getBusinessModelBreakdown(),
+      getIndustryBreakdown(),
+      getFundingStageBreakdown(),
+    ]);
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-8 px-4 py-12 sm:px-6">
@@ -45,23 +54,23 @@ export default function EcosystemMapPage() {
         </TabsList>
 
         <TabsContent value="map" className="pt-6">
-          <WorldMap people={getPeople()} startups={getStartups()} />
+          <WorldMap people={people} startups={startups} />
         </TabsContent>
 
         <TabsContent value="hq" className="pt-6">
-          <ClickableDonutChart data={getHqLocationBreakdown()} linkBase="/startups" linkParam="hqCountry" />
+          <ClickableDonutChart data={hqLocationBreakdown} linkBase="/startups" linkParam="hqCountry" />
         </TabsContent>
 
         <TabsContent value="model" className="pt-6">
-          <ClickableDonutChart data={getBusinessModelBreakdown()} linkBase="/startups" linkParam="businessModel" />
+          <ClickableDonutChart data={businessModelBreakdown} linkBase="/startups" linkParam="businessModel" />
         </TabsContent>
 
         <TabsContent value="industries" className="pt-6">
-          <ClickableBarChart data={getIndustryBreakdown()} linkBase="/startups" linkParam="industry" />
+          <ClickableBarChart data={industryBreakdown} linkBase="/startups" linkParam="industry" />
         </TabsContent>
 
         <TabsContent value="funding" className="pt-6">
-          <ClickableBarChart data={getFundingStageBreakdown()} linkBase="/startups" linkParam="fundingRound" />
+          <ClickableBarChart data={fundingStageBreakdown} linkBase="/startups" linkParam="fundingRound" />
         </TabsContent>
       </Tabs>
     </div>

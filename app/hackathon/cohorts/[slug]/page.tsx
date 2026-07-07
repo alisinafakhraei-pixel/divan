@@ -16,9 +16,9 @@ export default async function CohortRecapPage({
   if (!cohort) notFound();
 
   const display = getCohortDisplayState(cohort);
-  const mentors = cohort.mentorIds
-    .map(getPersonById)
-    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const mentors = (await Promise.all(cohort.mentorIds.map(getPersonById))).filter(
+    (p): p is NonNullable<typeof p> => Boolean(p)
+  );
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-8 px-4 py-12 sm:px-6">

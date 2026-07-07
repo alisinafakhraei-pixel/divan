@@ -2,7 +2,7 @@ import { readPeople, writePeople } from "@/lib/data/people";
 import { getStartupById } from "@/lib/data-access/startups";
 import type { Person, Segment } from "@/lib/types";
 
-// Backed by data/people.json (this repo is the database). Signatures match what a real Formaloo/DB call would take.
+// Backed by data/people.json via the GitHub API (this repo is the database). Signatures match what a real Formaloo/DB call would take.
 // Pages/components should only ever import from data-access, never lib/data directly.
 
 export interface PeopleFilters {
@@ -15,13 +15,13 @@ export interface PeopleFilters {
 export type PeopleSort = "name-asc" | "recent" | "most-viewed";
 
 /** A person's "industry" is derived from their known-for startup — Person itself carries no industry field. */
-function personIndustries(person: Person): string[] {
-  const startup = person.knownForStartupId ? getStartupById(person.knownForStartupId) : undefined;
+async function personIndustries(person: Person): Promise<string[]> {
+  const startup = person.knownForStartupId ? await getStartupById(person.knownForStartupId) : undefined;
   return startup?.industries ?? [];
 }
 
-export function getPeople(filters?: PeopleFilters, sort: PeopleSort = "name-asc"): Person[] {
-  let result = readPeople();
+export async function getPeople(filters?: PeopleFilters, sort: PeopleSort = "name-asc"): Promise<Person[]> {
+  let result = await readPeople();
 
   if (filters?.country) {
     result = result.filter((p) => p.country === filters.country);
@@ -30,7 +30,8 @@ export function getPeople(filters?: PeopleFilters, sort: PeopleSort = "name-asc"
     result = result.filter((p) => p.segment === filters.segment);
   }
   if (filters?.industry) {
-    result = result.filter((p) => personIndustries(p).includes(filters.industry!));
+    const matches = await Promise.all(result.map(async (p) => (await personIndustries(p)).includes(filters.industry!)));
+    result = result.filter((_, i) => matches[i]);
   }
   if (filters?.search) {
     const q = filters.search.toLowerCase();
@@ -50,48 +51,50 @@ export function getPeople(filters?: PeopleFilters, sort: PeopleSort = "name-asc"
   return result;
 }
 
-export function getPersonBySlug(slug: string): Person | undefined {
-  return readPeople().find((p) => p.slug === slug);
+export async function getPersonBySlug(slug: string): Promise<Person | undefined> {
+  return (await readPeople()).find((p) => p.slug === slug);
 }
 
-export function getPersonById(id: string): Person | undefined {
-  return readPeople().find((p) => p.id === id);
+export async function getPersonById(id: string): Promise<Person | undefined> {
+  return (await readPeople()).find((p) => p.id === id);
 }
 
-export function getFeaturedPeople(limit = 6): Person[] {
+export async function getFeaturedPeople(limit = 6): Promise<Person[]> {
   // Farokh is pinned first among featured entrepreneurs on the homepage.
-  return readPeople()
+  return (await readPeople())
     .filter((p) => p.featured)
     .sort((a, b) => (a.slug === "farokh-shahabi" ? -1 : b.slug === "farokh-shahabi" ? 1 : 0))
     .slice(0, limit);
 }
 
-export function getPeopleCount(): number {
-  return readPeople().length;
+export async function getPeopleCount(): Promise<number> {
+  return (await readPeople()).length;
 }
 
-export function getPeopleCountries(): string[] {
-  return Array.from(new Set(readPeople().map((p) => p.country))).sort();
+export async function getPeopleCountries(): Promise<string[]> {
+  return Array.from(new Set((await readPeople()).map((p) => p.country))).sort();
 }
 
-export function getPeopleSegments(): Segment[] {
-  return Array.from(new Set(readPeople().map((p) => p.segment)));
+export async function getPeopleSegments(): Promise<Segment[]> {
+  return Array.from(new Set((await readPeople()).map((p) => p.segment)));
 }
 
-export function getPeopleIndustries(): string[] {
-  return Array.from(new Set(readPeople().flatMap((p) => personIndustries(p)))).sort();
+export async function getPeopleIndustries(): Promise<string[]> {
+  const people = await readPeople();
+  const industries = await Promise.all(people.map((p) => personIndustries(p)));
+  return Array.from(new Set(industries.flat())).sort();
 }
 
-export function addPerson(person: Person): void {
-  const people = readPeople();
+export async function addPerson(person: Person): Promise<void> {
+  const people = await readPeople();
   people.push(person);
-  writePeople(people);
+  await writePeople(people, `Add person: ${person.name}`);
 }
 
-export function updatePerson(id: string, patch: Partial<Person>): void {
-  const people = readPeople();
+export async function updatePerson(id: string, patch: Partial<Person>): Promise<void> {
+  const people = await readPeople();
   const index = people.findIndex((p) => p.id === id);
   if (index === -1) return;
   people[index] = { ...people[index], ...patch };
-  writePeople(people);
+  await writePeople(people, `Edit person: ${people[index].name}`);
 }

@@ -13,13 +13,22 @@ export interface SiteStats {
   combinedTrackedValuation: string;
 }
 
-/** Computed live from People + Startups fixtures — never hand-maintained. */
-export function getSiteStats(): SiteStats {
-  const countries = new Set([...getPeopleCountries(), ...getStartupCountries()]);
+/** Computed live from People + Startups data — never hand-maintained. */
+export async function getSiteStats(): Promise<SiteStats> {
+  const [peopleCountries, startupCountries, totalEntrepreneurs, totalStartups, totalValuationMillions] =
+    await Promise.all([
+      getPeopleCountries(),
+      getStartupCountries(),
+      getPeopleCount(),
+      getStartupsCount(),
+      getTotalTrackedValuationMillions(),
+    ]);
+  const countries = new Set([...peopleCountries, ...startupCountries]);
+
   return {
-    totalEntrepreneurs: getPeopleCount(),
-    totalStartups: getStartupsCount(),
+    totalEntrepreneurs,
+    totalStartups,
     countriesRepresented: countries.size,
-    combinedTrackedValuation: formatMillionsAsValuation(getTotalTrackedValuationMillions()),
+    combinedTrackedValuation: formatMillionsAsValuation(totalValuationMillions),
   };
 }

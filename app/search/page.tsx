@@ -15,8 +15,10 @@ export default async function SearchPage({
 }) {
   const { q = "" } = await searchParams;
 
-  const people = q ? getPeople({ search: q }) : [];
-  const startups = q ? getStartups({ search: q }) : [];
+  const [people, startups] = await Promise.all([
+    q ? getPeople({ search: q }) : Promise.resolve([]),
+    q ? getStartups({ search: q }) : Promise.resolve([]),
+  ]);
   const news = q ? getNews({ search: q }) : [];
   const totalResults = people.length + startups.length + news.length;
 

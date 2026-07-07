@@ -17,7 +17,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const startup = getStartupBySlug(slug);
+  const startup = await getStartupBySlug(slug);
   if (!startup) return {};
 
   const title = `${startup.name} | Divan`;
@@ -37,10 +37,13 @@ export default async function StartupDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const startup = getStartupBySlug(slug);
+  const startup = await getStartupBySlug(slug);
   if (!startup) notFound();
 
   const relatedNews = getRelatedNews(startup.id, 3);
+  const founderNames = (await Promise.all(startup.founderIds.map((id) => getPersonById(id))))
+    .map((p) => p?.name)
+    .filter((name): name is string => Boolean(name));
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-8 px-4 py-12 sm:px-6">
@@ -76,10 +79,7 @@ export default async function StartupDetailPage({
               fields={getStartupFields()}
               kind="startup"
               targetId={startup.id}
-              defaultValues={startupToFieldValues(
-                startup,
-                startup.founderIds.map((id) => getPersonById(id)?.name).filter((name): name is string => Boolean(name))
-              )}
+              defaultValues={startupToFieldValues(startup, founderNames)}
               submitLabel="Submit edit"
             />
           </div>
