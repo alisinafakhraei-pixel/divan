@@ -1,7 +1,7 @@
-import { ContactForm } from "@/components/about/contact-form";
 import { MemberMiniProfile } from "@/components/community/member-mini-profile";
 import { FeatureTile } from "@/components/shared/feature-tile";
 import { SectionHeading } from "@/components/shared/section-heading";
+import { SocialLinks } from "@/components/shared/social-links";
 import {
   Accordion,
   AccordionContent,
@@ -67,8 +67,9 @@ export default function AboutPage() {
       </section>
 
       <section className="max-w-lg space-y-4">
-        <SectionHeading bold="Get in" muted="touch" />
-        <ContactForm />
+        <SectionHeading bold="Follow" muted="us" />
+        <p className="text-sm text-muted-foreground">Stay up to date with Divan across our channels.</p>
+        <SocialLinks iconClassName="size-6" />
       </section>
     </div>
   );

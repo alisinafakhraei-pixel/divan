@@ -98,3 +98,12 @@ export async function updatePerson(id: string, patch: Partial<Person>): Promise<
   people[index] = { ...people[index], ...patch };
   await writePeople(people, `Edit person: ${people[index].name}`);
 }
+
+export async function deletePerson(id: string): Promise<void> {
+  const people = await readPeople();
+  const person = people.find((p) => p.id === id);
+  await writePeople(
+    people.filter((p) => p.id !== id),
+    `Delete person: ${person?.name ?? id}`
+  );
+}

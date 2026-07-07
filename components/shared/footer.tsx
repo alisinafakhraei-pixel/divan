@@ -1,3 +1,4 @@
+import { SocialLinks } from "@/components/shared/social-links";
 import Link from "next/link";
 import packageJson from "@/package.json";
 
@@ -38,10 +39,13 @@ export function Footer() {
     <footer className="border-t border-border bg-secondary/40">
       <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-8 px-4 py-12 sm:grid-cols-3 sm:px-6 lg:grid-cols-5">
         <div className="col-span-2 sm:col-span-3 lg:col-span-1">
-          <p className="text-lg font-extrabold tracking-tight text-foreground">Divan</p>
+          <Link href="/" className="inline-flex items-center">
+            <img src="/logo.svg" alt="Divan" className="h-8 w-auto" />
+          </Link>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
             Meet Iranian entrepreneurs of the world.
           </p>
+          <SocialLinks className="mt-4" />
         </div>
         {columns.map((col) => (
           <div key={col.heading}>

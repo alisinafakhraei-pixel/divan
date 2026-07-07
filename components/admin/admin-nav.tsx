@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 const links = [
   { label: "Community suggestions", href: "/admin" },
+  { label: "Search & edit", href: "/admin/manage" },
   { label: "Add startup / entrepreneur", href: "/admin/add" },
 ];
 

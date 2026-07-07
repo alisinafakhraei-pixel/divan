@@ -74,7 +74,7 @@ export default async function StartupsPage({
           muted="startups"
           subhead="Startups and big companies founded or led by Iranian entrepreneurs worldwide."
         />
-        <Button variant="outline" render={<Link href="/contribute" />} className="shrink-0">
+        <Button variant="outline" render={<Link href="/contribute?tab=startup" />} className="shrink-0">
           Suggest a startup
         </Button>
       </div>

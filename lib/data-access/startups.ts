@@ -114,3 +114,12 @@ export async function updateStartup(id: string, patch: Partial<Startup>): Promis
   startups[index] = { ...startups[index], ...patch };
   await writeStartups(startups, `Edit startup: ${startups[index].name}`);
 }
+
+export async function deleteStartup(id: string): Promise<void> {
+  const startups = await readStartups();
+  const startup = startups.find((s) => s.id === id);
+  await writeStartups(
+    startups.filter((s) => s.id !== id),
+    `Delete startup: ${startup?.name ?? id}`
+  );
+}

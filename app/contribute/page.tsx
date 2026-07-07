@@ -4,8 +4,16 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getStartups } from "@/lib/data-access/startups";
 
-export default async function ContributePage() {
-  const companyOptions = (await getStartups()).map((startup) => startup.name);
+export default async function ContributePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ tab?: string }>;
+}) {
+  const [companyOptions, { tab }] = await Promise.all([
+    getStartups().then((startups) => startups.map((startup) => startup.name)),
+    searchParams,
+  ]);
+  const defaultTab = tab === "startup" ? "startup" : "person";
 
   return (
     <div className="mx-auto max-w-[800px] space-y-10 px-4 py-12 sm:px-6">
@@ -15,7 +23,7 @@ export default async function ContributePage() {
         subhead="Know someone who should be in the directory, or a story we missed? Suggest it below — every submission is reviewed before it goes live."
       />
 
-      <Tabs defaultValue="person">
+      <Tabs defaultValue={defaultTab}>
         <TabsList>
           <TabsTrigger value="person">Suggest a person</TabsTrigger>
           <TabsTrigger value="startup">Suggest a startup</TabsTrigger>

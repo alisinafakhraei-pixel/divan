@@ -1,7 +1,7 @@
 "use server";
 
-import { addPerson, getPeople, getPersonById, updatePerson } from "@/lib/data-access/people";
-import { addStartup, getStartupById, getStartups, updateStartup } from "@/lib/data-access/startups";
+import { addPerson, deletePerson, getPeople, getPersonById, updatePerson } from "@/lib/data-access/people";
+import { addStartup, deleteStartup, getStartupById, getStartups, updateStartup } from "@/lib/data-access/startups";
 import { getSubmissionById, updateSubmissionStatus } from "@/lib/data-access/submissions";
 import { toPersonPatch, toStartupPatch } from "@/lib/server/entity-builders";
 import { getUploadedFile, payloadFromFormData } from "@/lib/server/form-payload";
@@ -33,6 +33,14 @@ async function resolveImage(
   return fallback;
 }
 
+/** When a new person names an existing startup as "known for", add them to that startup's founder list too — the link should show up on both sides. */
+async function linkPersonToKnownForStartup(person: Person): Promise<void> {
+  if (!person.knownForStartupId) return;
+  const startup = await getStartupById(person.knownForStartupId);
+  if (!startup || startup.founderIds.includes(person.id)) return;
+  await updateStartup(startup.id, { founderIds: [...startup.founderIds, person.id] });
+}
+
 /** Admin publishes a brand-new person/startup submission — writes straight to data/people.json or data/startups.json, no approval chain beyond this click. */
 export async function adminPublishSubmission(submissionId: string, formData: FormData): Promise<void> {
   const submission = await getSubmissionById(submissionId);
@@ -53,6 +61,7 @@ export async function adminPublishSubmission(submissionId: string, formData: For
       ...(await toPersonPatch(payload)),
     } as Person;
     await addPerson(person);
+    await linkPersonToKnownForStartup(person);
   } else {
     const id = nextSequentialId("st", (await getStartups()).map((s) => s.id));
     const logo = await resolveImage("startup", formData, submission.payload.logo, id);
@@ -119,6 +128,7 @@ export async function adminPublishDirect(kind: SubmissionKind, formData: FormDat
       ...(await toPersonPatch(payload)),
     } as Person;
     await addPerson(person);
+    await linkPersonToKnownForStartup(person);
   } else {
     const id = nextSequentialId("st", (await getStartups()).map((s) => s.id));
     const logo = file ? await saveUploadedImage(file, "startups", id) : "";
@@ -132,5 +142,44 @@ export async function adminPublishDirect(kind: SubmissionKind, formData: FormDat
     await addStartup(startup);
   }
 
+  revalidateEntityPaths();
+}
+
+/** Admin "Search & edit" page — direct edit of an existing record, no submission/queue involved. */
+export async function adminUpdateDirect(kind: SubmissionKind, targetId: string, formData: FormData): Promise<void> {
+  const payload = payloadFromFormData(formData);
+
+  if (kind === "person") {
+    const target = await getPersonById(targetId);
+    const picture = await resolveImage("person", formData, target?.picture, targetId);
+    await updatePerson(targetId, { ...(await toPersonPatch(payload)), picture });
+  } else {
+    const target = await getStartupById(targetId);
+    const logo = await resolveImage("startup", formData, target?.logo, targetId);
+    await updateStartup(targetId, { ...(await toStartupPatch(payload)), logo });
+  }
+
+  revalidateEntityPaths();
+}
+
+/** Admin "Search & edit" page — permanently removes a person/startup record and cleans up cross-references (founderIds / knownForStartupId) so deletion never leaves a dangling id behind. */
+export async function adminDeleteEntity(kind: SubmissionKind, targetId: string): Promise<void> {
+  if (kind === "person") {
+    await deletePerson(targetId);
+    const startups = await getStartups();
+    for (const startup of startups) {
+      if (startup.founderIds.includes(targetId)) {
+        await updateStartup(startup.id, { founderIds: startup.founderIds.filter((id) => id !== targetId) });
+      }
+    }
+  } else {
+    await deleteStartup(targetId);
+    const people = await getPeople();
+    for (const person of people) {
+      if (person.knownForStartupId === targetId) {
+        await updatePerson(person.id, { knownForStartupId: undefined });
+      }
+    }
+  }
   revalidateEntityPaths();
 }

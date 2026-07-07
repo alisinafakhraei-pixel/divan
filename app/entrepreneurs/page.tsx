@@ -53,7 +53,7 @@ export default async function EntrepreneursPage({
           muted="entrepreneurs"
           subhead="A browsable directory of Iranian founders, operators, and investors around the world."
         />
-        <Button variant="outline" render={<Link href="/contribute" />} className="shrink-0">
+        <Button variant="outline" render={<Link href="/contribute?tab=person" />} className="shrink-0">
           Suggest an entrepreneur
         </Button>
       </div>

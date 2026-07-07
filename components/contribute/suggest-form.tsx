@@ -1,7 +1,7 @@
 "use client";
 
 import { submitEditSuggestion, submitNewEntity } from "@/app/actions/contribute";
-import { adminPublishDirect } from "@/app/actions/admin";
+import { adminPublishDirect, adminUpdateDirect } from "@/app/actions/admin";
 import { FormFieldInput } from "@/components/contribute/form-field-input";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
@@ -18,14 +18,14 @@ export interface SuggestFormField {
   required?: boolean;
 }
 
-type SuggestFormMode = "contribute-new" | "contribute-edit" | "admin-add";
+type SuggestFormMode = "contribute-new" | "contribute-edit" | "admin-add" | "admin-edit";
 
 interface SuggestFormProps {
   fields: SuggestFormField[];
   submitLabel: string;
   kind: "person" | "startup";
   mode: SuggestFormMode;
-  /** Required when mode is "contribute-edit" — the Person/Startup id being suggested for edit. */
+  /** Required when mode is "contribute-edit" or "admin-edit" — the Person/Startup id being edited. */
   targetId?: string;
   defaultValues?: Record<string, string>;
   successMessage?: string;
@@ -67,6 +67,8 @@ export function SuggestForm({
             await submitNewEntity(kind, formData);
           } else if (mode === "contribute-edit") {
             await submitEditSuggestion(kind, targetId!, formData);
+          } else if (mode === "admin-edit") {
+            await adminUpdateDirect(kind, targetId!, formData);
           } else {
             await adminPublishDirect(kind, formData);
           }

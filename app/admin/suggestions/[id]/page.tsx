@@ -22,7 +22,7 @@ export default async function AdminSuggestionDetailPage({ params }: { params: Pr
 
   if (submission.mode === "new") {
     return (
-      <div className="space-y-4 pt-6">
+      <div className="space-y-4">
         <Link href="/admin" className="text-sm font-medium text-action-blue hover:underline">
           ← Back to suggestions
         </Link>
@@ -50,7 +50,7 @@ export default async function AdminSuggestionDetailPage({ params }: { params: Pr
   }
 
   return (
-    <div className="space-y-4 pt-6">
+    <div className="space-y-4">
       <Link href="/admin" className="text-sm font-medium text-action-blue hover:underline">
         ← Back to suggestions
       </Link>
