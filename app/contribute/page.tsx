@@ -1,38 +1,17 @@
-import { SuggestForm, type SuggestFormField } from "@/components/contribute/suggest-form";
+import { SuggestForm } from "@/components/contribute/suggest-form";
+import { getPersonFields, getStartupFields } from "@/components/contribute/suggest-form-fields";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-const PERSON_FIELDS: SuggestFormField[] = [
-  { name: "name", label: "Name", required: true },
-  { name: "knownFor", label: "Known for (company)", required: true },
-  { name: "title", label: "Title / role", required: true },
-  { name: "country", label: "Country", required: true },
-  { name: "linkedin", label: "LinkedIn or other link", type: "url" },
-  { name: "notes", label: "Anything else we should know?", type: "textarea" },
-];
-
-const STARTUP_FIELDS: SuggestFormField[] = [
-  { name: "name", label: "Startup name", required: true },
-  { name: "tagline", label: "Tagline", required: true },
-  { name: "website", label: "Website", type: "url", required: true },
-  { name: "hqCountry", label: "HQ country", required: true },
-  { name: "founders", label: "Founder name(s)", required: true },
-  { name: "notes", label: "Description", type: "textarea" },
-];
-
-const NEWS_FIELDS: SuggestFormField[] = [
-  { name: "title", label: "Headline", required: true },
-  { name: "link", label: "Link", type: "url", required: true },
-  { name: "tldr", label: "TL;DR", type: "textarea", required: true },
-];
+import { getStartups } from "@/lib/data-access/startups";
 
 export default function ContributePage() {
+  const companyOptions = getStartups().map((startup) => startup.name);
+
   return (
     <div className="mx-auto max-w-[800px] space-y-10 px-4 py-12 sm:px-6">
       <SectionHeading
         as="h1"
-        bold="Add or"
-        muted="update"
+        bold="Contribute"
         subhead="Know someone who should be in the directory, or a story we missed? Suggest it below — every submission is reviewed before it goes live."
       />
 
@@ -40,16 +19,12 @@ export default function ContributePage() {
         <TabsList>
           <TabsTrigger value="person">Suggest a person</TabsTrigger>
           <TabsTrigger value="startup">Suggest a startup</TabsTrigger>
-          <TabsTrigger value="news">Submit news</TabsTrigger>
         </TabsList>
         <TabsContent value="person" className="pt-6">
-          <SuggestForm fields={PERSON_FIELDS} submitLabel="Suggest entrepreneur" />
+          <SuggestForm fields={getPersonFields(companyOptions)} submitLabel="Suggest entrepreneur" />
         </TabsContent>
         <TabsContent value="startup" className="pt-6">
-          <SuggestForm fields={STARTUP_FIELDS} submitLabel="Suggest startup" />
-        </TabsContent>
-        <TabsContent value="news" className="pt-6">
-          <SuggestForm fields={NEWS_FIELDS} submitLabel="Submit news" />
+          <SuggestForm fields={getStartupFields()} submitLabel="Suggest startup" />
         </TabsContent>
       </Tabs>
 

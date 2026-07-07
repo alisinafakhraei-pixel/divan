@@ -1,12 +1,14 @@
+import { SuggestEditSheet } from "@/components/contribute/suggest-edit-sheet";
+import { getStartupFields, startupToFieldValues } from "@/components/contribute/suggest-form-fields";
 import { FounderLinks } from "@/components/shared/founder-links";
 import { NewsCard } from "@/components/shared/news-card";
 import { ShareButtons } from "@/components/shared/share-buttons";
 import { StartupInfoPanel } from "@/components/shared/startup-info-panel";
 import { StartupProfileHeader } from "@/components/shared/startup-profile-header";
+import { getPersonById } from "@/lib/data-access/people";
 import { getRelatedNews } from "@/lib/data-access/news";
 import { getStartupBySlug } from "@/lib/data-access/startups";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -70,9 +72,14 @@ export default async function StartupDetailPage({
 
           <div className="flex items-center justify-between border-t border-border pt-6">
             <ShareButtons title={startup.name} />
-            <Link href="/contribute" className="text-sm font-medium text-action-blue hover:underline">
-              Suggest an edit
-            </Link>
+            <SuggestEditSheet
+              fields={getStartupFields()}
+              defaultValues={startupToFieldValues(
+                startup,
+                startup.founderIds.map((id) => getPersonById(id)?.name).filter((name): name is string => Boolean(name))
+              )}
+              submitLabel="Submit edit"
+            />
           </div>
         </div>
 

@@ -1,10 +1,12 @@
+import { SuggestEditSheet } from "@/components/contribute/suggest-edit-sheet";
+import { getPersonFields, personToFieldValues } from "@/components/contribute/suggest-form-fields";
 import { NewsCard } from "@/components/shared/news-card";
 import { PersonInfoPanel } from "@/components/shared/person-info-panel";
 import { PersonProfileHeader } from "@/components/shared/person-profile-header";
 import { ShareButtons } from "@/components/shared/share-buttons";
 import { getRelatedNews } from "@/lib/data-access/news";
 import { getPersonBySlug } from "@/lib/data-access/people";
-import { getStartupById } from "@/lib/data-access/startups";
+import { getStartupById, getStartups } from "@/lib/data-access/startups";
 import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -80,9 +82,11 @@ export default async function PersonDetailPage({
 
           <div className="flex items-center justify-between border-t border-border pt-6">
             <ShareButtons title={person.name} />
-            <Link href="/contribute" className="text-sm font-medium text-action-blue hover:underline">
-              Suggest an edit
-            </Link>
+            <SuggestEditSheet
+              fields={getPersonFields(getStartups().map((s) => s.name))}
+              defaultValues={personToFieldValues(person)}
+              submitLabel="Submit edit"
+            />
           </div>
         </div>
 

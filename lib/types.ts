@@ -187,6 +187,23 @@ export interface HackathonCohort {
   recapWriteup?: string;
 }
 
+export type SubmissionKind = "person" | "startup";
+export type SubmissionMode = "new" | "edit";
+export type SubmissionStatus = "pending" | "approved" | "declined";
+
+export interface Submission {
+  id: string;
+  kind: SubmissionKind;
+  mode: SubmissionMode;
+  /** Only set when mode is "edit" — the Person/Startup id the suggestion proposes to change. */
+  targetId?: string;
+  /** Field values keyed the same way as SuggestFormField.name, so they line up with getPersonFields/getStartupFields. */
+  payload: Record<string, string>;
+  submittedBy: string;
+  submittedAt: string;
+  status: SubmissionStatus;
+}
+
 export interface Member {
   id: string;
   name: string;

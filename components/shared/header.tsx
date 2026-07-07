@@ -25,13 +25,14 @@ const primaryLinks = [
   { label: "Entrepreneurs", href: "/entrepreneurs" },
   { label: "Startups", href: "/startups" },
   { label: "Ecosystem map", href: "/ecosystem-map" },
+  { label: "Contribute", href: "/contribute" },
   { label: "About", href: "/about" },
 ];
 
 const moreLinks = [
   { label: "Hackathon", href: "/hackathon" },
   { label: "Events", href: "/events" },
-  { label: "Contribute", href: "/contribute" },
+  { label: "Admin", href: "/admin" },
 ];
 
 const allLinks = [...primaryLinks, ...moreLinks];
