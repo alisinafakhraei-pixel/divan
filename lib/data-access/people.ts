@@ -1,8 +1,8 @@
-import { people } from "@/lib/data/people";
+import { readPeople, writePeople } from "@/lib/data/people";
 import { getStartupById } from "@/lib/data-access/startups";
 import type { Person, Segment } from "@/lib/types";
 
-// Reads fixtures today; signatures match what a real Formaloo/DB call would take.
+// Backed by data/people.json (this repo is the database). Signatures match what a real Formaloo/DB call would take.
 // Pages/components should only ever import from data-access, never lib/data directly.
 
 export interface PeopleFilters {
@@ -21,7 +21,7 @@ function personIndustries(person: Person): string[] {
 }
 
 export function getPeople(filters?: PeopleFilters, sort: PeopleSort = "name-asc"): Person[] {
-  let result = [...people];
+  let result = readPeople();
 
   if (filters?.country) {
     result = result.filter((p) => p.country === filters.country);
@@ -51,33 +51,47 @@ export function getPeople(filters?: PeopleFilters, sort: PeopleSort = "name-asc"
 }
 
 export function getPersonBySlug(slug: string): Person | undefined {
-  return people.find((p) => p.slug === slug);
+  return readPeople().find((p) => p.slug === slug);
 }
 
 export function getPersonById(id: string): Person | undefined {
-  return people.find((p) => p.id === id);
+  return readPeople().find((p) => p.id === id);
 }
 
 export function getFeaturedPeople(limit = 6): Person[] {
   // Farokh is pinned first among featured entrepreneurs on the homepage.
-  return people
+  return readPeople()
     .filter((p) => p.featured)
     .sort((a, b) => (a.slug === "farokh-shahabi" ? -1 : b.slug === "farokh-shahabi" ? 1 : 0))
     .slice(0, limit);
 }
 
 export function getPeopleCount(): number {
-  return people.length;
+  return readPeople().length;
 }
 
 export function getPeopleCountries(): string[] {
-  return Array.from(new Set(people.map((p) => p.country))).sort();
+  return Array.from(new Set(readPeople().map((p) => p.country))).sort();
 }
 
 export function getPeopleSegments(): Segment[] {
-  return Array.from(new Set(people.map((p) => p.segment)));
+  return Array.from(new Set(readPeople().map((p) => p.segment)));
 }
 
 export function getPeopleIndustries(): string[] {
-  return Array.from(new Set(people.flatMap((p) => personIndustries(p)))).sort();
+  return Array.from(new Set(readPeople().flatMap((p) => personIndustries(p)))).sort();
+}
+
+export function addPerson(person: Person): void {
+  const people = readPeople();
+  people.push(person);
+  writePeople(people);
+}
+
+export function updatePerson(id: string, patch: Partial<Person>): void {
+  const people = readPeople();
+  const index = people.findIndex((p) => p.id === id);
+  if (index === -1) return;
+  people[index] = { ...people[index], ...patch };
+  writePeople(people);
 }

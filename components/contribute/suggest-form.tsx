@@ -1,5 +1,7 @@
 "use client";
 
+import { submitEditSuggestion, submitNewEntity } from "@/app/actions/contribute";
+import { adminPublishDirect } from "@/app/actions/admin";
 import { FormFieldInput } from "@/components/contribute/form-field-input";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
@@ -16,21 +18,32 @@ export interface SuggestFormField {
   required?: boolean;
 }
 
+type SuggestFormMode = "contribute-new" | "contribute-edit" | "admin-add";
+
 interface SuggestFormProps {
   fields: SuggestFormField[];
   submitLabel: string;
+  kind: "person" | "startup";
+  mode: SuggestFormMode;
+  /** Required when mode is "contribute-edit" — the Person/Startup id being suggested for edit. */
+  targetId?: string;
   defaultValues?: Record<string, string>;
   successMessage?: string;
 }
 
-/** Schema-matched mock submission — no backend, no persistence. Shows a success state on submit. */
+/** Schema-matched form backed by real server actions (data/*.json is the database) — see app/actions. */
 export function SuggestForm({
   fields,
   submitLabel,
+  kind,
+  mode,
+  targetId,
   defaultValues,
   successMessage = "Thanks for the submission — it's in our moderation queue.",
 }: SuggestFormProps) {
   const [submitted, setSubmitted] = useState(false);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   if (submitted) {
     return (
@@ -44,16 +57,33 @@ export function SuggestForm({
   return (
     <form
       className="space-y-4"
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        setSubmitted(true);
+        const formData = new FormData(e.currentTarget);
+        setPending(true);
+        setError(null);
+        try {
+          if (mode === "contribute-new") {
+            await submitNewEntity(kind, formData);
+          } else if (mode === "contribute-edit") {
+            await submitEditSuggestion(kind, targetId!, formData);
+          } else {
+            await adminPublishDirect(kind, formData);
+          }
+          setSubmitted(true);
+        } catch {
+          setError("Something went wrong — please try again.");
+        } finally {
+          setPending(false);
+        }
       }}
     >
       {fields.map((field) => (
         <FormFieldInput key={field.name} field={field} defaultValue={defaultValues?.[field.name]} />
       ))}
-      <Button type="submit" variant="accent">
-        {submitLabel}
+      {error ? <p className="text-sm text-destructive">{error}</p> : null}
+      <Button type="submit" variant="accent" disabled={pending}>
+        {pending ? "Submitting..." : submitLabel}
       </Button>
     </form>
   );

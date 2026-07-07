@@ -5,11 +5,13 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/co
 
 interface SuggestEditSheetProps {
   fields: SuggestFormField[];
+  kind: "person" | "startup";
+  targetId: string;
   defaultValues: Record<string, string>;
   submitLabel: string;
 }
 
-export function SuggestEditSheet({ fields, defaultValues, submitLabel }: SuggestEditSheetProps) {
+export function SuggestEditSheet({ fields, kind, targetId, defaultValues, submitLabel }: SuggestEditSheetProps) {
   return (
     <Sheet>
       <SheetTrigger
@@ -22,7 +24,14 @@ export function SuggestEditSheet({ fields, defaultValues, submitLabel }: Suggest
           <SheetTitle>Suggest an edit</SheetTitle>
         </SheetHeader>
         <div className="px-4 pb-6">
-          <SuggestForm fields={fields} defaultValues={defaultValues} submitLabel={submitLabel} />
+          <SuggestForm
+            fields={fields}
+            kind={kind}
+            mode="contribute-edit"
+            targetId={targetId}
+            defaultValues={defaultValues}
+            submitLabel={submitLabel}
+          />
         </div>
       </SheetContent>
     </Sheet>

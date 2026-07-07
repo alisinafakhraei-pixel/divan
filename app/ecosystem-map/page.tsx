@@ -10,7 +10,9 @@ import {
   getHqLocationBreakdown,
   getIndustryBreakdown,
 } from "@/lib/data-access/insights";
+import { getPeople } from "@/lib/data-access/people";
 import { getSiteStats } from "@/lib/data-access/stats";
+import { getStartups } from "@/lib/data-access/startups";
 
 export default function EcosystemMapPage() {
   const stats = getSiteStats();
@@ -43,7 +45,7 @@ export default function EcosystemMapPage() {
         </TabsList>
 
         <TabsContent value="map" className="pt-6">
-          <WorldMap />
+          <WorldMap people={getPeople()} startups={getStartups()} />
         </TabsContent>
 
         <TabsContent value="hq" className="pt-6">

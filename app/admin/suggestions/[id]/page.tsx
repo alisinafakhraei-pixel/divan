@@ -26,7 +26,7 @@ export default async function AdminSuggestionDetailPage({ params }: { params: Pr
         <Link href="/admin" className="text-sm font-medium text-action-blue hover:underline">
           ← Back to suggestions
         </Link>
-        <ReviewNewSubmission fields={fields} payload={submission.payload} />
+        <ReviewNewSubmission submissionId={submission.id} fields={fields} payload={submission.payload} />
       </div>
     );
   }
@@ -57,7 +57,12 @@ export default async function AdminSuggestionDetailPage({ params }: { params: Pr
       <p className="text-sm text-muted-foreground">
         Suggested edit to <span className="font-medium text-foreground">{targetName}</span>
       </p>
-      <ReviewEditSubmission fields={fields} oldValues={oldValues} newValues={submission.payload} />
+      <ReviewEditSubmission
+        submissionId={submission.id}
+        fields={fields}
+        oldValues={oldValues}
+        newValues={submission.payload}
+      />
     </div>
   );
 }

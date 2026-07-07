@@ -21,10 +21,15 @@ export default function ContributePage() {
           <TabsTrigger value="startup">Suggest a startup</TabsTrigger>
         </TabsList>
         <TabsContent value="person" className="pt-6">
-          <SuggestForm fields={getPersonFields(companyOptions)} submitLabel="Suggest entrepreneur" />
+          <SuggestForm
+            fields={getPersonFields(companyOptions)}
+            kind="person"
+            mode="contribute-new"
+            submitLabel="Suggest entrepreneur"
+          />
         </TabsContent>
         <TabsContent value="startup" className="pt-6">
-          <SuggestForm fields={getStartupFields()} submitLabel="Suggest startup" />
+          <SuggestForm fields={getStartupFields()} kind="startup" mode="contribute-new" submitLabel="Suggest startup" />
         </TabsContent>
       </Tabs>
 

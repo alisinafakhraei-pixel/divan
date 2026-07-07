@@ -1,4 +1,4 @@
-import { startups } from "@/lib/data/startups";
+import { readStartups, writeStartups } from "@/lib/data/startups";
 import type {
   BusinessModel,
   CompanyType,
@@ -27,7 +27,7 @@ export function getStartups(
   filters?: StartupFilters,
   sort: StartupSort = "valuation-desc"
 ): Startup[] {
-  let result = [...startups];
+  let result = readStartups();
 
   if (filters?.valuationTier) result = result.filter((s) => s.valuationTier === filters.valuationTier);
   if (filters?.fundingRound) result = result.filter((s) => s.fundingRound === filters.fundingRound);
@@ -54,11 +54,11 @@ export function getStartups(
 }
 
 export function getStartupBySlug(slug: string): Startup | undefined {
-  return startups.find((s) => s.slug === slug);
+  return readStartups().find((s) => s.slug === slug);
 }
 
 export function getStartupById(id: string): Startup | undefined {
-  return startups.find((s) => s.id === id);
+  return readStartups().find((s) => s.id === id);
 }
 
 export function getFeaturedStartups(limit = 6): Startup[] {
@@ -66,37 +66,51 @@ export function getFeaturedStartups(limit = 6): Startup[] {
 }
 
 export function getStartupsCount(): number {
-  return startups.length;
+  return readStartups().length;
 }
 
 export function getTotalTrackedValuationMillions(): number {
-  return startups.reduce((sum, s) => sum + parseValuationToMillions(s.valuation), 0);
+  return readStartups().reduce((sum, s) => sum + parseValuationToMillions(s.valuation), 0);
 }
 
 export function getStartupCountries(): string[] {
-  return Array.from(new Set(startups.map((s) => s.hqCountry))).sort();
+  return Array.from(new Set(readStartups().map((s) => s.hqCountry))).sort();
 }
 
 export function getStartupIndustries(): string[] {
-  return Array.from(new Set(startups.flatMap((s) => s.industries))).sort();
+  return Array.from(new Set(readStartups().flatMap((s) => s.industries))).sort();
 }
 
 export function getStartupValuationTiers(): ValuationTier[] {
-  return Array.from(new Set(startups.map((s) => s.valuationTier)));
+  return Array.from(new Set(readStartups().map((s) => s.valuationTier)));
 }
 
 export function getStartupFundingRounds(): FundingRound[] {
-  return Array.from(new Set(startups.map((s) => s.fundingRound)));
+  return Array.from(new Set(readStartups().map((s) => s.fundingRound)));
 }
 
 export function getStartupBusinessModels(): BusinessModel[] {
-  return Array.from(new Set(startups.map((s) => s.businessModel)));
+  return Array.from(new Set(readStartups().map((s) => s.businessModel)));
 }
 
 export function getStartupOperatingStatuses(): OperatingStatus[] {
-  return Array.from(new Set(startups.map((s) => s.operatingStatus)));
+  return Array.from(new Set(readStartups().map((s) => s.operatingStatus)));
 }
 
 export function getStartupCompanyTypes(): CompanyType[] {
-  return Array.from(new Set(startups.map((s) => s.companyType)));
+  return Array.from(new Set(readStartups().map((s) => s.companyType)));
+}
+
+export function addStartup(startup: Startup): void {
+  const startups = readStartups();
+  startups.push(startup);
+  writeStartups(startups);
+}
+
+export function updateStartup(id: string, patch: Partial<Startup>): void {
+  const startups = readStartups();
+  const index = startups.findIndex((s) => s.id === id);
+  if (index === -1) return;
+  startups[index] = { ...startups[index], ...patch };
+  writeStartups(startups);
 }

@@ -9,8 +9,8 @@ import { StartupCard } from "@/components/shared/startup-card";
 import { StatsBar } from "@/components/shared/stats-bar";
 import { getSiteStats } from "@/lib/data-access/stats";
 import { getUpcomingEvents } from "@/lib/data-access/events";
-import { getFeaturedPeople } from "@/lib/data-access/people";
-import { getFeaturedStartups } from "@/lib/data-access/startups";
+import { getFeaturedPeople, getPeople } from "@/lib/data-access/people";
+import { getFeaturedStartups, getStartups } from "@/lib/data-access/startups";
 import Link from "next/link";
 
 function SectionHeader({
@@ -100,7 +100,7 @@ export default function Home() {
 
       <section className="space-y-6">
         <SectionHeading bold="Global" muted="reach, at a glance" />
-        <WorldMap />
+        <WorldMap people={getPeople()} startups={getStartups()} />
       </section>
     </div>
   );

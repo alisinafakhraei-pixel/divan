@@ -84,6 +84,8 @@ export default async function PersonDetailPage({
             <ShareButtons title={person.name} />
             <SuggestEditSheet
               fields={getPersonFields(getStartups().map((s) => s.name))}
+              kind="person"
+              targetId={person.id}
               defaultValues={personToFieldValues(person)}
               submitLabel="Submit edit"
             />

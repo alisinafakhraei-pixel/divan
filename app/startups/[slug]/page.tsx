@@ -74,6 +74,8 @@ export default async function StartupDetailPage({
             <ShareButtons title={startup.name} />
             <SuggestEditSheet
               fields={getStartupFields()}
+              kind="startup"
+              targetId={startup.id}
               defaultValues={startupToFieldValues(
                 startup,
                 startup.founderIds.map((id) => getPersonById(id)?.name).filter((name): name is string => Boolean(name))

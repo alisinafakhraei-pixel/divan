@@ -1,31 +1,28 @@
 # Backend TODO — Contribute flow
 
-Temporary tracking doc for backend work the contribute/edit forms currently mock client-side. Not built yet — everything below is UI-only until Supabase is wired up.
+Tracking doc for this repo's backend architecture: **GitHub is the database.** All entrepreneur/startup data and uploaded images live as checked-in files in this repo (`data/*.json`, `public/uploads/**`), read and written directly by the Next.js app. Supabase is scoped to auth/validation only, not data storage.
 
-## Image uploads (photo / logo)
-- Contribute and edit-sheet forms currently accept a file (max 1MB) but don't upload it anywhere.
-- Plan: upload to Supabase Storage on submit, store the resulting URL on the `Person.picture` / `Startup.logo` field.
-- Client-side size validation exists in `components/contribute/form-field-input.tsx` (`FileFieldInput`) — keep it as a first line of defense, but re-validate size/type server-side too.
+## What's implemented
 
-## New company creation ("Known for" combobox)
-- `components/contribute/combobox.tsx` lets a contributor type a company name that isn't in the existing `Startup` list and use it as free text.
-- Plan: when the submission is reviewed, the admin either links it to an existing `Startup` row or creates a new draft `Startup` in Supabase, then relinks `Person.knownFor` / `knownForStartupId`.
-- No new startup is actually created today — the typed value is just submitted as a string.
+- **Data storage**: `data/people.json`, `data/startups.json`, `data/submissions.json` are the source of truth (migrated from the old `lib/data/*.ts` fixture arrays). `lib/data/people.ts` / `startups.ts` / `submissions.ts` read/write these files fresh on every call via `lib/server/json-store.ts` (`node:fs`, no in-memory caching) — no rebuild or redeploy needed to see a change.
+- **Image storage**: file uploads (photo/logo, capped at 1MB client-side in `components/contribute/form-field-input.tsx`) are saved into `public/uploads/people/` or `public/uploads/startups/` by `lib/server/image-store.ts`, so they're tracked the same way as the JSON data.
+- **Server Actions** (`app/actions/contribute.ts`, `app/actions/admin.ts`) handle every mutation:
+  - `submitNewEntity` / `submitEditSuggestion` — public contribute forms write a pending row into `data/submissions.json`. Shows up on `/admin` immediately (`revalidatePath`).
+  - `adminPublishSubmission` / `adminApproveEdit` — admin review screens write straight into `data/people.json` / `data/startups.json` and mark the submission `approved`. Live on the site immediately.
+  - `adminDeclineSubmission` / `adminCancelEdit` — mark a submission `declined`.
+  - `adminPublishDirect` — `/admin/add`, no queue, writes straight to the JSON files.
+- Field-value ↔ Person/Startup mapping lives in `lib/server/entity-builders.ts` (`toPersonPatch`/`toStartupPatch`) — the inverse of `personToFieldValues`/`startupToFieldValues` in `components/contribute/suggest-form-fields.ts`.
 
-## Submission storage & moderation queue
-- All forms (`SuggestForm`) currently just flip local state to "submitted" — nothing is persisted, no queue exists.
-- Plan: POST submissions (new + edit) to a Supabase table (e.g. `submissions`) with `type` (person/startup), `mode` (new/edit), `targetId` (for edits), `payload` (JSON of field values), `status` (pending/approved/rejected), `createdAt`.
-- Edit submissions should store a diff or full proposed payload against the current published record so admins can compare old vs. new.
+## Known simplifications (by design, not bugs)
 
-## Admin approval UI — built, not wired up
-- `/admin` (community suggestions list + diff/publish review) and `/admin/add` (immediate-publish add form) exist as UI now, backed by a hardcoded mock queue in `lib/data/submissions.ts`.
-- Approve/Decline/Publish/Cancel buttons only flip local component state (`components/admin/review-new-submission.tsx`, `components/admin/review-edit-submission.tsx`) — nothing is written back to `lib/data/people.ts` / `lib/data/startups.ts`, and the queue doesn't shrink on reload.
-- Plan: wire these actions to Supabase — approve/publish writes through to the real `Person`/`Startup` tables and marks the `submissions` row `approved`; decline/cancel marks it `declined`.
-- `/admin/add` bypasses the queue by design per product decision (no approval step for admin-entered records) — still needs the real create-row mutation once Supabase is connected.
+- **Git history is not touched automatically.** Writes land in the working tree only — nothing is committed or pushed to GitHub on its own. Review with `git status`/`git diff` and push when ready, same as any other change. (Chose this over auto-commit-per-click so admin/community actions can't silently rewrite repo history without review.)
+- **New "Known for" companies aren't created.** The combobox in `components/contribute/combobox.tsx` lets a contributor type a company name that doesn't exist yet, but it's stored as a plain string — no new `Startup` row is created. An admin has to manually reconcile it later.
+- **`valuationTier` and `companyType`** aren't collected by the form. `valuationTier` is derived from the free-text `valuation` field (`lib/server/entity-builders.ts`); `companyType` defaults to `"Startup"` for every new startup.
+- **Founder/knownFor linking is name-matching only.** `founders` and `knownFor` are matched against existing records by exact (case-insensitive) name — if no match, the field is just dropped (`founderIds`) or left unlinked (`knownForStartupId`).
+- **`additionalInfo` supports exactly one link** (the "LinkedIn or other link" field) — editing overwrites the array entirely, so any additional links on an existing record beyond the first are lost on approval.
 
-## Admin auth
-- `/admin` currently has no authentication or access control — anyone with the URL can reach it.
-- Plan: gate behind Supabase auth (or similar) before this goes anywhere near production data.
+## Supabase scope (not started)
 
-## GitHub integration
-- Mentioned as a possible path for storing uploaded images / contributed data changes as PRs instead of (or alongside) Supabase — decide storage strategy before building the upload pipeline.
+- **Auth**: `/admin` has no authentication today — anyone with the URL can reach it. Gate it behind Supabase auth before this is exposed anywhere but a local/trusted environment.
+- **Validation**: form inputs are only validated client-side (`required`, file size). Add server-side validation (e.g. via Supabase Edge Functions or a validation layer in the Server Actions) before treating submissions as trustworthy.
+- Note: the Supabase MCP connection active in past sessions pointed at an unrelated project (tables like `tasks`, `profiles`, `bluer_transactions`) — re-run `claude mcp add --scope project --transport http supabase "https://mcp.supabase.com/mcp?project_ref=<divan-project-ref>"` and re-authenticate before doing any Supabase work here.

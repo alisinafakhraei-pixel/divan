@@ -1,95 +1,11 @@
+import { readJson, writeJson } from "@/lib/server/json-store";
 import type { Submission } from "@/lib/types";
 
-// Mock community-submission queue — no backend yet, see BACKEND_TODO.md.
-export const submissions: Submission[] = [
-  {
-    id: "sub-01",
-    kind: "person",
-    mode: "new",
-    payload: {
-      name: "Neda Farahani",
-      title: "Founder & CEO",
-      knownFor: "Rivera Health",
-      segment: "Emerging Startups",
-      country: "United States",
-      bio: "Neda founded Rivera Health to make remote diagnostics accessible across the Middle East.",
-      previousCompanies: "Cerner",
-      valuation: "",
-      linkedin: "https://www.linkedin.com/in/neda-farahani/",
-    },
-    submittedBy: "anonymous",
-    submittedAt: "2026-07-02",
-    status: "pending",
-  },
-  {
-    id: "sub-02",
-    kind: "startup",
-    mode: "new",
-    payload: {
-      name: "Basira",
-      tagline: "Basira builds AI-assisted screening tools for early eye-disease detection.",
-      website: "https://basira.health",
-      fundingRound: "Seed",
-      valuation: "",
-      businessModel: "B2B",
-      operatingStatus: "Active",
-      hqCountry: "Germany",
-      hqRegion: "Berlin",
-      industries: "HealthTech, AI",
-      mainCategory: "HealthTech",
-      teamSize: "12",
-      foundedYear: "2023",
-      founders: "Kian Yousefi",
-      notes: "Basira partners with clinics across the EU to deploy low-cost retinal scanning kiosks.",
-    },
-    submittedBy: "anonymous",
-    submittedAt: "2026-07-04",
-    status: "pending",
-  },
-  {
-    id: "sub-03",
-    kind: "person",
-    mode: "edit",
-    targetId: "pp-01",
-    payload: {
-      name: "Dara Khosrowshahi",
-      title: "Chairman & CEO",
-      knownFor: "Uber",
-      segment: "Public Company",
-      country: "United States",
-      bio: "Dara is Chairman and CEO of Uber, having previously served as CEO of Expedia. He also joined Uber's board as chairman in 2026.",
-      previousCompanies: "Expedia",
-      valuation: "$100B+",
-      linkedin: "https://www.linkedin.com/in/dara-khosrowshahi-70949862/",
-    },
-    submittedBy: "anonymous",
-    submittedAt: "2026-07-05",
-    status: "pending",
-  },
-  {
-    id: "sub-04",
-    kind: "startup",
-    mode: "edit",
-    targetId: "st-01",
-    payload: {
-      name: "ApplyBoard",
-      tagline: "ApplyBoard is a Canada-based technology company that simplifies the study abroad journey.",
-      website: "https://www.applyboard.com/",
-      fundingRound: "Series E",
-      valuation: "$2B+",
-      businessModel: "B2B / B2C",
-      operatingStatus: "Active",
-      hqCountry: "Canada",
-      hqRegion: "Waterloo, Canada",
-      industries: "PaaS, Education",
-      mainCategory: "EdTech",
-      teamSize: "1800",
-      foundedYear: "2015",
-      founders: "Meti Basiri, Martin Basiri",
-      notes: "ApplyBoard closed a new Series E round in 2026, pushing its valuation past $2B.",
-    },
-    submittedBy: "anonymous",
-    submittedAt: "2026-07-06",
-    status: "pending",
-  },
-];
+// GitHub-backed "database" — data/submissions.json is the source of truth, read fresh on every call, no in-memory caching.
+export function readSubmissions(): Submission[] {
+  return readJson<Submission[]>("submissions.json");
+}
+
+export function writeSubmissions(submissions: Submission[]): void {
+  writeJson("submissions.json", submissions);
+}

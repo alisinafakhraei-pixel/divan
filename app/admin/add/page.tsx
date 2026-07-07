@@ -19,6 +19,8 @@ export default function AdminAddPage() {
         <TabsContent value="person" className="pt-6">
           <SuggestForm
             fields={getPersonFields(companyOptions)}
+            kind="person"
+            mode="admin-add"
             submitLabel="Publish entrepreneur"
             successMessage="Published — it's live on the site now."
           />
@@ -26,6 +28,8 @@ export default function AdminAddPage() {
         <TabsContent value="startup" className="pt-6">
           <SuggestForm
             fields={getStartupFields()}
+            kind="startup"
+            mode="admin-add"
             submitLabel="Publish startup"
             successMessage="Published — it's live on the site now."
           />

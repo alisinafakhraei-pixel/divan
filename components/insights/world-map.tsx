@@ -4,9 +4,9 @@ import { EmptyState } from "@/components/shared/empty-state";
 import { PersonCard } from "@/components/shared/person-card";
 import { StartupCard } from "@/components/shared/startup-card";
 import { Button } from "@/components/ui/button";
-import { getPeople } from "@/lib/data-access/people";
-import { COUNTRY_TOPOJSON_ALIASES, getCountryCounts, type MapMode } from "@/lib/data-access/insights";
-import { getStartups } from "@/lib/data-access/startups";
+import { COUNTRY_TOPOJSON_ALIASES } from "@/lib/country-aliases";
+import type { MapMode } from "@/lib/data-access/insights";
+import type { Person, Startup } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { geoCentroid } from "d3-geo";
 import { X } from "lucide-react";
@@ -27,14 +27,32 @@ const TOPO_TO_FIXTURE_ALIAS: Record<string, string> = Object.fromEntries(
   Object.entries(COUNTRY_TOPOJSON_ALIASES).map(([fixture, topo]) => [topo, fixture])
 );
 
-export function WorldMap() {
+interface WorldMapProps {
+  people: Person[];
+  startups: Startup[];
+}
+
+/** Takes the full people/startups lists as props (fetched server-side) so all filtering below runs client-side without touching the server-only JSON data layer. */
+export function WorldMap({ people, startups }: WorldMapProps) {
   const [mode, setMode] = useState<MapMode>("both");
   // Stores the topojson country name (every country is clickable, not just ones with data).
   // The sheet's backdrop blocks clicks on the map while open, so a country must be closed
   // before another can be selected — matches the requested "close, then pick again" flow.
   const [selectedTopoName, setSelectedTopoName] = useState<string | null>(null);
 
-  const counts = getCountryCounts(mode);
+  const counts = useMemo(() => {
+    const map = new Map<string, number>();
+    if (mode === "people" || mode === "both") {
+      for (const p of people) map.set(p.country, (map.get(p.country) ?? 0) + 1);
+    }
+    if (mode === "startups" || mode === "both") {
+      for (const s of startups) map.set(s.hqCountry, (map.get(s.hqCountry) ?? 0) + 1);
+    }
+    return Array.from(map.entries())
+      .map(([label, value]) => ({ label, value }))
+      .sort((a, b) => b.value - a.value);
+  }, [mode, people, startups]);
+
   const maxCount = Math.max(1, ...counts.map((c) => c.value));
 
   const countByTopoName = useMemo(() => {
@@ -48,9 +66,9 @@ export function WorldMap() {
     : null;
 
   const selectedPeople =
-    selectedFixtureName && mode !== "startups" ? getPeople({ country: selectedFixtureName }) : [];
+    selectedFixtureName && mode !== "startups" ? people.filter((p) => p.country === selectedFixtureName) : [];
   const selectedStartups =
-    selectedFixtureName && mode !== "people" ? getStartups({ hqCountry: selectedFixtureName }) : [];
+    selectedFixtureName && mode !== "people" ? startups.filter((s) => s.hqCountry === selectedFixtureName) : [];
 
   // Close on Escape — a plain CSS panel (not a Dialog primitive) so it can never get stuck open.
   useEffect(() => {
