@@ -1384,5 +1384,30 @@
     ],
     "publishStatus": "published",
     "viewCount": 2400
+  },
+  {
+    "id": "pp-63",
+    "slug": "alisina",
+    "picture": "/api/uploads/people/pending-sub-1783417716645.png",
+    "featured": false,
+    "publishStatus": "published",
+    "viewCount": 0,
+    "name": "Alisina",
+    "title": "PM",
+    "knownFor": "Formaloo",
+    "knownForStartupId": "st-19",
+    "segment": "Emerging Unicorn",
+    "country": "Canada",
+    "bio": "He is just a pm",
+    "previousCompanies": [
+      "vadostna"
+    ],
+    "valuation": "10",
+    "additionalInfo": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/alisina-fakhraei/"
+      }
+    ]
   }
 ]
