@@ -154,5 +154,25 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-07-07",
     "status": "approved"
+  },
+  {
+    "id": "sub-1783419345873",
+    "kind": "person",
+    "mode": "edit",
+    "targetId": "pp-63",
+    "payload": {
+      "name": "Alisina",
+      "title": "PM",
+      "knownFor": "Formaloo",
+      "segment": "Emerging Unicorn",
+      "country": "Estonia",
+      "bio": "He is just a pm but the best",
+      "previousCompanies": "vadostna, formaoo, tedxtehran",
+      "valuation": "10",
+      "linkedin": "https://www.linkedin.com/in/alisina-fakhraei/"
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-07-07",
+    "status": "pending"
   }
 ]
