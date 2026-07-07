@@ -1411,22 +1411,5 @@
     ],
     "publishStatus": "published",
     "viewCount": 2400
-  },
-  {
-    "id": "pp-64",
-    "slug": "founder-link-test",
-    "picture": "",
-    "featured": false,
-    "publishStatus": "published",
-    "viewCount": 0,
-    "name": "Founder Link Test",
-    "title": "Co-founder",
-    "knownFor": "ApplyBoard",
-    "knownForStartupId": "st-01",
-    "segment": "Emerging Startups",
-    "country": "Canada",
-    "bio": "Testing founder back-linking.",
-    "previousCompanies": [],
-    "additionalInfo": []
   }
 ]
