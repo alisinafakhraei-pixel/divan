@@ -1384,5 +1384,28 @@
     ],
     "publishStatus": "published",
     "viewCount": 2400
+  },
+  {
+    "id": "pp-63",
+    "slug": "neda-farahani",
+    "picture": "",
+    "featured": false,
+    "publishStatus": "published",
+    "viewCount": 0,
+    "name": "Neda Farahani",
+    "title": "Founder & CEO",
+    "knownFor": "Rivera Health",
+    "segment": "Emerging Startups",
+    "country": "United States",
+    "bio": "Neda founded Rivera Health to make remote diagnostics accessible across the Middle East.",
+    "previousCompanies": [
+      "Cerner"
+    ],
+    "additionalInfo": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/neda-farahani/"
+      }
+    ]
   }
 ]
