@@ -160,33 +160,6 @@
     "viewCount": 4200
   },
   {
-    "id": "pp-63",
-    "slug": "alisina",
-    "picture": "/api/uploads/people/pending-sub-1783417716645.png",
-    "featured": false,
-    "publishStatus": "published",
-    "viewCount": 0,
-    "name": "Alisina",
-    "title": "PM",
-    "knownFor": "Formaloo",
-    "knownForStartupId": "st-19",
-    "segment": "Emerging Unicorn",
-    "country": "Turkey",
-    "bio": "He is just a pm but the best",
-    "previousCompanies": [
-      "vadostna",
-      "formaoo",
-      "tedxtehran"
-    ],
-    "valuation": "10",
-    "additionalInfo": [
-      {
-        "label": "LinkedIn",
-        "url": "https://www.linkedin.com/in/alisina-fakhraei/"
-      }
-    ]
-  },
-  {
     "id": "pp-18",
     "slug": "amir-khosrowshahi",
     "name": "Amir Khosrowshahi",
