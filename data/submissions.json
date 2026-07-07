@@ -128,5 +128,31 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-07-07",
     "status": "approved"
+  },
+  {
+    "id": "sub-1783418210212",
+    "kind": "startup",
+    "mode": "new",
+    "payload": {
+      "name": "vadostan",
+      "tagline": "tajrobe hal khobkon",
+      "website": "https://linear.app/vadoostan/view/all-issues-21162abf6f2a",
+      "fundingRound": "Pre-Seed",
+      "valuation": "100000",
+      "businessModel": "B2B",
+      "operatingStatus": "Public Company",
+      "hqCountry": "Albania",
+      "hqRegion": "Canda",
+      "industries": "health",
+      "mainCategory": "helath",
+      "teamSize": "12",
+      "foundedYear": "2002",
+      "founders": "aligarosian",
+      "notes": "have fuuun",
+      "logo": "/api/uploads/startups/pending-sub-1783418210212.jpg"
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-07-07",
+    "status": "pending"
   }
 ]
