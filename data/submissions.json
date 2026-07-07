@@ -88,5 +88,24 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-07-06",
     "status": "pending"
+  },
+  {
+    "id": "sub-1783417271538",
+    "kind": "person",
+    "mode": "new",
+    "payload": {
+      "name": "GH API Test Person",
+      "title": "Tester",
+      "knownFor": "GH API Co",
+      "segment": "Emerging Startups",
+      "country": "Canada",
+      "bio": "Verifying the GitHub API write path end to end.",
+      "previousCompanies": "",
+      "valuation": "",
+      "linkedin": ""
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-07-07",
+    "status": "pending"
   }
 ]
