@@ -1384,21 +1384,5 @@
     ],
     "publishStatus": "published",
     "viewCount": 2400
-  },
-  {
-    "id": "pp-63",
-    "slug": "gh-api-test-person",
-    "picture": "",
-    "featured": false,
-    "publishStatus": "published",
-    "viewCount": 0,
-    "name": "GH API Test Person",
-    "title": "Tester",
-    "knownFor": "GH API Co",
-    "segment": "Emerging Startups",
-    "country": "Canada",
-    "bio": "Verifying the GitHub API write path end to end.",
-    "previousCompanies": [],
-    "additionalInfo": []
   }
 ]
