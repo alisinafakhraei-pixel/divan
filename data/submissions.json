@@ -88,5 +88,25 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-07-06",
     "status": "pending"
+  },
+  {
+    "id": "sub-1783417716645",
+    "kind": "person",
+    "mode": "new",
+    "payload": {
+      "name": "Alisina",
+      "title": "PM",
+      "knownFor": "Formaloo",
+      "segment": "Emerging Unicorn",
+      "country": "Canada",
+      "bio": "He is just a pm",
+      "previousCompanies": "vadostna",
+      "valuation": "10",
+      "linkedin": "https://www.linkedin.com/in/alisina-fakhraei/",
+      "picture": "/api/uploads/people/pending-sub-1783417716645.png"
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-07-07",
+    "status": "pending"
   }
 ]
