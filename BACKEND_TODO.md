@@ -41,8 +41,15 @@ Without `GITHUB_TOKEN` set, every data read/write throws a clear "GITHUB_TOKEN i
 - **`additionalInfo` supports exactly one link** (the "LinkedIn or other link" field) — editing overwrites the array entirely, so any additional links on an existing record beyond the first are lost on approval.
 - **GitHub API rate limits apply.** An authenticated token gets 5,000 requests/hour. At current traffic this is a non-issue given the 30s read cache, but a Show-HN-scale traffic spike could exhaust it — worth revisiting with a longer cache TTL or ISR if that ever happens.
 
-## Supabase scope (not started)
+## Supabase scope
 
-- **Auth**: `/admin` has no authentication today — anyone with the URL can reach it. Gate it behind Supabase auth before this is exposed anywhere but a local/trusted environment.
-- **Validation**: form inputs are only validated client-side (`required`, file size). Add server-side validation (e.g. via Supabase Edge Functions or a validation layer in the Server Actions) before treating submissions as trustworthy.
-- Note: the Supabase MCP connection active in past sessions pointed at an unrelated project (tables like `tasks`, `profiles`, `bluer_transactions`) — re-run `claude mcp add --scope project --transport http supabase "https://mcp.supabase.com/mcp?project_ref=<divan-project-ref>"` and re-authenticate before doing any Supabase work here.
+- **Auth — done.** `/admin` is now gated behind Supabase Auth (email/password, no public sign-up). Implementation:
+  - `proxy.ts` (Next.js 16 renamed `middleware.ts` → `proxy.ts` — see `AGENTS.md`) redirects unauthenticated requests to `/admin/*` (except `/admin/login`) to the login page, and refreshes the Supabase session cookie on every request.
+  - `lib/supabase/server.ts` — SSR client via `@supabase/ssr`, used in Server Components/Actions.
+  - `app/actions/admin-auth.ts` — `loginAdmin` (Server Action, generic "Credentials were wrong." error on any failure — no email-enumeration hints) and `logoutAdmin`.
+  - `app/admin/login/` — login page + client form (`useActionState`), sits outside the `app/admin/(protected)/` route group so it doesn't render the admin nav/logout button.
+  - `app/admin/(protected)/` — route group wrapping all existing admin pages (add/manage/suggestions) with the nav + a logout button; this is purely a folder move, no page logic changed.
+  - Only 2 accounts exist, created directly via the Auth Admin API (no sign-up flow exists anywhere): `alisina.fakhraei@gmail.com`, `farokh.shahabi@gmail.com`.
+  - **Still manual**: 90-day forced session expiry. Supabase's default refresh-token behavior keeps sessions alive indefinitely; to force logout after 90 days, set **Dashboard → Authentication → Sessions → "Time-box user sessions" → 2160 hours**. No MCP tool exposes this — it has to be set by hand in the dashboard.
+  - Env vars added to `.env.local` (gitignored): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`. The `service_role` key was used once inline to create the 2 accounts via `curl` and was never written to any file.
+- **Validation**: form inputs are still only validated client-side (`required`, file size). Add server-side validation (e.g. via Supabase Edge Functions or a validation layer in the Server Actions) before treating submissions as trustworthy.
