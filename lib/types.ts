@@ -201,7 +201,7 @@ export interface Submission {
   id: string;
   kind: SubmissionKind;
   mode: SubmissionMode;
-  /** Only set when mode is "edit" — the Person/Startup id the suggestion proposes to change. */
+  /** The Person/Startup id this suggestion proposes to change (mode "edit"), or the id it created (mode "new", admin-direct log entries only — community "new" suggestions leave this unset since no record exists until approved). */
   targetId?: string;
   /** Field values keyed the same way as SuggestFormField.name, so they line up with getPersonFields/getStartupFields. */
   payload: Record<string, string>;

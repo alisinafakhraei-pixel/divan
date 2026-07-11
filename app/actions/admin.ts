@@ -2,16 +2,45 @@
 
 import { addPerson, deletePerson, getPeople, getPersonById, updatePerson } from "@/lib/data-access/people";
 import { addStartup, deleteStartup, getStartupById, getStartups, updateStartup } from "@/lib/data-access/startups";
-import { getSubmissionById, updateSubmissionStatus } from "@/lib/data-access/submissions";
+import { addSubmission, getSubmissionById, updateSubmissionStatus } from "@/lib/data-access/submissions";
 import { toPersonPatch, toStartupPatch } from "@/lib/server/entity-builders";
 import { getUploadedFile, payloadFromFormData } from "@/lib/server/form-payload";
 import { nextSequentialId, slugify, todayString } from "@/lib/server/ids";
 import { saveUploadedImage } from "@/lib/server/image-store";
+import { createClient } from "@/lib/supabase/server";
 import type { EntityStatus, Person, Startup, SubmissionKind } from "@/lib/types";
 import { revalidatePath } from "next/cache";
 
 function imageFieldFor(kind: SubmissionKind): string {
   return kind === "person" ? "picture" : "logo";
+}
+
+/** Identifies who performed a direct admin add/edit for the History log — falls back to a generic label if the session has no email for some reason. */
+async function currentAdminEmail(): Promise<string> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  return user?.email ?? "admin";
+}
+
+/** Logs a direct admin add/edit alongside community submissions so the History page shows one combined timeline. Always recorded as already "approved" since direct admin actions go live immediately, with no review step. */
+async function logAdminAction(
+  kind: SubmissionKind,
+  mode: "new" | "edit",
+  targetId: string | undefined,
+  payload: Record<string, string>
+): Promise<void> {
+  await addSubmission({
+    id: `sub-${Date.now()}`,
+    kind,
+    mode,
+    targetId,
+    payload,
+    submittedBy: await currentAdminEmail(),
+    submittedAt: todayString(),
+    status: "approved",
+  });
 }
 
 function revalidateEntityPaths(): void {
@@ -117,6 +146,7 @@ export async function adminCancelEdit(submissionId: string): Promise<void> {
 export async function adminPublishDirect(kind: SubmissionKind, formData: FormData): Promise<void> {
   const payload = payloadFromFormData(formData);
   const file = getUploadedFile(formData, imageFieldFor(kind));
+  let newId: string;
 
   if (kind === "person") {
     const id = nextSequentialId("pp", (await getPeople()).map((p) => p.id));
@@ -133,6 +163,7 @@ export async function adminPublishDirect(kind: SubmissionKind, formData: FormDat
     } as Person;
     await addPerson(person);
     await linkPersonToKnownForStartup(person);
+    newId = person.id;
   } else {
     const id = nextSequentialId("st", (await getStartups()).map((s) => s.id));
     const logo = file ? await saveUploadedImage(file, "startups", id) : "";
@@ -146,8 +177,10 @@ export async function adminPublishDirect(kind: SubmissionKind, formData: FormDat
       ...(await toStartupPatch(payload)),
     } as Startup;
     await addStartup(startup);
+    newId = startup.id;
   }
 
+  await logAdminAction(kind, "new", newId, payload);
   revalidateEntityPaths();
 }
 
@@ -165,6 +198,7 @@ export async function adminUpdateDirect(kind: SubmissionKind, targetId: string, 
     await updateStartup(targetId, { ...(await toStartupPatch(payload)), logo });
   }
 
+  await logAdminAction(kind, "edit", targetId, payload);
   revalidateEntityPaths();
 }
 
