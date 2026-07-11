@@ -214,5 +214,25 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-07-11",
     "status": "declined"
+  },
+  {
+    "id": "sub-1783773712345",
+    "kind": "person",
+    "mode": "edit",
+    "targetId": "pp-53",
+    "payload": {
+      "name": "Adam Foroughi",
+      "title": "Co-founder & CEO",
+      "knownFor": "AppLovin",
+      "segment": "Public Company",
+      "country": "United States",
+      "bio": "Adam co-founded AppLovin and serves as its CEO, a publicly traded mobile marketing and AI company.",
+      "previousCompanies": "",
+      "valuation": "$100B+",
+      "linkedin": "https://en.wikipedia.org/wiki/Adam_Foroughi"
+    },
+    "submittedBy": "alisina.fakhraei@gmail.com",
+    "submittedAt": "2026-07-11",
+    "status": "approved"
   }
 ]
