@@ -5,9 +5,9 @@ import { addStartup, deleteStartup, getStartupById, getStartups, updateStartup }
 import { getSubmissionById, updateSubmissionStatus } from "@/lib/data-access/submissions";
 import { toPersonPatch, toStartupPatch } from "@/lib/server/entity-builders";
 import { getUploadedFile, payloadFromFormData } from "@/lib/server/form-payload";
-import { nextSequentialId, slugify } from "@/lib/server/ids";
+import { nextSequentialId, slugify, todayString } from "@/lib/server/ids";
 import { saveUploadedImage } from "@/lib/server/image-store";
-import type { Person, Startup, SubmissionKind } from "@/lib/types";
+import type { EntityStatus, Person, Startup, SubmissionKind } from "@/lib/types";
 import { revalidatePath } from "next/cache";
 
 function imageFieldFor(kind: SubmissionKind): string {
@@ -56,7 +56,8 @@ export async function adminPublishSubmission(submissionId: string, formData: For
       slug: slugify(payload.name),
       picture: picture ?? "",
       featured: false,
-      publishStatus: "published",
+      status: "public",
+      lastUpdatedAt: todayString(),
       viewCount: 0,
       ...(await toPersonPatch(payload)),
     } as Person;
@@ -70,6 +71,8 @@ export async function adminPublishSubmission(submissionId: string, formData: For
       slug: slugify(payload.name),
       logo: logo ?? "",
       companyType: "Startup",
+      status: "public",
+      lastUpdatedAt: todayString(),
       ...(await toStartupPatch(payload)),
     } as Startup;
     await addStartup(startup);
@@ -94,11 +97,11 @@ export async function adminApproveEdit(submissionId: string, formData: FormData)
   if (submission.kind === "person") {
     const target = await getPersonById(submission.targetId);
     const picture = await resolveImage("person", formData, target?.picture, submission.targetId);
-    await updatePerson(submission.targetId, { ...(await toPersonPatch(payload)), picture });
+    await updatePerson(submission.targetId, { ...(await toPersonPatch(payload)), picture, status: "public" });
   } else {
     const target = await getStartupById(submission.targetId);
     const logo = await resolveImage("startup", formData, target?.logo, submission.targetId);
-    await updateStartup(submission.targetId, { ...(await toStartupPatch(payload)), logo });
+    await updateStartup(submission.targetId, { ...(await toStartupPatch(payload)), logo, status: "public" });
   }
 
   await updateSubmissionStatus(submissionId, "approved");
@@ -123,7 +126,8 @@ export async function adminPublishDirect(kind: SubmissionKind, formData: FormDat
       slug: slugify(payload.name),
       picture,
       featured: false,
-      publishStatus: "published",
+      status: "public",
+      lastUpdatedAt: todayString(),
       viewCount: 0,
       ...(await toPersonPatch(payload)),
     } as Person;
@@ -137,6 +141,8 @@ export async function adminPublishDirect(kind: SubmissionKind, formData: FormDat
       slug: slugify(payload.name),
       logo,
       companyType: "Startup",
+      status: "public",
+      lastUpdatedAt: todayString(),
       ...(await toStartupPatch(payload)),
     } as Startup;
     await addStartup(startup);
@@ -159,6 +165,20 @@ export async function adminUpdateDirect(kind: SubmissionKind, targetId: string, 
     await updateStartup(targetId, { ...(await toStartupPatch(payload)), logo });
   }
 
+  revalidateEntityPaths();
+}
+
+/** Admin "Search & edit" page — flips a person/startup between Public/Pending/Rejected without touching any other field. Nothing is deleted; a rejected or pending record stays on file for later re-review. */
+export async function adminSetEntityStatus(
+  kind: SubmissionKind,
+  targetId: string,
+  status: EntityStatus
+): Promise<void> {
+  if (kind === "person") {
+    await updatePerson(targetId, { status });
+  } else {
+    await updateStartup(targetId, { status });
+  }
   revalidateEntityPaths();
 }
 

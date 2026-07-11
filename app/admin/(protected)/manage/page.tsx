@@ -6,8 +6,20 @@ export default async function AdminManagePage() {
   const [people, startups] = await Promise.all([getPeople(), getStartups()]);
 
   const entities: ManageEntity[] = [
-    ...people.map((p) => ({ id: p.id, name: p.name, subtitle: `${p.title} · ${p.knownFor}`, kind: "person" as const })),
-    ...startups.map((s) => ({ id: s.id, name: s.name, subtitle: s.tagline, kind: "startup" as const })),
+    ...people.map((p) => ({
+      id: p.id,
+      name: p.name,
+      subtitle: `${p.title} · ${p.knownFor}`,
+      kind: "person" as const,
+      status: p.status,
+    })),
+    ...startups.map((s) => ({
+      id: s.id,
+      name: s.name,
+      subtitle: s.tagline,
+      kind: "startup" as const,
+      status: s.status,
+    })),
   ].sort((a, b) => a.name.localeCompare(b.name));
 
   return (

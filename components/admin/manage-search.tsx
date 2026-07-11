@@ -1,7 +1,9 @@
 "use client";
 
+import { EntityStatusBadge } from "@/components/admin/entity-status-control";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
+import type { EntityStatus } from "@/lib/types";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 
@@ -10,6 +12,7 @@ export interface ManageEntity {
   name: string;
   subtitle: string;
   kind: "person" | "startup";
+  status: EntityStatus;
 }
 
 export function ManageSearch({ entities }: { entities: ManageEntity[] }) {
@@ -43,7 +46,10 @@ export function ManageSearch({ entities }: { entities: ManageEntity[] }) {
                 <p className="font-medium text-foreground">{entity.name}</p>
                 <p className="text-xs text-muted-foreground">{entity.subtitle}</p>
               </div>
-              <Badge variant="secondary">{entity.kind === "person" ? "Person" : "Startup"}</Badge>
+              <div className="flex items-center gap-2">
+                <EntityStatusBadge status={entity.status} />
+                <Badge variant="secondary">{entity.kind === "person" ? "Person" : "Startup"}</Badge>
+              </div>
             </Link>
           ))
         )}

@@ -1,4 +1,5 @@
 import { DeleteEntityButton } from "@/components/admin/delete-entity-button";
+import { EntityStatusControl } from "@/components/admin/entity-status-control";
 import { SuggestForm } from "@/components/contribute/suggest-form";
 import { getPersonFields, personToFieldValues } from "@/components/contribute/suggest-form-fields";
 import { getPersonById } from "@/lib/data-access/people";
@@ -19,6 +20,10 @@ export default async function AdminManagePersonPage({ params }: { params: Promis
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-foreground">{person.name}</h2>
         <DeleteEntityButton kind="person" targetId={person.id} name={person.name} />
+      </div>
+      <div className="flex items-center justify-between">
+        <EntityStatusControl kind="person" targetId={person.id} status={person.status} />
+        <p className="text-xs text-muted-foreground">Last updated {person.lastUpdatedAt}</p>
       </div>
       <SuggestForm
         fields={getPersonFields(startups.map((s) => s.name))}

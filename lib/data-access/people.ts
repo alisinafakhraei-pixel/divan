@@ -1,5 +1,6 @@
 import { readPeople, writePeople } from "@/lib/data/people";
 import { getStartupById } from "@/lib/data-access/startups";
+import { todayString } from "@/lib/server/ids";
 import type { Person, Segment } from "@/lib/types";
 
 // Backed by data/people.json via the GitHub API (this repo is the database). Signatures match what a real Formaloo/DB call would take.
@@ -95,7 +96,7 @@ export async function updatePerson(id: string, patch: Partial<Person>): Promise<
   const people = await readPeople();
   const index = people.findIndex((p) => p.id === id);
   if (index === -1) return;
-  people[index] = { ...people[index], ...patch };
+  people[index] = { ...people[index], ...patch, lastUpdatedAt: todayString() };
   await writePeople(people, `Edit person: ${people[index].name}`);
 }
 

@@ -1,4 +1,5 @@
 import { readStartups, writeStartups } from "@/lib/data/startups";
+import { todayString } from "@/lib/server/ids";
 import type {
   BusinessModel,
   CompanyType,
@@ -111,7 +112,7 @@ export async function updateStartup(id: string, patch: Partial<Startup>): Promis
   const startups = await readStartups();
   const index = startups.findIndex((s) => s.id === id);
   if (index === -1) return;
-  startups[index] = { ...startups[index], ...patch };
+  startups[index] = { ...startups[index], ...patch, lastUpdatedAt: todayString() };
   await writeStartups(startups, `Edit startup: ${startups[index].name}`);
 }
 

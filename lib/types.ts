@@ -45,6 +45,9 @@ export type NewsType =
   | "Talk/Speech"
   | "Event";
 
+/** Moderation status for a listing: "public" is live on the site, "pending" is held back for review, "rejected" is kept on record but hidden — nothing is ever deleted by a status change. */
+export type EntityStatus = "public" | "pending" | "rejected";
+
 export interface Person {
   id: string;
   slug: string;
@@ -60,7 +63,8 @@ export interface Person {
   bio: string;
   additionalInfo: { label: string; url: string }[];
   featured?: boolean;
-  publishStatus: "published" | "draft";
+  status: EntityStatus;
+  lastUpdatedAt: string;
   viewCount: number;
 }
 
@@ -85,6 +89,8 @@ export interface Startup {
   foundedYear: number;
   notes: string;
   founderIds: string[];
+  status: EntityStatus;
+  lastUpdatedAt: string;
 }
 
 export interface NewsItem {

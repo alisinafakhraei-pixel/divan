@@ -1,3 +1,7 @@
+export function todayString(): string {
+  return new Date().toISOString().slice(0, 10);
+}
+
 export function slugify(name: string): string {
   return name
     .toLowerCase()

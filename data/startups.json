@@ -22,7 +22,9 @@
     "founderIds": [
       "pp-05",
       "pp-06"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-04",
@@ -46,7 +48,9 @@
     "notes": "",
     "founderIds": [
       "pp-04"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-05",
@@ -72,7 +76,9 @@
     "notes": "",
     "founderIds": [
       "pp-03"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-13",
@@ -98,7 +104,9 @@
     "notes": "Previously known as \"Home Care Assistance\".",
     "founderIds": [
       "pp-26"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-35",
@@ -124,7 +132,9 @@
     "notes": "",
     "founderIds": [
       "pp-45"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-41",
@@ -152,7 +162,9 @@
     "notes": "The data analytics and AI company raised at least $5 billion in cash in Nov 2025, pegging its new valuation at $55 billion.",
     "founderIds": [
       "pp-51"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-42",
@@ -178,7 +190,9 @@
     "notes": "Market cap as of Feb 2025: $125 billion (700% growth in 2024).",
     "founderIds": [
       "pp-53"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-01",
@@ -206,7 +220,9 @@
     "founderIds": [
       "pp-38",
       "pp-39"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-10",
@@ -230,10 +246,12 @@
     "operatingStatus": "Closed",
     "companyType": "Startup",
     "foundedYear": 2014,
-    "notes": "Formerly Hyperloop Technologies (2014–2016), Hyperloop One (2016–2017), Virgin Hyperloop One (2017–2020), Virgin Hyperloop (2020–2022). Defunct December 31, 2023.",
+    "notes": "Formerly Hyperloop Technologies (2014\u20132016), Hyperloop One (2016\u20132017), Virgin Hyperloop One (2017\u20132020), Virgin Hyperloop (2020\u20132022). Defunct December 31, 2023.",
     "founderIds": [
       "pp-19"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-37",
@@ -257,7 +275,9 @@
     "notes": "",
     "founderIds": [
       "pp-49"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-44",
@@ -283,7 +303,9 @@
     "notes": "",
     "founderIds": [
       "pp-55"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-02",
@@ -307,7 +329,9 @@
     "companyType": "Startup",
     "foundedYear": 2023,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-06",
@@ -331,7 +355,9 @@
     "notes": "",
     "founderIds": [
       "pp-09"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-07",
@@ -355,7 +381,9 @@
     "notes": "",
     "founderIds": [
       "pp-10"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-09",
@@ -382,7 +410,9 @@
     "notes": "Nervana was acquired by Intel for $408M on Aug 9, 2016.",
     "founderIds": [
       "pp-18"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-11",
@@ -406,7 +436,9 @@
     "notes": "Coriant was acquired by Infinera for $430M on Jul 23, 2018.",
     "founderIds": [
       "pp-22"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-14",
@@ -430,7 +462,9 @@
     "notes": "Flipagram was acquired by Toutiao on Feb 1, 2017.",
     "founderIds": [
       "pp-30"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-16",
@@ -454,7 +488,9 @@
     "notes": "IPOed at $4B valuation.",
     "founderIds": [
       "pp-37"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-18",
@@ -476,7 +512,9 @@
     "companyType": "Startup",
     "foundedYear": 2015,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-23",
@@ -498,7 +536,9 @@
     "companyType": "Startup",
     "foundedYear": 2022,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-30",
@@ -523,7 +563,9 @@
     "companyType": "Startup",
     "foundedYear": 2018,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-31",
@@ -548,7 +590,9 @@
     "companyType": "Startup",
     "foundedYear": 2017,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-36",
@@ -574,7 +618,9 @@
     "notes": "",
     "founderIds": [
       "pp-58"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-43",
@@ -601,7 +647,9 @@
     "notes": "$300M valuation in Jan 2025.",
     "founderIds": [
       "pp-57"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-45",
@@ -625,7 +673,9 @@
     "notes": "",
     "founderIds": [
       "pp-61"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-08",
@@ -650,7 +700,9 @@
     "founderIds": [
       "pp-16",
       "pp-17"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-12",
@@ -674,7 +726,9 @@
     "notes": "Twitter acquired Periscope in March 2015, before its official launch, for a reported $86.6 million.",
     "founderIds": [
       "pp-23"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-15",
@@ -700,7 +754,9 @@
     "notes": "Radius Intelligence was acquired by Kabbage on Sep 3, 2019.",
     "founderIds": [
       "pp-31"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-17",
@@ -726,7 +782,9 @@
     "notes": "Bina Technologies was acquired by Roche on Dec 19, 2014.",
     "founderIds": [
       "pp-41"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-19",
@@ -750,10 +808,12 @@
     "operatingStatus": "Active",
     "companyType": "Startup",
     "foundedYear": 2020,
-    "notes": "Co-founded in 2020 by Farokh Shahabi, Noosh Baratpour, Hasan Noori, and Amir Hashemi, Formaloo started out of Iran before establishing operational headquarters in Tallinn, Estonia, with additional offices in London and Toronto. The company raised a €2M seed round led by Change Ventures to scale its product-led, no-code data platform globally.",
+    "notes": "Co-founded in 2020 by Farokh Shahabi, Noosh Baratpour, Hasan Noori, and Amir Hashemi, Formaloo started out of Iran before establishing operational headquarters in Tallinn, Estonia, with additional offices in London and Toronto. The company raised a \u20ac2M seed round led by Change Ventures to scale its product-led, no-code data platform globally.",
     "founderIds": [
       "pp-62"
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-20",
@@ -777,7 +837,9 @@
     "companyType": "Startup",
     "foundedYear": 2015,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-21",
@@ -802,7 +864,9 @@
     "companyType": "Startup",
     "foundedYear": 2021,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-22",
@@ -826,7 +890,9 @@
     "companyType": "Startup",
     "foundedYear": 2019,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-24",
@@ -848,7 +914,9 @@
     "companyType": "Startup",
     "foundedYear": 2022,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-25",
@@ -873,7 +941,9 @@
     "companyType": "Big Company",
     "foundedYear": 2021,
     "notes": "IPOed in 2024.",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-28",
@@ -895,7 +965,9 @@
     "companyType": "Startup",
     "foundedYear": 2019,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-29",
@@ -917,7 +989,9 @@
     "companyType": "Startup",
     "foundedYear": 2019,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-32",
@@ -942,7 +1016,9 @@
     "companyType": "Startup",
     "foundedYear": 2021,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-33",
@@ -966,7 +1042,9 @@
     "companyType": "Startup",
     "foundedYear": 2022,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-34",
@@ -990,7 +1068,9 @@
     "companyType": "Startup",
     "foundedYear": 2013,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-38",
@@ -1014,7 +1094,9 @@
     "companyType": "Startup",
     "foundedYear": 2017,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-39",
@@ -1038,7 +1120,9 @@
     "companyType": "Startup",
     "foundedYear": 2020,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-40",
@@ -1062,7 +1146,9 @@
     "companyType": "Startup",
     "foundedYear": 2023,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-46",
@@ -1087,7 +1173,9 @@
     "companyType": "Startup",
     "foundedYear": 2022,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-26",
@@ -1111,7 +1199,9 @@
     "companyType": "Startup",
     "foundedYear": 2022,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "st-27",
@@ -1133,6 +1223,8 @@
     "companyType": "Startup",
     "foundedYear": 2016,
     "notes": "",
-    "founderIds": []
+    "founderIds": [],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   }
 ]

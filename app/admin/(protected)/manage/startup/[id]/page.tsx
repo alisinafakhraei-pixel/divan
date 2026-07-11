@@ -1,4 +1,5 @@
 import { DeleteEntityButton } from "@/components/admin/delete-entity-button";
+import { EntityStatusControl } from "@/components/admin/entity-status-control";
 import { SuggestForm } from "@/components/contribute/suggest-form";
 import { getStartupFields, startupToFieldValues } from "@/components/contribute/suggest-form-fields";
 import { getPersonById } from "@/lib/data-access/people";
@@ -23,6 +24,10 @@ export default async function AdminManageStartupPage({ params }: { params: Promi
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold text-foreground">{startup.name}</h2>
         <DeleteEntityButton kind="startup" targetId={startup.id} name={startup.name} />
+      </div>
+      <div className="flex items-center justify-between">
+        <EntityStatusControl kind="startup" targetId={startup.id} status={startup.status} />
+        <p className="text-xs text-muted-foreground">Last updated {startup.lastUpdatedAt}</p>
       </div>
       <SuggestForm
         fields={getStartupFields()}

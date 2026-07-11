@@ -18,8 +18,9 @@
         "url": "https://en.wikipedia.org/wiki/Adam_Foroughi"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 9600
+    "viewCount": 9600,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-58",
@@ -40,8 +41,9 @@
         "url": "https://www.linkedin.com/in/asenemar/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 1800
+    "viewCount": 1800,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-17",
@@ -62,8 +64,9 @@
         "url": "https://www.linkedin.com/in/alexmehr/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3700
+    "viewCount": 3700,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-60",
@@ -85,8 +88,9 @@
         "url": "https://www.linkedin.com/in/ali-arsanjani/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2300
+    "viewCount": 2300,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-51",
@@ -111,8 +115,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 17800
+    "viewCount": 17800,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-14",
@@ -133,8 +138,9 @@
         "url": "https://www.linkedin.com/in/ali-partovi/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 5800
+    "viewCount": 5800,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-07",
@@ -156,8 +162,9 @@
         "url": "https://www.linkedin.com/in/ali-rowghani-26996a1b/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4200
+    "viewCount": 4200,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-18",
@@ -180,8 +187,9 @@
         "url": "https://www.linkedin.com/in/khosra/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4300
+    "viewCount": 4300,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-52",
@@ -202,8 +210,9 @@
         "url": "https://www.linkedin.com/in/movafaghi/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3600
+    "viewCount": 3600,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-54",
@@ -222,8 +231,9 @@
         "url": "https://www.linkedin.com/in/amirali-talasaz-18841b5/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4300
+    "viewCount": 4300,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-11",
@@ -245,8 +255,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 15200
+    "viewCount": 15200,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-03",
@@ -267,8 +278,9 @@
         "url": "https://www.linkedin.com/in/arashferdowsi/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 9200
+    "viewCount": 9200,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-57",
@@ -289,8 +301,9 @@
         "url": "https://www.linkedin.com/in/bolurfrushan/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2000
+    "viewCount": 2000,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-34",
@@ -311,8 +324,9 @@
         "url": "https://www.linkedin.com/in/babakp/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3000
+    "viewCount": 3000,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-46",
@@ -331,8 +345,9 @@
         "url": "https://www.faction.vc/#portfolio"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 1900
+    "viewCount": 1900,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-32",
@@ -351,8 +366,9 @@
         "url": "https://www.linkedin.com/in/bijansabet/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3600
+    "viewCount": 3600,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-21",
@@ -372,8 +388,9 @@
         "url": "https://www.linkedin.com/in/bob-miner-99a96a159/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 6300
+    "viewCount": 6300,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-24",
@@ -392,8 +409,9 @@
         "url": "https://www.linkedin.com/in/bobby-yazdani-015a13a/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3100
+    "viewCount": 3100,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-09",
@@ -414,8 +432,9 @@
         "url": "https://www.linkedin.com/in/cyrus-massoumi-58330b/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 7100
+    "viewCount": 7100,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-49",
@@ -436,8 +455,9 @@
         "url": "https://www.linkedin.com/in/danvahdat/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4600
+    "viewCount": 4600,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-01",
@@ -460,8 +480,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 28450
+    "viewCount": 28450,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-31",
@@ -484,8 +505,9 @@
         "url": "https://www.linkedin.com/in/darian314/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2100
+    "viewCount": 2100,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-30",
@@ -508,8 +530,9 @@
         "url": "https://www.linkedin.com/in/farhad667/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3300
+    "viewCount": 3300,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-62",
@@ -534,8 +557,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 4200
+    "viewCount": 4200,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-08",
@@ -555,8 +579,9 @@
         "url": "https://www.linkedin.com/in/farzad-zod-nazem-62834816/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 5300
+    "viewCount": 5300,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-13",
@@ -579,8 +604,9 @@
         "url": "https://www.linkedin.com/in/hadip/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 6700
+    "viewCount": 6700,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-40",
@@ -602,8 +628,9 @@
         "url": "https://www.linkedin.com/in/hamidakhavan/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4000
+    "viewCount": 4000,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-10",
@@ -626,8 +653,9 @@
         "url": "https://www.linkedin.com/in/hooman/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3900
+    "viewCount": 3900,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-06",
@@ -648,8 +676,9 @@
         "url": "https://www.linkedin.com/in/justinmateen/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 6100
+    "viewCount": 6100,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-44",
@@ -675,8 +704,9 @@
         "url": "https://en.wikipedia.org/wiki/Kam_Ghaffarian"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 6900
+    "viewCount": 6900,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-23",
@@ -697,8 +727,9 @@
         "url": "https://www.linkedin.com/in/kayvz/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4800
+    "viewCount": 4800,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-42",
@@ -718,8 +749,9 @@
         "url": "https://www.linkedin.com/in/kasranejatian/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 5100
+    "viewCount": 5100,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-55",
@@ -740,8 +772,9 @@
         "url": "https://www.linkedin.com/in/keyvanmohajer/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 5700
+    "viewCount": 5700,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-47",
@@ -760,8 +793,9 @@
         "url": "https://multicoin.capital/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3300
+    "viewCount": 3300,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-26",
@@ -783,8 +817,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 3800
+    "viewCount": 3800,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-45",
@@ -805,8 +840,9 @@
         "url": "https://www.linkedin.com/in/dr-maky-zanganeh-b9b9548/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3900
+    "viewCount": 3900,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-39",
@@ -827,8 +863,9 @@
         "url": "https://www.linkedin.com/in/martinbasiri/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3500
+    "viewCount": 3500,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-35",
@@ -850,8 +887,9 @@
         "url": "https://www.linkedin.com/in/maxgazor/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2900
+    "viewCount": 2900,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-38",
@@ -872,8 +910,9 @@
         "url": "https://www.linkedin.com/in/metibasiri/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3200
+    "viewCount": 3200,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-28",
@@ -892,8 +931,9 @@
         "url": "https://www.linkedin.com/in/mohsenmoazami/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2600
+    "viewCount": 2600,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-41",
@@ -916,8 +956,9 @@
         "url": "https://www.linkedin.com/in/narges-baniasadi-1a45b94/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2200
+    "viewCount": 2200,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-37",
@@ -938,8 +979,9 @@
         "url": "https://www.linkedin.com/in/nghamsari/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4400
+    "viewCount": 4400,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-12",
@@ -962,8 +1004,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 12800
+    "viewCount": 12800,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-25",
@@ -984,8 +1027,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 8900
+    "viewCount": 8900,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-43",
@@ -1005,8 +1049,9 @@
         "url": "https://www.linkedin.com/in/payamzamani/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2800
+    "viewCount": 2800,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-20",
@@ -1025,8 +1070,9 @@
         "url": "https://www.linkedin.com/in/pejman/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 5200
+    "viewCount": 5200,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-04",
@@ -1048,8 +1094,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 26000
+    "viewCount": 26000,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-48",
@@ -1068,8 +1115,9 @@
         "url": "https://amidigroup.com/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 1700
+    "viewCount": 1700,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-50",
@@ -1090,8 +1138,9 @@
         "url": "https://en.wikipedia.org/wiki/Roxanne_Varza"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4100
+    "viewCount": 4100,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-61",
@@ -1112,8 +1161,9 @@
         "url": "https://www.linkedin.com/in/sabba-keynejad-8633b04b/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3400
+    "viewCount": 3400,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-15",
@@ -1132,8 +1182,9 @@
         "url": "https://www.linkedin.com/in/saeedamidi/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4600
+    "viewCount": 4600,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-27",
@@ -1156,8 +1207,9 @@
       }
     ],
     "featured": true,
-    "publishStatus": "published",
-    "viewCount": 13500
+    "viewCount": 13500,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-02",
@@ -1177,8 +1229,9 @@
         "url": "https://www.linkedin.com/in/sasan-goodarzi/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 12400
+    "viewCount": 12400,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-05",
@@ -1199,8 +1252,9 @@
         "url": "https://www.linkedin.com/in/seanrad/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 8700
+    "viewCount": 8700,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-56",
@@ -1219,8 +1273,9 @@
         "url": "https://www.linkedin.com/in/shahinf/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3100
+    "viewCount": 3100,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-29",
@@ -1242,8 +1297,9 @@
         "url": "https://www.linkedin.com/in/shane-tedjarati-84111689/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4700
+    "viewCount": 4700,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-59",
@@ -1264,8 +1320,9 @@
         "url": "https://www.linkedin.com/in/shaunshiraz/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2700
+    "viewCount": 2700,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-16",
@@ -1286,8 +1343,9 @@
         "url": "https://www.linkedin.com/in/shayang/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 4100
+    "viewCount": 4100,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-22",
@@ -1310,8 +1368,9 @@
         "url": "https://www.linkedin.com/in/shaygan-kheradpir/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 3400
+    "viewCount": 3400,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-19",
@@ -1335,8 +1394,9 @@
         "url": "https://www.linkedin.com/in/shervinpishevar/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 5900
+    "viewCount": 5900,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-36",
@@ -1359,8 +1419,9 @@
         "url": "https://www.linkedin.com/in/tony-shakib-43a0482/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2500
+    "viewCount": 2500,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-33",
@@ -1382,15 +1443,15 @@
         "url": "https://www.linkedin.com/in/tparang/"
       }
     ],
-    "publishStatus": "published",
-    "viewCount": 2400
+    "viewCount": 2400,
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   },
   {
     "id": "pp-63",
     "slug": "neda-farahani",
     "picture": "",
     "featured": false,
-    "publishStatus": "published",
     "viewCount": 0,
     "name": "Neda Farahani",
     "title": "Founder & CEO",
@@ -1406,6 +1467,8 @@
         "label": "LinkedIn",
         "url": "https://www.linkedin.com/in/neda-farahani/"
       }
-    ]
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-07-11"
   }
 ]
