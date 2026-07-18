@@ -7,7 +7,7 @@ import type { Person } from "@/lib/types";
 export function PersonCard({ person }: { person: Person }) {
   return (
     <CardShell href={`/entrepreneurs/${person.slug}`}>
-      <EntityAvatar name={person.name} image={person.picture} size="lg" />
+      <EntityAvatar name={person.name} image={person.picture} className="size-14 sm:size-24" />
       <div className="mt-4">
         <p className="font-semibold text-foreground">{person.name}</p>
         <p className="text-sm text-muted-foreground">{person.title}</p>

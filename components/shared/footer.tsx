@@ -29,6 +29,7 @@ const columns = [
     heading: "Divan",
     links: [
       { label: "About", href: "/about" },
+      { label: "Volunteers", href: "/volunteers" },
       { label: "Contribute", href: "/contribute" },
     ],
   },

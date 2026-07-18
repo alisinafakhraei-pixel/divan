@@ -32,6 +32,7 @@ const primaryLinks = [
 const moreLinks = [
   { label: "Hackathon", href: "/hackathon" },
   { label: "Events", href: "/events" },
+  { label: "Volunteers", href: "/volunteers" },
   { label: "Admin", href: "/admin" },
 ];
 

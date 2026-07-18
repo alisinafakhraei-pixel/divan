@@ -27,7 +27,7 @@ export default async function PerksPage({
       {perks.length === 0 ? (
         <EmptyState title="No perks found" description="Try a different category." />
       ) : (
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {perks.map((perk) => (
             <PerkCard key={perk.id} perk={perk} />
           ))}

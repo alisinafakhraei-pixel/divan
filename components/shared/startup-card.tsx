@@ -7,7 +7,7 @@ import type { Startup } from "@/lib/types";
 export function StartupCard({ startup }: { startup: Startup }) {
   return (
     <CardShell href={`/startups/${startup.slug}`}>
-      <EntityAvatar name={startup.name} image={startup.logo} size="lg" square />
+      <EntityAvatar name={startup.name} image={startup.logo} square className="size-14 sm:size-24" />
       <div className="mt-4">
         <p className="font-semibold text-foreground">{startup.name}</p>
         <p className="text-sm text-muted-foreground">{startup.tagline}</p>

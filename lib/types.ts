@@ -218,3 +218,21 @@ export interface Member {
   company?: string;
   bio?: string;
 }
+
+export interface Volunteer {
+  id: string;
+  slug: string;
+  name: string;
+  avatar: string;
+  /** Volunteer role/title, e.g. "Content Moderator", "Event Coordinator". */
+  role: string;
+  /** Area they help with, e.g. "Community", "Events", "Content". */
+  focusArea: string;
+  country?: string;
+  bio?: string;
+  socials?: {
+    linkedin?: string;
+    x?: string;
+    website?: string;
+  };
+}

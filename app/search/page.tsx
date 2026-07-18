@@ -40,7 +40,7 @@ export default async function SearchPage({
               <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
                 Entrepreneurs ({people.length})
               </h2>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
                 {people.map((person) => (
                   <PersonCard key={person.id} person={person} />
                 ))}
@@ -53,7 +53,7 @@ export default async function SearchPage({
               <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
                 Startups ({startups.length})
               </h2>
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
                 {startups.map((startup) => (
                   <StartupCard key={startup.id} startup={startup} />
                 ))}

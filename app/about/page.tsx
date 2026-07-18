@@ -1,69 +1,96 @@
-import { MemberMiniProfile } from "@/components/community/member-mini-profile";
 import { FeatureTile } from "@/components/shared/feature-tile";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { SocialLinks } from "@/components/shared/social-links";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { getTeamMembers } from "@/lib/data-access/members";
+import { VolunteerCard } from "@/components/shared/volunteer-card";
+import { getVolunteers } from "@/lib/data-access/volunteers";
+import { Handshake, Rocket } from "lucide-react";
+import Link from "next/link";
 
-const FAQS = [
+const MISSIONS = [
   {
-    q: "How does moderation work?",
-    a: "Every submission through Contribute goes to a review queue before it's published. Contributors get credit for what they add once it's approved.",
+    number: "1",
+    title: "Connect",
+    icon: Handshake,
+    description:
+      "Connect all Iranian startup founders, entrepreneurs, VCs, angel investors, ex-pats, and startup enthusiasts from all over the world to each other, so we can learn from each other's experiences.",
   },
   {
-    q: "Is the data on Divan live?",
-    a: "Stats and charts across the site are computed from the underlying People and Startups tables, not hand-maintained — they update as the directories grow.",
-  },
-  {
-    q: "Can I edit an existing profile?",
-    a: "Not yet inline — for now, use the \"Suggest an edit\" link on any profile, which routes to the Contribute page. Inline editing is planned for a future version.",
-  },
-  {
-    q: "How do I get involved with the Divan Hackathon?",
-    a: "Check the Hackathon page for the current cohort's application window, or browse past cohorts to see the format and outcomes.",
+    number: "2",
+    title: "Empower",
+    icon: Rocket,
+    description:
+      "Help the next generation of entrepreneurs just starting their journey by providing access to valuable educational materials, role models, success stories, experience sharing and even failed stories.",
   },
 ];
 
 export default function AboutPage() {
-  const team = getTeamMembers();
+  const volunteers = getVolunteers().slice(0, 6);
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-12 px-4 py-12 sm:px-6">
-      <FeatureTile variant="ink">
-        <SectionHeading
-          as="h1"
-          bold="Meet Iranian"
-          muted="entrepreneurs of the world."
-          subhead="Divan is a browsable, crowdsourced database of Iranian founders, startups, and the news and events around them — built to make an often-scattered community visible and connected."
+      <FeatureTile variant="ink" className="relative overflow-hidden">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 -right-16 size-64 rounded-full bg-action-blue/30 blur-3xl"
         />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-20 -left-10 size-56 rounded-full bg-accent/20 blur-3xl"
+        />
+        <div className="relative z-10 max-w-2xl">
+          <h1 className="font-sans text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
+            About <span className="font-normal text-white/70">Divan</span>
+          </h1>
+          <p className="mt-3 text-base text-white/80">
+            The community, the mission, and the people behind the directory — Iranian founders, operators,
+            and investors from around the world.
+          </p>
+        </div>
       </FeatureTile>
 
-      <section className="space-y-4">
-        <SectionHeading bold="Our" muted="team" />
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {team.map((member) => (
-            <div key={member.id} className="rounded-xl border border-border p-4">
-              <MemberMiniProfile member={member} />
+      <section className="max-w-3xl space-y-4">
+        <SectionHeading bold="What is" muted="Divan?" />
+        <p className="text-base text-muted-foreground">
+          At its heart, Divan is a community for all Iranian startup founders, entrepreneurs, VCs, angel
+          investors, ex-pats, and startup enthusiasts globally. It is a place where we can learn from each
+          other.
+        </p>
+      </section>
+
+      <section className="space-y-6">
+        <SectionHeading bold="Our" muted="mission" />
+        <div className="grid gap-4 sm:grid-cols-2">
+          {MISSIONS.map((mission) => (
+            <div key={mission.number} className="rounded-xl border border-border p-6">
+              <div className="flex items-center gap-3">
+                <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-semibold text-accent-foreground">
+                  {mission.number}
+                </span>
+                <mission.icon className="size-5 text-muted-foreground" />
+                <p className="font-semibold text-foreground">{mission.title}</p>
+              </div>
+              <p className="mt-3 text-sm text-muted-foreground">{mission.description}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="space-y-4">
-        <SectionHeading bold="Frequently" muted="asked questions" />
-        <Accordion className="max-w-2xl">
-          {FAQS.map((faq) => (
-            <AccordionItem key={faq.q} value={faq.q}>
-              <AccordionTrigger>{faq.q}</AccordionTrigger>
-              <AccordionContent>{faq.a}</AccordionContent>
-            </AccordionItem>
+        <div className="flex items-end justify-between gap-4">
+          <SectionHeading
+            bold="Our"
+            muted="volunteers"
+            subhead="Divan is run in large part by volunteers who give their time to keep the community, content, and events running."
+          />
+          <Link href="/volunteers" className="shrink-0 text-sm font-medium text-action-blue hover:underline">
+            View all
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+          {volunteers.map((volunteer) => (
+            <VolunteerCard key={volunteer.id} volunteer={volunteer} />
           ))}
-        </Accordion>
+        </div>
       </section>
 
       <section className="max-w-lg space-y-4">

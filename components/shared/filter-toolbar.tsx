@@ -32,7 +32,7 @@ export function FilterToolbar({
   return (
     <div className={cn("flex flex-col gap-3 sm:flex-row sm:items-center sm:flex-wrap", className)}>
       <form
-        className="flex w-full gap-2 sm:max-w-sm"
+        className="flex w-full flex-col gap-2 sm:max-w-sm sm:flex-row"
         onSubmit={(e) => {
           e.preventDefault();
           onSearchChange?.(value);
@@ -47,7 +47,7 @@ export function FilterToolbar({
             className="pl-9"
           />
         </div>
-        <Button type="submit" variant="outline">
+        <Button type="submit" variant="outline" className="w-full sm:w-auto">
           Search
         </Button>
       </form>

@@ -16,7 +16,7 @@ export function HeroSearchBar({ defaultValue = "" }: { defaultValue?: string }) 
         e.preventDefault();
         router.push(`/search?q=${encodeURIComponent(value)}`);
       }}
-      className="flex w-full max-w-lg gap-2"
+      className="flex w-full max-w-lg flex-col gap-2 sm:flex-row"
     >
       <div className="relative flex-1">
         <Search className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground" />
@@ -27,7 +27,7 @@ export function HeroSearchBar({ defaultValue = "" }: { defaultValue?: string }) 
           className="h-11 pl-9"
         />
       </div>
-      <Button type="submit" size="lg">
+      <Button type="submit" size="lg" className="w-full sm:w-auto">
         Search
       </Button>
     </form>

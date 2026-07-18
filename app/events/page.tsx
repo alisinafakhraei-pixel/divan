@@ -27,7 +27,7 @@ export default function EventsPage() {
           {upcoming.length === 0 ? (
             <EmptyState title="No upcoming events" description="Check back soon." />
           ) : (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
               {upcoming.map((event) => (
                 <EventCard key={event.id} event={event} />
               ))}
@@ -39,7 +39,7 @@ export default function EventsPage() {
           {past.length === 0 ? (
             <EmptyState title="No past events yet" />
           ) : (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
               {past.map((event) => (
                 <EventCard key={event.id} event={event} />
               ))}

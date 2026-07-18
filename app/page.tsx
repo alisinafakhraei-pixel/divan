@@ -65,7 +65,7 @@ export default async function Home() {
 
       <section className="space-y-6">
         <SectionHeader bold="Featured" muted="entrepreneurs" href="/entrepreneurs" />
-        <div className="stagger-fade grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {featuredPeople.map((person) => (
             <PersonCard key={person.id} person={person} />
           ))}
@@ -74,7 +74,7 @@ export default async function Home() {
 
       <section className="space-y-6">
         <SectionHeader bold="Featured" muted="startups" href="/startups" />
-        <div className="stagger-fade grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {featuredStartups.map((startup) => (
             <StartupCard key={startup.id} startup={startup} />
           ))}
@@ -87,7 +87,7 @@ export default async function Home() {
 
       <section className="space-y-6">
         <SectionHeader bold="Upcoming" muted="events" href="/events" />
-        <div className="stagger-fade grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {upcomingEvents.map((event) => (
             <EventCard key={event.id} event={event} />
           ))}

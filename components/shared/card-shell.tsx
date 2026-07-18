@@ -11,7 +11,7 @@ interface CardShellProps {
 /** The site's boxy card treatment: white fill, hairline border, no shadow at rest, border→ink on hover. */
 export function CardShell({ href, children, className }: CardShellProps) {
   const classes = cn(
-    "block animate-in rounded-xl border border-border bg-card p-5 fade-in-0 slide-in-from-bottom-1 transition-all duration-300 ease-out",
+    "block animate-in rounded-xl border border-border bg-card p-4 fade-in-0 slide-in-from-bottom-1 transition-all duration-300 ease-out sm:p-5",
     href && "hover:-translate-y-0.5 hover:border-foreground hover:shadow-md",
     className
   );
