@@ -1,4 +1,3 @@
-import { FeatureTile } from "@/components/shared/feature-tile";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { SocialLinks } from "@/components/shared/social-links";
 import { VolunteerCard } from "@/components/shared/volunteer-card";
@@ -28,26 +27,6 @@ export default function AboutPage() {
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-12 px-4 py-12 sm:px-6">
-      <FeatureTile variant="ink" className="relative overflow-hidden">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-24 -right-16 size-64 rounded-full bg-action-blue/30 blur-3xl"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-20 -left-10 size-56 rounded-full bg-accent/20 blur-3xl"
-        />
-        <div className="relative z-10 max-w-2xl">
-          <h1 className="font-sans text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-            About <span className="font-normal text-white/70">Divan</span>
-          </h1>
-          <p className="mt-3 text-base text-white/80">
-            The community, the mission, and the people behind the directory — Iranian founders, operators,
-            and investors from around the world.
-          </p>
-        </div>
-      </FeatureTile>
-
       <section className="max-w-3xl space-y-4">
         <SectionHeading bold="What is" muted="Divan?" />
         <p className="text-base text-muted-foreground">
