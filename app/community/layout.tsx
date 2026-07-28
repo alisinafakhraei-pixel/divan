@@ -5,11 +5,7 @@ import { MockAuthProvider } from "@/lib/mock-auth";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-const TABS = [
-  { label: "Discussions", href: "/community/discussions" },
-  { label: "Ask the Community", href: "/community/ask" },
-  { label: "Job Market", href: "/community/jobs" },
-];
+const TABS = [{ label: "Discussions", href: "/community/discussions" }];
 
 export default function CommunityLayout({ children }: { children: ReactNode }) {
   return (

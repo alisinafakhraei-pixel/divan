@@ -12,20 +12,6 @@ const columns = [
     ],
   },
   {
-    heading: "Programs",
-    links: [
-      { label: "Hackathon", href: "/hackathon" },
-      { label: "Events", href: "/events" },
-    ],
-  },
-  {
-    heading: "Community",
-    links: [
-      { label: "Ask the Community", href: "/community/ask" },
-      { label: "Job Market", href: "/community/jobs" },
-    ],
-  },
-  {
     heading: "Divan",
     links: [
       { label: "About", href: "/about" },
@@ -38,8 +24,8 @@ const columns = [
 export function Footer() {
   return (
     <footer className="border-t border-border bg-secondary/40">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-8 px-4 py-12 sm:grid-cols-3 sm:px-6 lg:grid-cols-5">
-        <div className="col-span-2 sm:col-span-3 lg:col-span-1">
+      <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-8 px-4 py-12 sm:grid-cols-3 sm:px-6">
+        <div>
           <Link href="/" className="inline-flex items-center">
             <img src="/logo.svg" alt="Divan" className="h-8 w-auto" />
           </Link>

@@ -2,12 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
   Sheet,
   SheetClose,
   SheetContent,
@@ -16,7 +10,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
-import { ChevronDown, Menu, Search } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -29,14 +23,6 @@ const primaryLinks = [
   { label: "Contribute", href: "/contribute" },
   { label: "About", href: "/about" },
 ];
-
-const moreLinks = [
-  { label: "Hackathon", href: "/hackathon" },
-  { label: "Events", href: "/events" },
-  { label: "Admin", href: "/admin" },
-];
-
-const allLinks = [...primaryLinks, ...moreLinks];
 
 export function Header() {
   const router = useRouter();
@@ -62,22 +48,6 @@ export function Header() {
               {link.label}
             </Button>
           ))}
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              render={
-                <Button variant="ghost" size="sm" className="whitespace-nowrap">
-                  More <ChevronDown className="size-3.5" />
-                </Button>
-              }
-            />
-            <DropdownMenuContent>
-              {moreLinks.map((link) => (
-                <DropdownMenuItem key={link.href} render={<Link href={link.href} />}>
-                  {link.label}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2">
@@ -125,7 +95,7 @@ export function Header() {
                 <SheetTitle>Divan</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col gap-1 px-4">
-                {allLinks.map((link) => (
+                {primaryLinks.map((link) => (
                   <SheetClose
                     key={link.href}
                     render={<Link href={link.href} />}

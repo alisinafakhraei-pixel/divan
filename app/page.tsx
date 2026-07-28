@@ -1,6 +1,4 @@
 import { CTABanner } from "@/components/shared/cta-banner";
-import { EventCard } from "@/components/shared/event-card";
-import { HackathonPromoBanner } from "@/components/shared/hackathon-promo-banner";
 import { HeroSearchBar } from "@/components/shared/hero-search-bar";
 import { WorldMap } from "@/components/insights/world-map";
 import { PersonCard } from "@/components/shared/person-card";
@@ -8,7 +6,6 @@ import { SectionHeading } from "@/components/shared/section-heading";
 import { StartupCard } from "@/components/shared/startup-card";
 import { StatsBar } from "@/components/shared/stats-bar";
 import { getSiteStats } from "@/lib/data-access/stats";
-import { getUpcomingEvents } from "@/lib/data-access/events";
 import { getFeaturedPeople, getPeople } from "@/lib/data-access/people";
 import { getFeaturedStartups, getStartups } from "@/lib/data-access/startups";
 import Link from "next/link";
@@ -33,11 +30,10 @@ function SectionHeader({
 }
 
 export default async function Home() {
-  const [stats, featuredPeople, featuredStartups, upcomingEvents, allPeople, allStartups] = await Promise.all([
+  const [stats, featuredPeople, featuredStartups, allPeople, allStartups] = await Promise.all([
     getSiteStats(),
     getFeaturedPeople(9),
     getFeaturedStartups(6),
-    getUpcomingEvents(3),
     getPeople(),
     getStartups(),
   ]);
@@ -77,19 +73,6 @@ export default async function Home() {
         <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {featuredStartups.map((startup) => (
             <StartupCard key={startup.id} startup={startup} />
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <HackathonPromoBanner />
-      </section>
-
-      <section className="space-y-6">
-        <SectionHeader bold="Upcoming" muted="events" href="/events" />
-        <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
-          {upcomingEvents.map((event) => (
-            <EventCard key={event.id} event={event} />
           ))}
         </div>
       </section>

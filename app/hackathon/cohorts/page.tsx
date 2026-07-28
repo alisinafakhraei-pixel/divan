@@ -1,9 +1,9 @@
 import { CohortArchiveCard } from "@/components/hackathon/cohort-archive-card";
 import { SectionHeading } from "@/components/shared/section-heading";
-import { getAllCohorts } from "@/lib/data-access/hackathon";
+import { getAllCohorts, isRecapHidden } from "@/lib/data-access/hackathon";
 
 export default function CohortsArchivePage() {
-  const cohorts = getAllCohorts();
+  const cohorts = getAllCohorts().filter((cohort) => !isRecapHidden(cohort.slug));
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-8 px-4 py-12 sm:px-6">

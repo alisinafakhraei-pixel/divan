@@ -17,6 +17,14 @@ export function CardShell({ href, children, className }: CardShellProps) {
   );
 
   if (href) {
+    if (href.startsWith("http")) {
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+          {children}
+        </a>
+      );
+    }
+
     return (
       <Link href={href} className={classes}>
         {children}

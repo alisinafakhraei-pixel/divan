@@ -2,7 +2,7 @@ import { MentorCard } from "@/components/shared/mentor-card";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { StatsBar } from "@/components/shared/stats-bar";
 import { Badge } from "@/components/ui/badge";
-import { getCohortBySlug, getCohortDisplayState } from "@/lib/data-access/hackathon";
+import { getCohortBySlug, getCohortDisplayState, isRecapHidden } from "@/lib/data-access/hackathon";
 import { getPersonById } from "@/lib/data-access/people";
 import { notFound } from "next/navigation";
 
@@ -12,6 +12,7 @@ export default async function CohortRecapPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (isRecapHidden(slug)) notFound();
   const cohort = getCohortBySlug(slug);
   if (!cohort) notFound();
 

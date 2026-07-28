@@ -1,5 +1,5 @@
 import { CTABanner } from "@/components/shared/cta-banner";
-import { getCohortDisplayState, getCurrentCohort } from "@/lib/data-access/hackathon";
+import { getCohortDisplayState, getCohortRecapHref, getCurrentCohort } from "@/lib/data-access/hackathon";
 
 export function HackathonPromoBanner() {
   const cohort = getCurrentCohort();
@@ -36,7 +36,7 @@ export function HackathonPromoBanner() {
       heading={`${cohort.name} applications are closed`}
       description="See the recap — cohort stats, mentors, and finalists."
       ctaLabel="See recap"
-      ctaHref={`/hackathon/cohorts/${cohort.slug}`}
+      ctaHref={getCohortRecapHref(cohort)}
       variant="sky"
     />
   );

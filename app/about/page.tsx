@@ -3,7 +3,6 @@ import { SocialLinks } from "@/components/shared/social-links";
 import { VolunteerCard } from "@/components/shared/volunteer-card";
 import { getVolunteers } from "@/lib/data-access/volunteers";
 import { Handshake, Rocket } from "lucide-react";
-import Link from "next/link";
 
 const MISSIONS = [
   {
@@ -23,7 +22,7 @@ const MISSIONS = [
 ];
 
 export default function AboutPage() {
-  const volunteers = getVolunteers().slice(0, 6);
+  const volunteers = getVolunteers();
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-12 px-4 py-12 sm:px-6">
@@ -55,16 +54,11 @@ export default function AboutPage() {
       </section>
 
       <section className="space-y-4">
-        <div className="flex items-end justify-between gap-4">
-          <SectionHeading
-            bold="Our"
-            muted="volunteers"
-            subhead="Divan is run in large part by volunteers who give their time to keep the community, content, and events running."
-          />
-          <Link href="/volunteers" className="shrink-0 text-sm font-medium text-action-blue hover:underline">
-            View all
-          </Link>
-        </div>
+        <SectionHeading
+          bold="Our"
+          muted="volunteers"
+          subhead="Divan is run in large part by volunteers who give their time to keep the community, content, and events running."
+        />
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {volunteers.map((volunteer) => (
             <VolunteerCard key={volunteer.id} volunteer={volunteer} />

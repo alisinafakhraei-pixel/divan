@@ -1,6 +1,6 @@
 import { FeatureTile } from "@/components/shared/feature-tile";
 import { Button } from "@/components/ui/button";
-import { getCohortDisplayState } from "@/lib/data-access/hackathon";
+import { getCohortDisplayState, getCohortRecapHref } from "@/lib/data-access/hackathon";
 import type { HackathonCohort } from "@/lib/types";
 import Link from "next/link";
 
@@ -26,7 +26,7 @@ export function CohortHero({ cohort }: { cohort: HackathonCohort }) {
             heading: `${cohort.name} — applications closed`,
             description: "See the recap: stats, mentors, and finalists from this cohort.",
             ctaLabel: "See recap",
-            ctaHref: `/hackathon/cohorts/${cohort.slug}`,
+            ctaHref: getCohortRecapHref(cohort),
           };
 
   return (
