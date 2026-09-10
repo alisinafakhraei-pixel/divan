@@ -61,11 +61,7 @@ export async function getPersonById(id: string): Promise<Person | undefined> {
 }
 
 export async function getFeaturedPeople(limit = 6): Promise<Person[]> {
-  // Farokh is pinned first among featured entrepreneurs on the homepage.
-  return (await readPeople())
-    .filter((p) => p.featured)
-    .sort((a, b) => (a.slug === "farokh-shahabi" ? -1 : b.slug === "farokh-shahabi" ? 1 : 0))
-    .slice(0, limit);
+  return (await readPeople()).filter((p) => p.featured).slice(0, limit);
 }
 
 export async function getPeopleCount(): Promise<number> {

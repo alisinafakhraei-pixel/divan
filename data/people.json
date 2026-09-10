@@ -280,7 +280,8 @@
     ],
     "viewCount": 9200,
     "status": "public",
-    "lastUpdatedAt": "2026-07-11"
+    "lastUpdatedAt": "2026-07-11",
+    "featured": true
   },
   {
     "id": "pp-57",
@@ -556,7 +557,7 @@
         "url": "https://www.linkedin.com/in/farokhshahabi/"
       }
     ],
-    "featured": true,
+    "featured": false,
     "viewCount": 4200,
     "status": "public",
     "lastUpdatedAt": "2026-07-11"
