@@ -234,5 +234,24 @@
     "submittedBy": "alisina.fakhraei@gmail.com",
     "submittedAt": "2026-07-11",
     "status": "approved"
+  },
+  {
+    "id": "sub-1789121847098",
+    "kind": "person",
+    "mode": "new",
+    "payload": {
+      "name": "Vahid Sohrabpour ",
+      "title": "CEO/Co-founder",
+      "knownFor": "Orchestable ",
+      "segment": "Emerging Startups",
+      "country": "Sweden",
+      "bio": "Serial Entrepreneur ",
+      "previousCompanies": "Saveggy",
+      "valuation": "",
+      "linkedin": ""
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-09-11",
+    "status": "pending"
   }
 ]
