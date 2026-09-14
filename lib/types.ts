@@ -110,7 +110,10 @@ export interface DivanEvent {
   id: string;
   slug: string;
   title: string;
+  /** Sort key — always a real ISO date, even for TBA events (a nominal placeholder to keep ordering stable). */
   date: string;
+  /** Human-facing date text, e.g. "TBA" or "November 2026". Falls back to a formatted `date` when omitted. */
+  dateLabel?: string;
   city: string | "Virtual";
   rsvpLink: string;
   isPast: boolean;

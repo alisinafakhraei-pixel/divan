@@ -1,5 +1,6 @@
 import { EmptyState } from "@/components/shared/empty-state";
 import { EventCard } from "@/components/shared/event-card";
+import { EventsMap } from "@/components/events/events-map";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getPastEvents, getUpcomingEvents } from "@/lib/data-access/events";
@@ -16,6 +17,11 @@ export default function EventsPage() {
         muted="events"
         subhead="Founder mixers, hackathon demo days, and community meetups around the world."
       />
+
+      <div className="space-y-3">
+        <EventsMap events={[...upcoming, ...past]} />
+        <p className="text-sm text-muted-foreground">Click a pin to jump to that event below.</p>
+      </div>
 
       <Tabs defaultValue="upcoming">
         <TabsList>
