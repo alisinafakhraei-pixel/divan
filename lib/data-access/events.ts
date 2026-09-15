@@ -18,3 +18,12 @@ export function getPastEvents(limit?: number): DivanEvent[] {
 export function getEventBySlug(slug: string): DivanEvent | undefined {
   return events.find((e) => e.slug === slug);
 }
+
+/** A few other events to surface at the bottom of an event's own page. */
+export function getOtherEvents(slug: string, limit = 3): DivanEvent[] {
+  return events.filter((e) => e.slug !== slug).slice(0, limit);
+}
+
+export function getAllEventSlugs(): string[] {
+  return events.map((e) => e.slug);
+}

@@ -115,9 +115,15 @@ export interface DivanEvent {
   /** Human-facing date text, e.g. "TBA" or "November 2026". Falls back to a formatted `date` when omitted. */
   dateLabel?: string;
   city: string | "Virtual";
+  /** Omitted for "Virtual" events — used to label the map and the event's own page. */
+  country?: string;
   rsvpLink: string;
   isPast: boolean;
-  recapPhotos?: string[];
+  /** Cover + gallery photos, first is the cover shown on cards. Custom per event. */
+  images?: string[];
+  /** Forward-looking blurb for an upcoming event. */
+  description?: string;
+  /** Recap copy for a past event. */
   writeup?: string;
 }
 
