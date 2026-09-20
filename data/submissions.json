@@ -253,5 +253,31 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-09-11",
     "status": "pending"
+  },
+  {
+    "id": "sub-1789872074917",
+    "kind": "startup",
+    "mode": "new",
+    "payload": {
+      "name": "Variza",
+      "tagline": "Automated card-to-card payment verification",
+      "website": "https://variza.ir",
+      "fundingRound": "Pre-Seed",
+      "valuation": "",
+      "businessModel": "B2B",
+      "operatingStatus": "Active",
+      "hqCountry": "Iran",
+      "hqRegion": "Tehran",
+      "industries": "Fintech, Payments, SaaS, E-commerce",
+      "mainCategory": "Fintech",
+      "teamSize": "1",
+      "foundedYear": "2026",
+      "founders": "Alireza Mohammadi",
+      "notes": "Variza is a fintech SaaS platform for automated card-to-card payment verification. It helps online businesses confirm customer payments without manually checking bank transactions.\r\n\r\nBusinesses can create payment links with a specific amount. When a customer makes a card-to-card transfer, Variza automatically matches the incoming bank notification with the pending payment and reports the result to the business.\r\n\r\nVariza also provides APIs and webhooks for integrating automated payment verification into websites, online stores, and custom software. The platform is designed for businesses that use card-to-card payments and need a faster way to verify incoming transfers.\r\n",
+      "logo": "/api/uploads/startups/pending-sub-1789872074917.png"
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-09-20",
+    "status": "pending"
   }
 ]
