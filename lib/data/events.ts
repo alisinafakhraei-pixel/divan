@@ -18,7 +18,6 @@ export const events: DivanEvent[] = [
     date: "2026-09-10",
     city: "Stockholm",
     country: "Sweden",
-    rsvpLink: "https://lu.ma/example-stockholm",
     isPast: false,
     description:
       "An evening of lightning talks and open-bar networking on the water — Divan's first stop in the Nordics, for founders, operators, and investors building out of Sweden and beyond.",
@@ -36,7 +35,6 @@ export const events: DivanEvent[] = [
     date: "2026-09-17",
     city: "Toronto",
     country: "Canada",
-    rsvpLink: "https://lu.ma/example-toronto",
     isPast: false,
     description:
       "A founders mixer bringing together Toronto's growing Iranian startup scene — demos, short pitches, and time to actually talk to the person next to you.",
@@ -54,7 +52,6 @@ export const events: DivanEvent[] = [
     date: "2026-10-29",
     city: "London",
     country: "United Kingdom",
-    rsvpLink: "https://lu.ma/example-london",
     isPast: false,
     description:
       "Divan's flagship UK gathering — a night of talks, demos, and networking for the London founder and investor community, with a fireside chat closing out the evening.",
@@ -72,7 +69,6 @@ export const events: DivanEvent[] = [
     date: "2026-11-01",
     dateLabel: "November 2026",
     city: "Virtual",
-    rsvpLink: "https://lu.ma/example-hackathon-2026",
     isPast: false,
     description:
       "A weekend of building, mentorship, and demos — teams from around the world ship a working prototype and pitch to a panel of investors and operators. Fully remote, open to all.",
