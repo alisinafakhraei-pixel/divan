@@ -96,20 +96,20 @@ export default async function EventDetailPage({
       <div className="flex flex-col gap-4 rounded-xl border border-border bg-secondary/30 p-4 sm:flex-row sm:items-center sm:justify-between sm:p-5">
         <div>
           <p className="font-semibold text-foreground">
-            {event.isPast ? "This event has ended" : "Save your spot"}
+            {event.isPast ? "This event has ended" : event.rsvpLink ? "Save your spot" : "Details coming soon"}
           </p>
           <p className="text-sm text-muted-foreground">Hosted by Divan</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <ShareButtons title={event.title} />
-          {!event.isPast ? (
+          {!event.isPast && event.rsvpLink ? (
             <Button
               size="lg"
               variant="accent"
               className="w-full sm:w-auto"
               render={<a href={event.rsvpLink} target="_blank" rel="noopener noreferrer" />}
             >
-              RSVP
+              Join
             </Button>
           ) : null}
         </div>

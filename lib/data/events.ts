@@ -86,7 +86,6 @@ export const events: DivanEvent[] = [
     dateLabel: "TBA",
     city: "San Francisco",
     country: "United States",
-    rsvpLink: "https://lu.ma/example-sf",
     isPast: false,
     description:
       "Divan returns to the Bay Area — details and date still being locked in, but expect the usual mix of demos, mentors, and a rooftop after-party.",
@@ -105,7 +104,6 @@ export const events: DivanEvent[] = [
     dateLabel: "TBA",
     city: "Sydney",
     country: "Australia",
-    rsvpLink: "https://lu.ma/example-sydney",
     isPast: false,
     description: "Divan's first Australia meetup — venue and date coming soon.",
     images: [
@@ -123,7 +121,6 @@ export const events: DivanEvent[] = [
     dateLabel: "TBA",
     city: "Paris",
     country: "France",
-    rsvpLink: "https://lu.ma/example-paris",
     isPast: false,
     description: "A Divan evening in Paris for the French and wider European community — venue and date coming soon.",
     images: [

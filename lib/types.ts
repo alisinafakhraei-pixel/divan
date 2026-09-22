@@ -117,7 +117,8 @@ export interface DivanEvent {
   city: string | "Virtual";
   /** Omitted for "Virtual" events — used to label the map and the event's own page. */
   country?: string;
-  rsvpLink: string;
+  /** Omitted until a real signup link exists — the Join button hides when this is unset. */
+  rsvpLink?: string;
   isPast: boolean;
   /** Cover + gallery photos, first is the cover shown on cards. Custom per event. */
   images?: string[];
