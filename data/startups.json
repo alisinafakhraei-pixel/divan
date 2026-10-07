@@ -334,6 +334,34 @@
     "lastUpdatedAt": "2026-07-11"
   },
   {
+    "id": "st-47",
+    "slug": "vitalstaf",
+    "name": "VitalStaf",
+    "logo": "/api/uploads/startups/vitalstaf.png",
+    "tagline": "Streamline nurse staffing",
+    "teamSize": 10,
+    "website": "https://vitalstaf.com",
+    "fundingRound": "Pre-Seed",
+    "valuationTier": "Under $10M",
+    "mainCategory": "AI",
+    "industries": [
+      "SaaS",
+      "Healthcare"
+    ],
+    "businessModel": "B2B",
+    "hqCountry": "United States",
+    "hqRegion": "New York, NY",
+    "operatingStatus": "Active",
+    "companyType": "Startup",
+    "foundedYear": 2025,
+    "notes": "AI matching of verified clinicians to hospitals, SNFs, assisted living, and government care settings. Key people include Shahin Katebi (Co-founder & CTO) and Enrique Reyes (Co-founder & CEO).",
+    "founderIds": [
+      "pp-64"
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-10-07"
+  },
+  {
     "id": "st-06",
     "slug": "zocdoc",
     "name": "Zocdoc",

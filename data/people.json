@@ -1279,6 +1279,31 @@
     "lastUpdatedAt": "2026-07-11"
   },
   {
+    "id": "pp-64",
+    "slug": "shahin-katebi",
+    "name": "Shahin Katebi",
+    "picture": "/people/shahin-katebi.png",
+    "knownFor": "VitalStaf",
+    "knownForStartupId": "st-47",
+    "title": "Co-founder & CTO",
+    "previousCompanies": [
+      "Matau Tech",
+      "Yeka Studio"
+    ],
+    "segment": "Emerging Startups",
+    "country": "United Kingdom",
+    "bio": "Shahin is Co-founder & CTO of VitalStaf, building AI-powered healthcare staffing.",
+    "additionalInfo": [
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/katebi/"
+      }
+    ],
+    "viewCount": 0,
+    "status": "public",
+    "lastUpdatedAt": "2026-10-07"
+  },
+  {
     "id": "pp-29",
     "slug": "shane-tedjarati",
     "name": "Shane Tedjarati",

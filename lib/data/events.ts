@@ -49,9 +49,10 @@ export const events: DivanEvent[] = [
     id: "ev-03",
     slug: "divan-london",
     title: "Divan London",
-    date: "2026-10-29",
+    date: "2026-10-28",
     city: "London",
     country: "United Kingdom",
+    rsvpLink: "https://luma.com/817oot63",
     isPast: false,
     description:
       "Divan's flagship UK gathering — a night of talks, demos, and networking for the London founder and investor community, with a fireside chat closing out the evening.",
