@@ -299,5 +299,31 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-09-28",
     "status": "pending"
+  },
+  {
+    "id": "sub-1792507846559",
+    "kind": "startup",
+    "mode": "new",
+    "payload": {
+      "name": "SciCap (Science-Backed Capital)",
+      "tagline": "Where Science Becomes Capital",
+      "website": "https://www.SciCap.COM",
+      "fundingRound": "Series B",
+      "valuation": "",
+      "businessModel": "B2B / B2C",
+      "operatingStatus": "Active",
+      "hqCountry": "Iran",
+      "hqRegion": "Hamedan Iran",
+      "industries": "Investment-Quantitative",
+      "mainCategory": "Financial Technology",
+      "teamSize": "1",
+      "foundedYear": "12",
+      "founders": "Alirezaa Hoseini",
+      "notes": "Science Oriented Investment Company is based on a mathematical model of financial market behavior, which AI is not used in its decision-making core. It is a predictive model that generates alpha signals and is a very effective tool in implementing systematic strategic investments, through market timing. This model has taken more than ten years to build.",
+      "logo": "/api/uploads/startups/pending-sub-1792507846559.png"
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-10-20",
+    "status": "pending"
   }
 ]
