@@ -325,5 +325,31 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-10-20",
     "status": "pending"
+  },
+  {
+    "id": "sub-1793639719579",
+    "kind": "startup",
+    "mode": "new",
+    "payload": {
+      "name": "GOLFMEME",
+      "tagline": "GOLF MEME؛ ایده‌ای نو، تجربه‌ای متفاوت در دنیای دیجیتال 🚀",
+      "website": "https://golfmeme-trade-ticker.lovable.app",
+      "fundingRound": "Unknown",
+      "valuation": "گلف میم",
+      "businessModel": "B2C",
+      "operatingStatus": "Active",
+      "hqCountry": "Afghanistan",
+      "hqRegion": "ایران",
+      "industries": "ارز دیجیتال ",
+      "mainCategory": "ارز دیجیتال ",
+      "teamSize": "5نفر",
+      "foundedYear": "2026",
+      "founders": "GOLFMEME ",
+      "notes": "GOLF MEME یک پروژه دانش‌آموزی در حوزه اقتصاد دیجیتال با امکانات خریدوفروش، مشاهده قیمت لحظه‌ای، مدیریت دارایی، بررسی سود و زیان و رابط کاربری ساده و آسان است. هدف ما ایجاد تجربه‌ای نوآورانه در دنیای دارایی‌های دیجیتال است.",
+      "logo": "/api/uploads/startups/pending-sub-1793639719579.jpg"
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-11-02",
+    "status": "pending"
   }
 ]
