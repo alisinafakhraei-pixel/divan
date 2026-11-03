@@ -1,10 +1,9 @@
+import { HeroTakeover } from "@/components/home/hero-takeover";
 import { CTABanner } from "@/components/shared/cta-banner";
-import { HeroSearchBar } from "@/components/shared/hero-search-bar";
 import { WorldMap } from "@/components/insights/world-map";
 import { PersonCard } from "@/components/shared/person-card";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { StartupCard } from "@/components/shared/startup-card";
-import { StatsBar } from "@/components/shared/stats-bar";
 import { getSiteStats } from "@/lib/data-access/stats";
 import { getFeaturedPeople, getPeople } from "@/lib/data-access/people";
 import { getFeaturedStartups, getStartups } from "@/lib/data-access/startups";
@@ -38,26 +37,16 @@ export default async function Home() {
     getStartups(),
   ]);
 
+  const heroStats = [
+    { label: "Entrepreneurs", value: stats.totalEntrepreneurs },
+    { label: "Startups", value: stats.totalStartups },
+    { label: "Countries", value: stats.countriesRepresented },
+    { label: "Tracked valuation", value: stats.combinedTrackedValuation },
+  ];
+
   return (
     <div className="mx-auto flex max-w-[1200px] flex-col gap-16 px-4 py-12 sm:px-6 sm:py-16">
-      <section className="flex flex-col items-start gap-6 py-8 sm:py-12">
-        <SectionHeading
-          as="h1"
-          bold="Meet Iranian"
-          muted="entrepreneurs of the world."
-          subhead="A browsable, crowdsourced database of Iranian founders, startups, and the news that follows them."
-        />
-        <HeroSearchBar />
-        <StatsBar
-          className="w-full max-w-lg pt-4"
-          stats={[
-            { label: "Entrepreneurs", value: stats.totalEntrepreneurs },
-            { label: "Startups", value: stats.totalStartups },
-            { label: "Countries", value: stats.countriesRepresented },
-            { label: "Tracked valuation", value: stats.combinedTrackedValuation },
-          ]}
-        />
-      </section>
+      <HeroTakeover stats={heroStats} />
 
       <section className="space-y-6">
         <SectionHeader bold="Featured" muted="entrepreneurs" href="/entrepreneurs" />
@@ -89,6 +78,7 @@ export default async function Home() {
         <SectionHeading bold="Global" muted="reach, at a glance" />
         <WorldMap people={allPeople} startups={allStartups} />
       </section>
+
     </div>
   );
 }
