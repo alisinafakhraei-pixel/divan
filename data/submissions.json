@@ -351,5 +351,25 @@
     "submittedBy": "anonymous",
     "submittedAt": "2026-11-02",
     "status": "pending"
+  },
+  {
+    "id": "sub-1794651784649",
+    "kind": "person",
+    "mode": "new",
+    "payload": {
+      "name": "Sepehr Saghari",
+      "title": "CEO",
+      "knownFor": "Nimaad",
+      "segment": "Emerging Startups",
+      "country": "Iran",
+      "bio": "“Judge a man by his questions rather than by his answers.” — Voltaire\r\n\r\nMy name is Sepehr Saghari, a medical laboratory scientist, entrepreneur, and content creator with a passion for social innovation. I earned my degree in Medical Laboratory Sciences from Guilan University of Medical Sciences, and I’m currently serving as the Chief Editor of Pishro Quarterly.\r\n\r\nIn 2020, I co-founded Nimaad, where I currently act as CEO. At Nimaad, we focus on designing and manufacturing affordable, high-quality medical devices specifically tailored to meet the needs of developing countries.\r\n🌐 www.nimaadmed.com",
+      "previousCompanies": "",
+      "valuation": "",
+      "linkedin": "https://www.linkedin.com/in/sepehrsaghari/",
+      "picture": "/api/uploads/people/pending-sub-1794651784649.png"
+    },
+    "submittedBy": "anonymous",
+    "submittedAt": "2026-11-14",
+    "status": "pending"
   }
 ]
