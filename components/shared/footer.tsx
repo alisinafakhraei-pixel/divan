@@ -10,6 +10,7 @@ const columns = [
       { label: "Startups", href: "/startups" },
       { label: "Ecosystem map", href: "/ecosystem-map" },
       { label: "News", href: "/news" },
+      { label: "Vouch for people", href: "/vouch" },
     ],
   },
   {

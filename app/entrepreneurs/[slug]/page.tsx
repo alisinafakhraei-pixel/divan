@@ -37,10 +37,13 @@ export async function generateMetadata({
 
 export default async function PersonDetailPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ vouch?: string }>;
 }) {
   const { slug } = await params;
+  const { vouch } = await searchParams;
   const person = await getPersonBySlug(slug);
   if (!person) notFound();
 
@@ -78,7 +81,7 @@ export default async function PersonDetailPage({
               <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
                 Vouched by {vouches.length > 0 ? vouches.length : ""}
               </h2>
-              <VouchSheet personId={person.id} personName={person.name} />
+              <VouchSheet personId={person.id} personName={person.name} defaultOpen={vouch === "1"} />
             </div>
             {vouches.length > 0 ? (
               <VouchList vouches={vouches} />

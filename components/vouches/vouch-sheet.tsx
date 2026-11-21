@@ -13,14 +13,14 @@ import { useActionState, useState } from "react";
 
 const MAX = 280;
 
-export function VouchSheet({ personId, personName }: { personId: string; personName: string }) {
+export function VouchSheet({ personId, personName, defaultOpen = false }: { personId: string; personName: string; defaultOpen?: boolean }) {
   const firstName = personName.split(" ")[0];
   const [state, action, pending] = useActionState<VouchState, FormData>(submitVouch, { status: "idle" });
   const [length, setLength] = useState(0);
   const done = state.status === "published" || state.status === "pending";
 
   return (
-    <Sheet>
+    <Sheet defaultOpen={defaultOpen}>
       <SheetTrigger render={<Button variant="accent" />}>
         <ShieldCheck />
         Vouch for {firstName}

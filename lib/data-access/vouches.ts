@@ -47,3 +47,39 @@ export async function setVouchStatus(id: string, status: Vouch["status"]): Promi
   await writeCollection(FILE, vouches, `Vouch ${status}: ${id}`);
   return vouch;
 }
+
+export interface PersonStanding {
+  personId: string;
+  count: number;
+}
+export interface VoucherStanding {
+  name: string;
+  linkedIn: string;
+  count: number;
+}
+
+/** Rankings built from public vouches only: who is vouched for most, and who vouches most. */
+export async function getLeaderboards(limit = 10): Promise<{ mostVouched: PersonStanding[]; topVouchers: VoucherStanding[]; total: number }> {
+  const vouches = (await all()).filter((v) => v.status === "public");
+
+  const received = new Map<string, number>();
+  const given = new Map<string, VoucherStanding>();
+  for (const v of vouches) {
+    received.set(v.personId, (received.get(v.personId) ?? 0) + 1);
+    const prev = given.get(v.voucherLinkedIn);
+    given.set(v.voucherLinkedIn, { name: prev?.name ?? v.voucherName, linkedIn: v.voucherLinkedIn, count: (prev?.count ?? 0) + 1 });
+  }
+
+  return {
+    mostVouched: [...received].map(([personId, count]) => ({ personId, count })).sort((a, b) => b.count - a.count).slice(0, limit),
+    topVouchers: [...given.values()].sort((a, b) => b.count - a.count).slice(0, limit),
+    total: vouches.length,
+  };
+}
+
+export async function getRecentVouches(limit = 6): Promise<Vouch[]> {
+  return (await all())
+    .filter((v) => v.status === "public")
+    .sort((a, b) => (a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : b.id.localeCompare(a.id)))
+    .slice(0, limit);
+}
