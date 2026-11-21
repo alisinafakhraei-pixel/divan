@@ -20,6 +20,7 @@ const primaryLinks = [
   { label: "Startups", href: "/startups" },
   { label: "Ecosystem map", href: "/ecosystem-map" },
   { label: "Events", href: "/events" },
+  { label: "News", href: "/news" },
   { label: "Volunteers", href: "/volunteers" },
   { label: "Contribute", href: "/contribute" },
   { label: "About", href: "/about" },

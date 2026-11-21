@@ -3,8 +3,9 @@ import { EntityAvatar } from "@/components/shared/entity-avatar";
 import { SegmentBadge } from "@/components/shared/entity-badges";
 import { Badge } from "@/components/ui/badge";
 import type { Person } from "@/lib/types";
+import { ShieldCheck } from "lucide-react";
 
-export function PersonCard({ person }: { person: Person }) {
+export function PersonCard({ person, vouchCount = 0 }: { person: Person; vouchCount?: number }) {
   return (
     <CardShell href={`/entrepreneurs/${person.slug}`}>
       <EntityAvatar name={person.name} image={person.picture} className="size-14 sm:size-24" />
@@ -16,6 +17,12 @@ export function PersonCard({ person }: { person: Person }) {
       <div className="mt-4 flex flex-wrap gap-1.5">
         <SegmentBadge segment={person.segment} />
         <Badge variant="secondary">{person.country}</Badge>
+        {vouchCount > 0 ? (
+          <Badge variant="success">
+            <ShieldCheck />
+            {vouchCount}
+          </Badge>
+        ) : null}
       </div>
     </CardShell>
   );

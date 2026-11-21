@@ -2,8 +2,9 @@ import { EntityAvatar } from "@/components/shared/entity-avatar";
 import { SegmentBadge } from "@/components/shared/entity-badges";
 import { Badge } from "@/components/ui/badge";
 import type { Person } from "@/lib/types";
+import { ShieldCheck } from "lucide-react";
 
-export function PersonProfileHeader({ person }: { person: Person }) {
+export function PersonProfileHeader({ person, vouchCount = 0 }: { person: Person; vouchCount?: number }) {
   return (
     <div className="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
       <EntityAvatar name={person.name} image={person.picture} size="lg" className="!size-28 sm:!size-36" />
@@ -17,6 +18,12 @@ export function PersonProfileHeader({ person }: { person: Person }) {
         <div className="mt-3 flex flex-wrap gap-1.5">
           <SegmentBadge segment={person.segment} />
           <Badge variant="secondary">{person.country}</Badge>
+          {vouchCount > 0 ? (
+            <Badge variant="success">
+              <ShieldCheck />
+              {vouchCount} {vouchCount === 1 ? "vouch" : "vouches"}
+            </Badge>
+          ) : null}
         </div>
       </div>
     </div>

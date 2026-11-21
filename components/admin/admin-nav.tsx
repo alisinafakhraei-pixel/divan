@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { History } from "lucide-react";
+import { History, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -9,6 +9,7 @@ const links = [
   { label: "Community suggestions", href: "/admin" },
   { label: "Search & edit", href: "/admin/manage" },
   { label: "Add startup / entrepreneur", href: "/admin/add" },
+  { label: "Vouches", href: "/admin/vouches", icon: ShieldCheck },
   { label: "History", href: "/admin/history", icon: History },
 ];
 

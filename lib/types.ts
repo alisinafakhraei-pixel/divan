@@ -104,6 +104,37 @@ export interface NewsItem {
   submittedBy: string;
   date: string;
   relatedEntityIds: string[];
+  /** True when the Divan AI curator found and verified this story automatically (no human submitted it). */
+  auto?: boolean;
+  /** Publisher name for auto-curated stories, e.g. "TechCrunch". */
+  sourceName?: string;
+}
+
+export const VOUCH_RELATIONSHIPS = [
+  "Worked together",
+  "Co-founded together",
+  "Invested in them",
+  "Mentor or mentee",
+  "Used their product",
+  "Friend or peer",
+] as const;
+export type VouchRelationship = (typeof VOUCH_RELATIONSHIPS)[number];
+
+/** A short public endorsement of a person in the directory ("Cosign"-style). "public" is live, "pending" awaits an admin, "rejected" is hidden. */
+export interface Vouch {
+  id: string;
+  personId: string;
+  voucherName: string;
+  /** Normalised https://www.linkedin.com/in/<handle> — lets readers check the voucher is a real person. */
+  voucherLinkedIn: string;
+  relationship: VouchRelationship;
+  message: string;
+  createdAt: string;
+  status: EntityStatus;
+  /** How the status was decided: Gemini auto-approved it, or a human did. */
+  moderation?: "auto" | "admin";
+  /** The AI moderator's one-line reason — shown to admins on pending vouches. */
+  moderationNote?: string;
 }
 
 export interface DivanEvent {

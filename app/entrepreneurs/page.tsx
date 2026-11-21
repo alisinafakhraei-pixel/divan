@@ -1,4 +1,5 @@
 import { EntrepreneursToolbar } from "@/components/entrepreneurs/entrepreneurs-toolbar";
+import { getVouchCounts } from "@/lib/data-access/vouches";
 import { EmptyState } from "@/components/shared/empty-state";
 import { PersonCard } from "@/components/shared/person-card";
 import { PersonTableRow } from "@/components/shared/person-table-row";
@@ -26,7 +27,7 @@ export default async function EntrepreneursPage({
   const page = Math.max(1, Number(params.page ?? "1"));
   const view = params.view === "table" ? "table" : "grid";
 
-  const [people, countries, segments, industries] = await Promise.all([
+  const [people, countries, segments, industries, vouchCounts] = await Promise.all([
     getPeople(
       {
         search: params.q,
@@ -39,6 +40,7 @@ export default async function EntrepreneursPage({
     getPeopleCountries(),
     getPeopleSegments(),
     getPeopleIndustries(),
+    getVouchCounts(),
   ]);
 
   const pageCount = Math.max(1, Math.ceil(people.length / PAGE_SIZE));
@@ -74,7 +76,7 @@ export default async function EntrepreneursPage({
       ) : (
         <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {pageItems.map((person) => (
-            <PersonCard key={person.id} person={person} />
+            <PersonCard key={person.id} person={person} vouchCount={vouchCounts[person.id]} />
           ))}
         </div>
       )}

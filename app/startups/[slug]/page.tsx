@@ -40,7 +40,7 @@ export default async function StartupDetailPage({
   const startup = await getStartupBySlug(slug);
   if (!startup) notFound();
 
-  const relatedNews = getRelatedNews(startup.id, 3);
+  const relatedNews = await getRelatedNews(startup.id, 3);
   const founderNames = (await Promise.all(startup.founderIds.map((id) => getPersonById(id))))
     .map((p) => p?.name)
     .filter((name): name is string => Boolean(name));

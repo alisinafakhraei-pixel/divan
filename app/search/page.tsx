@@ -19,7 +19,7 @@ export default async function SearchPage({
     q ? getPeople({ search: q }) : Promise.resolve([]),
     q ? getStartups({ search: q }) : Promise.resolve([]),
   ]);
-  const news = q ? getNews({ search: q }) : [];
+  const news = q ? await getNews({ search: q }) : [];
   const totalResults = people.length + startups.length + news.length;
 
   return (

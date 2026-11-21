@@ -62,7 +62,7 @@ export default async function StyleGuidePage() {
   const upcomingEvent = getUpcomingEvents(1)[0];
   const pastEvent = getEventBySlug("divan-london");
   const job = getJobs()[0];
-  const newsItem = getLatestNews(1)[0];
+  const newsItem = (await getLatestNews(1))[0];
   const featuredPerk = getPerks().find((p) => p.featured)!;
   const normalPerk = getPerks().find((p) => !p.featured)!;
   const mentor = people[3];

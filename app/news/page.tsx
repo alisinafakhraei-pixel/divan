@@ -18,7 +18,7 @@ export default async function NewsPage({
   const params = await searchParams;
   const page = Math.max(1, Number(params.page ?? "1"));
 
-  const results = getNews({
+  const results = await getNews({
     search: params.q,
     type: params.type as NewsType | undefined,
   });
@@ -40,7 +40,7 @@ export default async function NewsPage({
         </Button>
       </div>
 
-      <NewsToolbar types={getNewsTypes()} />
+      <NewsToolbar types={await getNewsTypes()} />
 
       {pageItems.length === 0 ? (
         <EmptyState title="No news found" description="Try adjusting your filters or search terms." />

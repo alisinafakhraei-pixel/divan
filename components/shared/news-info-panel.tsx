@@ -39,7 +39,8 @@ export function NewsInfoPanel({
       </div>
       <Row label="Type">{item.type}</Row>
       <Row label="Date">{item.date}</Row>
-      <Row label="Submitted by">{item.submittedBy}</Row>
+      {item.auto ? <Row label="Publisher">{item.sourceName}</Row> : null}
+      <Row label={item.auto ? "Curated by" : "Submitted by"}>{item.auto ? "Divan AI" : item.submittedBy}</Row>
 
       {relatedPeople.length > 0 || relatedStartups.length > 0 ? (
         <div className="mt-4 space-y-2 border-t border-border pt-4">

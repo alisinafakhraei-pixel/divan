@@ -7,6 +7,9 @@ import { ShareButtons } from "@/components/shared/share-buttons";
 import { getRelatedNews } from "@/lib/data-access/news";
 import { getPersonBySlug } from "@/lib/data-access/people";
 import { getStartupById, getStartups } from "@/lib/data-access/startups";
+import { getPublicVouches } from "@/lib/data-access/vouches";
+import { VouchList } from "@/components/vouches/vouch-list";
+import { VouchSheet } from "@/components/vouches/vouch-sheet";
 import { ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -45,11 +48,11 @@ export default async function PersonDetailPage({
     person.knownForStartupId ? getStartupById(person.knownForStartupId) : undefined,
     getStartups().then((startups) => startups.map((s) => s.name)),
   ]);
-  const relatedNews = getRelatedNews(person.id, 3);
+  const [relatedNews, vouches] = await Promise.all([getRelatedNews(person.id, 3), getPublicVouches(person.id)]);
 
   return (
     <div className="mx-auto max-w-[1200px] space-y-8 px-4 py-12 sm:px-6">
-      <PersonProfileHeader person={person} />
+      <PersonProfileHeader person={person} vouchCount={vouches.length} />
 
       {knownForStartup ? (
         <Link
@@ -68,6 +71,22 @@ export default async function PersonDetailPage({
               About
             </h2>
             <p className="text-foreground">{person.bio}</p>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
+                Vouched by {vouches.length > 0 ? vouches.length : ""}
+              </h2>
+              <VouchSheet personId={person.id} personName={person.name} />
+            </div>
+            {vouches.length > 0 ? (
+              <VouchList vouches={vouches} />
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                No vouches yet. Know {person.name.split(" ")[0]}? Be the first to back them.
+              </p>
+            )}
           </div>
 
           {relatedNews.length > 0 ? (

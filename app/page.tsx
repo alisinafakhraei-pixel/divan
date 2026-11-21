@@ -4,6 +4,9 @@ import { WorldMap } from "@/components/insights/world-map";
 import { PersonCard } from "@/components/shared/person-card";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { StartupCard } from "@/components/shared/startup-card";
+import { NewsCard } from "@/components/shared/news-card";
+import { getVouchCounts } from "@/lib/data-access/vouches";
+import { getNews } from "@/lib/data-access/news";
 import { getSiteStats } from "@/lib/data-access/stats";
 import { getFeaturedPeople, getPeople } from "@/lib/data-access/people";
 import { getFeaturedStartups, getStartups } from "@/lib/data-access/startups";
@@ -29,13 +32,18 @@ function SectionHeader({
 }
 
 export default async function Home() {
-  const [stats, featuredPeople, featuredStartups, allPeople, allStartups] = await Promise.all([
+  const [stats, featuredPeople, featuredStartups, allPeople, allStartups, allNews, vouchCounts] = await Promise.all([
     getSiteStats(),
     getFeaturedPeople(9),
     getFeaturedStartups(6),
     getPeople(),
     getStartups(),
+    getNews(),
+    getVouchCounts(),
   ]);
+
+  const latestNews = allNews.slice(0, 4);
+  const olderNews = allNews.slice(4, 8);
 
   const heroStats = [
     { label: "Entrepreneurs", value: stats.totalEntrepreneurs },
@@ -48,11 +56,22 @@ export default async function Home() {
     <div className="mx-auto flex max-w-[1200px] flex-col gap-16 px-4 py-12 sm:px-6 sm:py-16">
       <HeroTakeover stats={heroStats} />
 
+      {latestNews.length > 0 ? (
+        <section className="space-y-6">
+          <SectionHeader bold="Latest" muted="news" href="/news" />
+          <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            {latestNews.map((item) => (
+              <NewsCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+      ) : null}
+
       <section className="space-y-6">
         <SectionHeader bold="Featured" muted="entrepreneurs" href="/entrepreneurs" />
         <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {featuredPeople.map((person) => (
-            <PersonCard key={person.id} person={person} />
+            <PersonCard key={person.id} person={person} vouchCount={vouchCounts[person.id]} />
           ))}
         </div>
       </section>
@@ -78,6 +97,17 @@ export default async function Home() {
         <SectionHeading bold="Global" muted="reach, at a glance" />
         <WorldMap people={allPeople} startups={allStartups} />
       </section>
+
+      {olderNews.length > 0 ? (
+        <section className="space-y-6">
+          <SectionHeader bold="More from" muted="the news feed" href="/news" />
+          <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+            {olderNews.map((item) => (
+              <NewsCard key={item.id} item={item} />
+            ))}
+          </div>
+        </section>
+      ) : null}
 
     </div>
   );

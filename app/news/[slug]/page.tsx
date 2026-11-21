@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { getNewsBySlug } from "@/lib/data-access/news";
 import { getPersonById } from "@/lib/data-access/people";
 import { getStartupById } from "@/lib/data-access/startups";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -15,7 +15,7 @@ export default async function NewsDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const item = getNewsBySlug(slug);
+  const item = await getNewsBySlug(slug);
   if (!item) notFound();
 
   const [relatedPeopleResults, relatedStartupsResults] = await Promise.all([
@@ -44,6 +44,12 @@ export default async function NewsDetailPage({
               TL;DR
             </h2>
             <p className="text-foreground">{item.tldr || "No summary yet — read the full piece for details."}</p>
+            {item.auto ? (
+              <p className="mt-3 flex items-start gap-1.5 text-sm text-muted-foreground">
+                <Sparkles className="mt-0.5 size-4 shrink-0 text-action-blue" />
+                Summarized automatically by Divan AI from {item.sourceName}. Read the original for the full story.
+              </p>
+            ) : null}
           </div>
 
           <Button render={<a href={item.link} target="_blank" rel="noopener noreferrer" />}>
