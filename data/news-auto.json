@@ -14,6 +14,20 @@
     "sourceName": "Smashi Business"
   },
   {
+    "id": "nw-auto-20261119-pardeh-restaurant-opens-",
+    "slug": "pardeh-restaurant-opens-in-bethnal-green-with-contemporary-persian-dining",
+    "title": "Pardeh Restaurant Opens in Bethnal Green with Contemporary Persian Dining",
+    "link": "https://www.hospitalityandcateringnews.com/2026/11/pardeh-restaurant-opens-in-bethnal-green-with-contemporary-persian-dining/",
+    "type": "News",
+    "tldr": "Entrepreneur Sahar Gilabadi opened Pardeh, a contemporary Persian restaurant and dedicated listening bar in East London's Bethnal Green. Developed in consultation with Iranian chef Yma Apa, the dining concept blends traditional Iranian recipes such as ghorme sabzi and saffron-infused dishes with classical European culinary techniques.",
+    "sourceFavicon": "",
+    "submittedBy": "Divan AI",
+    "date": "2026-11-19",
+    "relatedEntityIds": [],
+    "auto": true,
+    "sourceName": "Restaurant Online"
+  },
+  {
     "id": "nw-auto-20261118-startups-founded-by-pers",
     "slug": "startups-founded-by-persian-expats-or-persian-americans-that-raised-10m",
     "title": "Startups founded by Persian expats or Persian-Americans that raised $10M+",
@@ -28,6 +42,22 @@
     "sourceName": "Dealroom.co"
   },
   {
+    "id": "nw-auto-20261116-zoox-robotaxis-are-now-o",
+    "slug": "zoox-robotaxis-are-now-on-the-uber-app-in-las-vegas",
+    "title": "Zoox robotaxis are now on the Uber app in Las Vegas",
+    "link": "https://techcrunch.com/2026/11/16/zoox-robotaxis-are-now-on-the-uber-app-in-las-vegas/",
+    "type": "News",
+    "tldr": "Uber, led by Iranian-born CEO Dara Khosrowshahi, launched commercial ride matching with Amazon-owned Zoox robotaxis in Las Vegas, marking the first time Zoox has opened its fleet to a third-party app. Khosrowshahi stated that Las Vegas has become the first city offering two driverless fleets on Uber's platform, previewing plans to eventually introduce a dedicated autonomous dispatch option.",
+    "sourceFavicon": "",
+    "submittedBy": "Divan AI",
+    "date": "2026-11-16",
+    "relatedEntityIds": [
+      "pp-01"
+    ],
+    "auto": true,
+    "sourceName": "TechCrunch"
+  },
+  {
     "id": "nw-auto-20261115-nexscale-founder-dr-sood",
     "slug": "nexscale-founder-dr-soodeh-farokhi-delivers-industry-address-on-ai-retention-sys",
     "title": "NexScale Founder Dr. Soodeh Farokhi Delivers Industry Address on AI Retention Systems",
@@ -40,6 +70,22 @@
     "relatedEntityIds": [],
     "auto": true,
     "sourceName": "NexScale"
+  },
+  {
+    "id": "nw-auto-20261113-who-is-saber-kordestanch",
+    "slug": "who-is-saber-kordestanchi-the-hostaway-co-founder-who-became-finland-s-third-hig",
+    "title": "Who is Saber Kordestanchi? The Hostaway co-founder who became Finland's third-highest earner",
+    "link": "https://newfinland.fi/saber-kordestanchi-co-founder-of-hostaway-an-iranian-immigrant-ranks-among-finlands-top-taxpayers/",
+    "type": "Article",
+    "tldr": "Official Finnish tax data revealed that Iranian-born entrepreneur and Hostaway co-founder Saber Kordestanchi ranked third among Finland's highest earners with €42.5 million in taxable income. The vast majority of his earnings came from capital gains through secondary share sales to private equity investors following the vacation rental platform's rise to unicorn status.",
+    "sourceFavicon": "",
+    "submittedBy": "Divan AI",
+    "date": "2026-11-13",
+    "relatedEntityIds": [
+      "st-18"
+    ],
+    "auto": true,
+    "sourceName": "SiltaNova"
   },
   {
     "id": "nw-auto-20261112-ex-anthropic-researchers",
