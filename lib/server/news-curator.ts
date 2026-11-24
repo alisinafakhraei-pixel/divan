@@ -293,7 +293,7 @@ async function verifyArticle(
   sourceUrl: string,
   title: string,
   groundedUrls: string[]
-): Promise<{ ok: true; finalUrl: string; image?: string } | { ok: false; reason: string }> {
+): Promise<{ ok: true; finalUrl: string; image?: string; mentionsIran: boolean } | { ok: false; reason: string }> {
   let firstFailure = "source link did not load";
   for (const url of [sourceUrl, ...groundedUrls.filter((u) => u !== sourceUrl)]) {
     const page = await fetchArticle(url);
@@ -303,7 +303,7 @@ async function verifyArticle(
     }
     const match = matchesHeadline(page.pageText, title);
     if (match === "generic") return { ok: false, reason: "headline too generic to verify" };
-    if (match) return { ok: true, finalUrl: page.finalUrl, image: page.image };
+    if (match) return { ok: true, finalUrl: page.finalUrl, image: page.image, mentionsIran: /\b(iran|iranian|iranians|persian)\b/.test(page.pageText) };
     if (url === sourceUrl) firstFailure = "article does not match the headline";
   }
   return { ok: false, reason: firstFailure };
@@ -366,6 +366,12 @@ export async function curateNews(existing: NewsItem[], now = new Date()): Promis
     const check = await verifyArticle(sourceUrl, title, groundedUrls);
     if (!check.ok) {
       reject(check.reason);
+      continue;
+    }
+
+    // A story can match its own headline and still be off-topic (e.g. a robotaxi launch). The article itself must mention Iran or Persian.
+    if (!check.mentionsIran) {
+      reject("article never mentions Iran or Persian");
       continue;
     }
 

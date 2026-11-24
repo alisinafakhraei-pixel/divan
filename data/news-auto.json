@@ -44,22 +44,6 @@
     "image": "https://dealroom.co/images/dealroom-og-image.png"
   },
   {
-    "id": "nw-auto-20261116-zoox-robotaxis-are-now-o",
-    "slug": "zoox-robotaxis-are-now-on-the-uber-app-in-las-vegas",
-    "title": "Zoox robotaxis are now on the Uber app in Las Vegas",
-    "link": "https://techcrunch.com/2026/11/16/zoox-robotaxis-are-now-on-the-uber-app-in-las-vegas/",
-    "type": "News",
-    "tldr": "Uber, led by Iranian-born CEO Dara Khosrowshahi, launched commercial ride matching with Amazon-owned Zoox robotaxis in Las Vegas, marking the first time Zoox has opened its fleet to a third-party app. Khosrowshahi stated that Las Vegas has become the first city offering two driverless fleets on Uber's platform, previewing plans to eventually introduce a dedicated autonomous dispatch option.",
-    "sourceFavicon": "",
-    "submittedBy": "Divan AI",
-    "date": "2026-11-16",
-    "relatedEntityIds": [
-      "pp-01"
-    ],
-    "auto": true,
-    "sourceName": "TechCrunch"
-  },
-  {
     "id": "nw-auto-20261115-nexscale-founder-dr-sood",
     "slug": "nexscale-founder-dr-soodeh-farokhi-delivers-industry-address-on-ai-retention-sys",
     "title": "NexScale Founder Dr. Soodeh Farokhi Delivers Industry Address on AI Retention Systems",
@@ -80,7 +64,7 @@
     "title": "Saber Kordestanchi Ranks as Finland's Third-Highest Earner Following Hostaway Growth",
     "link": "https://siltanova.com/saber-kordestanchi-hostaway/",
     "type": "News",
-    "tldr": "Iranian-born Hostaway co-founder Saber Kordestanchi ranked third on Finland's national income tax records after earning €42.5 million. The majority of his taxable earnings stemmed from selling equity in the vacation rental management software unicorn to private equity investors.",
+    "tldr": "Iranian-born Hostaway co-founder Saber Kordestanchi ranked third on Finland's national income tax records after earning \u20ac42.5 million. The majority of his taxable earnings stemmed from selling equity in the vacation rental management software unicorn to private equity investors.",
     "sourceFavicon": "",
     "submittedBy": "Divan AI",
     "date": "2026-11-14",
@@ -97,7 +81,7 @@
     "title": "Who is Saber Kordestanchi? The Hostaway co-founder who became Finland's third-highest earner",
     "link": "https://newfinland.fi/saber-kordestanchi-co-founder-of-hostaway-an-iranian-immigrant-ranks-among-finlands-top-taxpayers/",
     "type": "Article",
-    "tldr": "Official Finnish tax data revealed that Iranian-born entrepreneur and Hostaway co-founder Saber Kordestanchi ranked third among Finland's highest earners with €42.5 million in taxable income. The vast majority of his earnings came from capital gains through secondary share sales to private equity investors following the vacation rental platform's rise to unicorn status.",
+    "tldr": "Official Finnish tax data revealed that Iranian-born entrepreneur and Hostaway co-founder Saber Kordestanchi ranked third among Finland's highest earners with \u20ac42.5 million in taxable income. The vast majority of his earnings came from capital gains through secondary share sales to private equity investors following the vacation rental platform's rise to unicorn status.",
     "sourceFavicon": "",
     "submittedBy": "Divan AI",
     "date": "2026-11-13",
