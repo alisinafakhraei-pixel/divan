@@ -17,7 +17,7 @@ export function StartupCard({ startup }: { startup: Startup }) {
         {startup.valuation ? <ValuationBadge tier={startup.valuationTier} /> : null}
         <Badge variant="secondary">{startup.industries[0]}</Badge>
       </div>
-      <p className="mt-3 text-xs text-muted-foreground">{startup.teamSize} team members</p>
+      {startup.teamSize > 0 ? <p className="mt-3 text-xs text-muted-foreground">{startup.teamSize} team members</p> : null}
     </CardShell>
   );
 }

@@ -1,6 +1,7 @@
 import { SuggestEditSheet } from "@/components/contribute/suggest-edit-sheet";
 import { getStartupFields, startupToFieldValues } from "@/components/contribute/suggest-form-fields";
 import { FounderLinks } from "@/components/shared/founder-links";
+import { AutoAddedNote } from "@/components/shared/auto-added-note";
 import { NewsCard } from "@/components/shared/news-card";
 import { ShareButtons } from "@/components/shared/share-buttons";
 import { StartupInfoPanel } from "@/components/shared/startup-info-panel";
@@ -57,6 +58,8 @@ export default async function StartupDetailPage({
             </h2>
             <p className="text-foreground">{startup.notes}</p>
           </div>
+
+          {startup.auto ? <AutoAddedNote sourceName={startup.sourceName} sourceUrl={startup.sourceUrl} /> : null}
 
           <FounderLinks founderIds={startup.founderIds} />
 

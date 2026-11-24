@@ -1,0 +1,53 @@
+[
+  {
+    "id": "pp-auto-001",
+    "slug": "yasmin-razavi",
+    "name": "Yasmin Razavi",
+    "picture": "",
+    "knownFor": "Spark Capital",
+    "title": "General Partner",
+    "previousCompanies": [],
+    "segment": "VC",
+    "country": "United States",
+    "bio": "Yasmin Razavi is a venture capitalist and General Partner at Spark Capital who led an early investment in Anthropic. She studied in Canada before developing her career in Silicon Valley.",
+    "additionalInfo": [
+      {
+        "label": "Source: Smashi Business",
+        "url": "https://business.smashi.tv/p/anthropic-s-iranian-investor-gta-6-s-gulf-business-tim-hortons-and-israel"
+      }
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-11-24",
+    "viewCount": 0,
+    "addedAt": "2026-11-24",
+    "auto": true,
+    "sourceName": "Smashi Business",
+    "sourceUrl": "https://business.smashi.tv/p/anthropic-s-iranian-investor-gta-6-s-gulf-business-tim-hortons-and-israel"
+  },
+  {
+    "id": "pp-auto-002",
+    "slug": "saber-kordestanchi",
+    "name": "Saber Kordestanchi",
+    "picture": "",
+    "knownFor": "Hostaway",
+    "knownForStartupId": "st-18",
+    "title": "Co-founder and Chief Strategy Officer",
+    "previousCompanies": [],
+    "segment": "VC",
+    "country": "Finland",
+    "bio": "Saber Kordestanchi is a software entrepreneur who co-founded Hostaway after studying telecommunications engineering at Aalto University. He also invests in companies founded by immigrants through the non-profit Startup Refugees.",
+    "additionalInfo": [
+      {
+        "label": "Source: SiltaNova",
+        "url": "https://siltanova.com/saber-kordestanchi-hostaway/"
+      }
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-11-24",
+    "viewCount": 0,
+    "addedAt": "2026-11-24",
+    "auto": true,
+    "sourceName": "SiltaNova",
+    "sourceUrl": "https://siltanova.com/saber-kordestanchi-hostaway/"
+  }
+]

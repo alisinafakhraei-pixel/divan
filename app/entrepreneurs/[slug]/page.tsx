@@ -1,5 +1,6 @@
 import { SuggestEditSheet } from "@/components/contribute/suggest-edit-sheet";
 import { getPersonFields, personToFieldValues } from "@/components/contribute/suggest-form-fields";
+import { AutoAddedNote } from "@/components/shared/auto-added-note";
 import { NewsCard } from "@/components/shared/news-card";
 import { PersonInfoPanel } from "@/components/shared/person-info-panel";
 import { PersonProfileHeader } from "@/components/shared/person-profile-header";
@@ -75,6 +76,8 @@ export default async function PersonDetailPage({
             </h2>
             <p className="text-foreground">{person.bio}</p>
           </div>
+
+          {person.auto ? <AutoAddedNote sourceName={person.sourceName} sourceUrl={person.sourceUrl} /> : null}
 
           <div className="space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-3">

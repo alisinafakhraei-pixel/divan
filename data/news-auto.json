@@ -11,7 +11,8 @@
     "date": "2026-11-20",
     "relatedEntityIds": [],
     "auto": true,
-    "sourceName": "Smashi Business"
+    "sourceName": "Smashi Business",
+    "image": "https://beehiiv-images-production.s3.amazonaws.com/uploads/publication/logo/d3d4bc5e-6f86-43c6-8568-edfafef7f2c7/Smashi_Vertical_Business_Logo_1x1.png"
   },
   {
     "id": "nw-auto-20261119-pardeh-restaurant-opens-",
@@ -39,7 +40,8 @@
     "date": "2026-11-18",
     "relatedEntityIds": [],
     "auto": true,
-    "sourceName": "Dealroom.co"
+    "sourceName": "Dealroom.co",
+    "image": "https://dealroom.co/images/dealroom-og-image.png"
   },
   {
     "id": "nw-auto-20261116-zoox-robotaxis-are-now-o",
@@ -69,7 +71,25 @@
     "date": "2026-11-15",
     "relatedEntityIds": [],
     "auto": true,
-    "sourceName": "NexScale"
+    "sourceName": "NexScale",
+    "image": "https://framerusercontent.com/assets/Ysnc5Lio9H1hihy8H70Yt43CncM.jpg"
+  },
+  {
+    "id": "nw-auto-20261114-saber-kordestanchi-ranks",
+    "slug": "saber-kordestanchi-ranks-as-finland-s-third-highest-earner-following-hostaway-gr",
+    "title": "Saber Kordestanchi Ranks as Finland's Third-Highest Earner Following Hostaway Growth",
+    "link": "https://siltanova.com/saber-kordestanchi-hostaway/",
+    "type": "News",
+    "tldr": "Iranian-born Hostaway co-founder Saber Kordestanchi ranked third on Finland's national income tax records after earning €42.5 million. The majority of his taxable earnings stemmed from selling equity in the vacation rental management software unicorn to private equity investors.",
+    "sourceFavicon": "",
+    "submittedBy": "Divan AI",
+    "date": "2026-11-14",
+    "relatedEntityIds": [
+      "st-18"
+    ],
+    "auto": true,
+    "sourceName": "SiltaNova",
+    "image": "https://siltanova.com/og/saber-kordestanchi-hostaway.png"
   },
   {
     "id": "nw-auto-20261113-who-is-saber-kordestanch",
@@ -99,7 +119,8 @@
     "date": "2026-11-12",
     "relatedEntityIds": [],
     "auto": true,
-    "sourceName": "Dealroom.co"
+    "sourceName": "Dealroom.co",
+    "image": "https://dealroom.co/og-images/dealroom-home-v2.png"
   },
   {
     "id": "nw-auto-20261109-an-iranian-refugee-arriv",
@@ -115,6 +136,7 @@
       "pp-43"
     ],
     "auto": true,
-    "sourceName": "9NEWS"
+    "sourceName": "9NEWS",
+    "image": "https://talking.business/wp-content/uploads/2026/11/entrepreneur-scaled.jpeg"
   }
 ]

@@ -1,11 +1,15 @@
 import { CardShell } from "@/components/shared/card-shell";
+import { Thumb } from "@/components/shared/thumb";
 import { Badge } from "@/components/ui/badge";
 import type { NewsItem } from "@/lib/types";
 import { Sparkles } from "lucide-react";
 
 export function NewsCard({ item }: { item: NewsItem }) {
   return (
-    <CardShell href={`/news/${item.slug}`}>
+    <CardShell href={`/news/${item.slug}`} className="overflow-hidden">
+      <div className="relative -mx-4 -mt-4 mb-3 aspect-[16/9] overflow-hidden bg-muted sm:-mx-5 sm:-mt-5">
+        <Thumb src={item.image} />
+      </div>
       <div className="flex items-center justify-between gap-2">
         <Badge variant="secondary">{item.type}</Badge>
         <span className="text-xs text-muted-foreground">{item.date}</span>

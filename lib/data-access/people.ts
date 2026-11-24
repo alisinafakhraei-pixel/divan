@@ -84,7 +84,7 @@ export async function getPeopleIndustries(): Promise<string[]> {
 
 export async function addPerson(person: Person): Promise<void> {
   const people = await readPeople();
-  people.push(person);
+  people.push({ ...person, addedAt: person.addedAt ?? todayString() });
   await writePeople(people, `Add person: ${person.name}`);
 }
 

@@ -83,3 +83,7 @@ export async function getRecentVouches(limit = 6): Promise<Vouch[]> {
     .sort((a, b) => (a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : b.id.localeCompare(a.id)))
     .slice(0, limit);
 }
+
+export async function getAllPublicVouches(): Promise<Vouch[]> {
+  return (await all()).filter((v) => v.status === "public");
+}

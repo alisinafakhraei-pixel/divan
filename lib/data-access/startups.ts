@@ -104,7 +104,7 @@ export async function getStartupCompanyTypes(): Promise<CompanyType[]> {
 
 export async function addStartup(startup: Startup): Promise<void> {
   const startups = await readStartups();
-  startups.push(startup);
+  startups.push({ ...startup, addedAt: startup.addedAt ?? todayString() });
   await writeStartups(startups, `Add startup: ${startup.name}`);
 }
 

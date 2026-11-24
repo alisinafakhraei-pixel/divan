@@ -66,6 +66,13 @@ export interface Person {
   status: EntityStatus;
   lastUpdatedAt: string;
   viewCount: number;
+  /** Day (YYYY-MM-DD) this profile first appeared — feeds the homepage "What's new" timeline. */
+  addedAt?: string;
+  /** True when the Divan AI added this profile from a verified news article (not submitted by a person). */
+  auto?: boolean;
+  /** The article an auto-added profile came from. */
+  sourceName?: string;
+  sourceUrl?: string;
 }
 
 export interface Startup {
@@ -91,6 +98,12 @@ export interface Startup {
   founderIds: string[];
   status: EntityStatus;
   lastUpdatedAt: string;
+  /** See Person.addedAt. */
+  addedAt?: string;
+  /** See Person.auto. */
+  auto?: boolean;
+  sourceName?: string;
+  sourceUrl?: string;
 }
 
 export interface NewsItem {
@@ -108,6 +121,8 @@ export interface NewsItem {
   auto?: boolean;
   /** Publisher name for auto-curated stories, e.g. "TechCrunch". */
   sourceName?: string;
+  /** The article's own preview image (its og:image), shown as a thumbnail with a link back to the source. */
+  image?: string;
 }
 
 export const VOUCH_RELATIONSHIPS = [

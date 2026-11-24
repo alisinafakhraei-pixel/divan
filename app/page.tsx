@@ -1,3 +1,4 @@
+import { WhatsNew } from "@/components/home/whats-new";
 import { HeroTakeover } from "@/components/home/hero-takeover";
 import { CTABanner } from "@/components/shared/cta-banner";
 import { WorldMap } from "@/components/insights/world-map";
@@ -42,8 +43,7 @@ export default async function Home() {
     getVouchCounts(),
   ]);
 
-  const latestNews = allNews.slice(0, 4);
-  const olderNews = allNews.slice(4, 8);
+  const olderNews = allNews.slice(0, 4);
 
   const heroStats = [
     { label: "Entrepreneurs", value: stats.totalEntrepreneurs },
@@ -56,16 +56,7 @@ export default async function Home() {
     <div className="mx-auto flex max-w-[1200px] flex-col gap-16 px-4 py-12 sm:px-6 sm:py-16">
       <HeroTakeover stats={heroStats} />
 
-      {latestNews.length > 0 ? (
-        <section className="space-y-6">
-          <SectionHeader bold="Latest" muted="news" href="/news" />
-          <div className="stagger-fade grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-            {latestNews.map((item) => (
-              <NewsCard key={item.id} item={item} />
-            ))}
-          </div>
-        </section>
-      ) : null}
+      <WhatsNew />
 
       <section className="space-y-6">
         <SectionHeader bold="Featured" muted="entrepreneurs" href="/entrepreneurs" />

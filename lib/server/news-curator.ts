@@ -223,14 +223,31 @@ function stripHtml(html: string): string {
     .replace(/<[^>]+>/g, " ")
     .replace(/&amp;/g, "&")
     .replace(/&#?\w+;/g, " ")
-    .toLowerCase();
+    .replace(/\s+/g, " ");
 }
 
-type Fetched = { ok: true; finalUrl: string; pageText: string } | { ok: false; reason: string };
+type Fetched = { ok: true; finalUrl: string; pageText: string; rawText: string; image?: string } | { ok: false; reason: string };
 const fetchCache = new Map<string, Promise<Fetched>>();
 
+/** The article's own preview image (og:image / twitter:image), as an absolute https URL. */
+function findPreviewImage(html: string, pageUrl: string): string | undefined {
+  const tags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  for (const tag of tags) {
+    if (!/(property|name)=["'](og:image(:secure_url)?|twitter:image)["']/i.test(tag)) continue;
+    const content = tag.match(/content=["']([^"']+)["']/i)?.[1];
+    if (!content) continue;
+    try {
+      const url = new URL(content.replace(/&amp;/g, "&"), pageUrl);
+      if (url.protocol === "https:") return url.toString();
+    } catch {
+      // try the next tag
+    }
+  }
+  return undefined;
+}
+
 /** Opens a link and returns the live page's text (cached, so a grounded page checked for one story isn't re-fetched). */
-function fetchArticle(sourceUrl: string): Promise<Fetched> {
+export function fetchArticle(sourceUrl: string): Promise<Fetched> {
   const cached = fetchCache.get(sourceUrl);
   if (cached) return cached;
   const job = (async (): Promise<Fetched> => {
@@ -248,7 +265,9 @@ function fetchArticle(sourceUrl: string): Promise<Fetched> {
     if (!res.ok) return { ok: false, reason: `source link returned ${res.status}` };
     if (new URL(res.url).hostname.endsWith("google.com")) return { ok: false, reason: "link never resolved to a publisher" };
     if (!(res.headers.get("content-type") ?? "").includes("html")) return { ok: false, reason: "source is not a web page" };
-    return { ok: true, finalUrl: cleanUrl(res.url), pageText: stripHtml((await res.text()).slice(0, 600_000)) };
+    const html = (await res.text()).slice(0, 600_000);
+    const rawText = stripHtml(html);
+    return { ok: true, finalUrl: cleanUrl(res.url), pageText: rawText.toLowerCase(), rawText, image: findPreviewImage(html, res.url) };
   })();
   fetchCache.set(sourceUrl, job);
   return job;
@@ -274,7 +293,7 @@ async function verifyArticle(
   sourceUrl: string,
   title: string,
   groundedUrls: string[]
-): Promise<{ ok: true; finalUrl: string } | { ok: false; reason: string }> {
+): Promise<{ ok: true; finalUrl: string; image?: string } | { ok: false; reason: string }> {
   let firstFailure = "source link did not load";
   for (const url of [sourceUrl, ...groundedUrls.filter((u) => u !== sourceUrl)]) {
     const page = await fetchArticle(url);
@@ -284,7 +303,7 @@ async function verifyArticle(
     }
     const match = matchesHeadline(page.pageText, title);
     if (match === "generic") return { ok: false, reason: "headline too generic to verify" };
-    if (match) return { ok: true, finalUrl: page.finalUrl };
+    if (match) return { ok: true, finalUrl: page.finalUrl, image: page.image };
     if (url === sourceUrl) firstFailure = "article does not match the headline";
   }
   return { ok: false, reason: firstFailure };
@@ -383,6 +402,7 @@ export async function curateNews(existing: NewsItem[], now = new Date()): Promis
       relatedEntityIds: mentionedIds(`${title} ${summary}`, entities),
       auto: true,
       sourceName: sourceName || new URL(check.finalUrl).hostname.replace(/^www\./, ""),
+      image: check.image,
     };
 
     added.push(item);
