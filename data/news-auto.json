@@ -1,5 +1,20 @@
 [
   {
+    "id": "nw-auto-20261122-no-more-robot-voice-the-",
+    "slug": "no-more-robot-voice-the-australian-startup-giving-people-their-old-voices-back",
+    "title": "No More Robot Voice: The Australian Startup Giving People Their Old Voices Back",
+    "link": "https://www.forbes.com.au/covers/entrepreneurs/laronix-delivers-world-first-bionic-voice/",
+    "type": "Article",
+    "tldr": "Australian medtech startup Laronix, co-founded by Iranian-Australian siblings Dr. Fary Ahmadi and Dr. Mousa Ahmadi, has developed an AI platform capable of reconstructing a patient's natural voice using as little as 10 seconds of pre-existing audio. The technology has already restored individualized speech to 350 patients who lost their vocal cords to disease or surgical removal.",
+    "sourceFavicon": "",
+    "submittedBy": "Divan AI",
+    "date": "2026-11-22",
+    "relatedEntityIds": [],
+    "auto": true,
+    "sourceName": "Forbes Australia",
+    "image": "https://www.forbes.com.au/wp-content/uploads/2026/11/2_40c806-e1795386445143.png"
+  },
+  {
     "id": "nw-auto-20261120-iranian-born-investor-ya",
     "slug": "iranian-born-investor-yasmin-razavi-secures-multi-billion-dollar-windfall-in-ant",
     "title": "Iranian-Born Investor Yasmin Razavi Secures Multi-Billion-Dollar Windfall in Anthropic IPO",
@@ -64,7 +79,7 @@
     "title": "Saber Kordestanchi Ranks as Finland's Third-Highest Earner Following Hostaway Growth",
     "link": "https://siltanova.com/saber-kordestanchi-hostaway/",
     "type": "News",
-    "tldr": "Iranian-born Hostaway co-founder Saber Kordestanchi ranked third on Finland's national income tax records after earning \u20ac42.5 million. The majority of his taxable earnings stemmed from selling equity in the vacation rental management software unicorn to private equity investors.",
+    "tldr": "Iranian-born Hostaway co-founder Saber Kordestanchi ranked third on Finland's national income tax records after earning €42.5 million. The majority of his taxable earnings stemmed from selling equity in the vacation rental management software unicorn to private equity investors.",
     "sourceFavicon": "",
     "submittedBy": "Divan AI",
     "date": "2026-11-14",
@@ -81,7 +96,7 @@
     "title": "Who is Saber Kordestanchi? The Hostaway co-founder who became Finland's third-highest earner",
     "link": "https://newfinland.fi/saber-kordestanchi-co-founder-of-hostaway-an-iranian-immigrant-ranks-among-finlands-top-taxpayers/",
     "type": "Article",
-    "tldr": "Official Finnish tax data revealed that Iranian-born entrepreneur and Hostaway co-founder Saber Kordestanchi ranked third among Finland's highest earners with \u20ac42.5 million in taxable income. The vast majority of his earnings came from capital gains through secondary share sales to private equity investors following the vacation rental platform's rise to unicorn status.",
+    "tldr": "Official Finnish tax data revealed that Iranian-born entrepreneur and Hostaway co-founder Saber Kordestanchi ranked third among Finland's highest earners with €42.5 million in taxable income. The vast majority of his earnings came from capital gains through secondary share sales to private equity investors following the vacation rental platform's rise to unicorn status.",
     "sourceFavicon": "",
     "submittedBy": "Divan AI",
     "date": "2026-11-13",
