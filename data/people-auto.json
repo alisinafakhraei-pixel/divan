@@ -49,5 +49,31 @@
     "auto": true,
     "sourceName": "SiltaNova",
     "sourceUrl": "https://siltanova.com/saber-kordestanchi-hostaway/"
+  },
+  {
+    "id": "pp-auto-003",
+    "slug": "sanaz-yashar",
+    "name": "Sanaz Yashar",
+    "picture": "",
+    "knownFor": "Zafran Security",
+    "knownForStartupId": "st-auto-001",
+    "title": "Co-Founder and CEO",
+    "previousCompanies": [],
+    "segment": "Emerging Startups",
+    "country": "Israel",
+    "bio": "Sanaz Yashar is the co-founder and CEO of Zafran Security. She previously spent 15 years in the Israel Defense Forces' Unit 8200 leading cyber and intelligence operations.",
+    "additionalInfo": [
+      {
+        "label": "Source: How I Invest with David Weisburd",
+        "url": "https://podcasts.apple.com/de/podcast/e458-sanaz-yashar-ai-agents-gone-rogue-the-next/id1697772657?i=1000803130021&l=en-GB"
+      }
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-11-26",
+    "viewCount": 0,
+    "addedAt": "2026-11-26",
+    "auto": true,
+    "sourceName": "How I Invest with David Weisburd",
+    "sourceUrl": "https://podcasts.apple.com/de/podcast/e458-sanaz-yashar-ai-agents-gone-rogue-the-next/id1697772657?i=1000803130021&l=en-GB"
   }
 ]
