@@ -1,1 +1,33 @@
-[]
+[
+  {
+    "id": "st-auto-001",
+    "slug": "zafran-security",
+    "name": "Zafran Security",
+    "logo": "",
+    "tagline": "Zafran Security develops AI-powered solutions to identify, prioritize, and prevent cyber threats.",
+    "teamSize": 0,
+    "website": "",
+    "fundingRound": "Unknown",
+    "valuationTier": "Under $10M",
+    "mainCategory": "Cybersecurity",
+    "industries": [
+      "Cybersecurity"
+    ],
+    "businessModel": "B2B / B2C",
+    "hqCountry": "Unknown",
+    "hqRegion": "Unknown",
+    "operatingStatus": "Active",
+    "companyType": "Startup",
+    "foundedYear": 0,
+    "notes": "Added automatically from How I Invest with David Weisburd.",
+    "founderIds": [
+      "pp-auto-003"
+    ],
+    "status": "public",
+    "lastUpdatedAt": "2026-11-26",
+    "addedAt": "2026-11-26",
+    "auto": true,
+    "sourceName": "How I Invest with David Weisburd",
+    "sourceUrl": "https://podcasts.apple.com/de/podcast/e458-sanaz-yashar-ai-agents-gone-rogue-the-next/id1697772657?i=1000803130021&l=en-GB"
+  }
+]
