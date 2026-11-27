@@ -15,6 +15,21 @@
     "image": "https://www.forbes.com.au/wp-content/uploads/2026/11/2_40c806-e1795386445143.png"
   },
   {
+    "id": "nw-auto-20261120-e458-sanaz-yashar-ai-age",
+    "slug": "e458-sanaz-yashar-ai-agents-gone-rogue-the-next-cybersecurity-crisis-and-the-ai",
+    "title": "E458: Sanaz Yashar: AI Agents Gone Rogue, the Next Cybersecurity Crisis, and the AI Arms Race",
+    "link": "https://podcasts.apple.com/de/podcast/e458-sanaz-yashar-ai-agents-gone-rogue-the-next/id1697772657?i=1000803130021&l=en-GB",
+    "type": "Article",
+    "tldr": "Zafran Security co-founder and CEO Sanaz Yashar joined the How I Invest podcast to examine how autonomous AI agents and automated threats are reshaping modern enterprise defense. She detailed how Zafran's risk platform coordinates existing tools to preemptively neutralize exploitable vulnerabilities.",
+    "sourceFavicon": "",
+    "submittedBy": "Divan AI",
+    "date": "2026-11-20",
+    "relatedEntityIds": [],
+    "auto": true,
+    "sourceName": "How I Invest with David Weisburd",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/8f/ce/9d/8fce9da4-a5de-5e02-6448-d0f0af634dd7/mza_11281027486830236746.jpg/1200x1200ECA.PESS01-60.jpg?imgShow=Podcasts221/v4/0f/82/10/0f82101c-dbcd-7ac8-137d-cc65a7a6f199/mza_3089583403479088250.jpg"
+  },
+  {
     "id": "nw-auto-20261120-iranian-born-investor-ya",
     "slug": "iranian-born-investor-yasmin-razavi-secures-multi-billion-dollar-windfall-in-ant",
     "title": "Iranian-Born Investor Yasmin Razavi Secures Multi-Billion-Dollar Windfall in Anthropic IPO",
@@ -30,19 +45,22 @@
     "image": "https://beehiiv-images-production.s3.amazonaws.com/uploads/publication/logo/d3d4bc5e-6f86-43c6-8568-edfafef7f2c7/Smashi_Vertical_Business_Logo_1x1.png"
   },
   {
-    "id": "nw-auto-20261120-e458-sanaz-yashar-ai-age",
-    "slug": "e458-sanaz-yashar-ai-agents-gone-rogue-the-next-cybersecurity-crisis-and-the-ai",
-    "title": "E458: Sanaz Yashar: AI Agents Gone Rogue, the Next Cybersecurity Crisis, and the AI Arms Race",
-    "link": "https://podcasts.apple.com/de/podcast/e458-sanaz-yashar-ai-agents-gone-rogue-the-next/id1697772657?i=1000803130021&l=en-GB",
+    "id": "nw-auto-20261120-how-formaloo-supports-ha",
+    "slug": "how-formaloo-supports-hackathons-student-builders-and-early-stage-founders",
+    "title": "How Formaloo supports hackathons, student builders, and early-stage founders",
+    "link": "https://www.formaloo.com/blog/formaloo-hackathons-startups-founders",
     "type": "Article",
-    "tldr": "Zafran Security co-founder and CEO Sanaz Yashar joined the How I Invest podcast to examine how autonomous AI agents and automated threats are reshaping modern enterprise defense. She detailed how Zafran's risk platform coordinates existing tools to preemptively neutralize exploitable vulnerabilities.",
+    "tldr": "Formaloo co-founder and CEO Farokh Shahabi outlined how the no-code platform supports early-stage founders and grassroots developer programs worldwide. The piece details Formaloo's partnerships and mentorship initiatives, including its active support for the Iranian diaspora community Divan.",
     "sourceFavicon": "",
     "submittedBy": "Divan AI",
     "date": "2026-11-20",
-    "relatedEntityIds": [],
+    "relatedEntityIds": [
+      "pp-62",
+      "st-19"
+    ],
     "auto": true,
-    "sourceName": "How I Invest with David Weisburd",
-    "image": "https://is1-ssl.mzstatic.com/image/thumb/Podcasts221/v4/8f/ce/9d/8fce9da4-a5de-5e02-6448-d0f0af634dd7/mza_11281027486830236746.jpg/1200x1200ECA.PESS01-60.jpg?imgShow=Podcasts221/v4/0f/82/10/0f82101c-dbcd-7ac8-137d-cc65a7a6f199/mza_3089583403479088250.jpg"
+    "sourceName": "Formaloo",
+    "image": "https://cdn.prod.website-files.com/6584d3c7e9c648618ca2ec43/6aec531731c389cd86d5106a_Hero%201600%C3%97900%401x.png"
   },
   {
     "id": "nw-auto-20261119-pardeh-restaurant-opens-",
