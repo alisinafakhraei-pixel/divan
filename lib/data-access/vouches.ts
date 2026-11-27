@@ -1,22 +1,28 @@
 import { readCollection, writeCollection } from "@/lib/server/collection-store";
+import { VOUCHES_ENABLED } from "@/lib/features";
 import type { Vouch } from "@/lib/types";
 
 const FILE = "data/vouches.json";
 
+/** While vouching is switched off (see lib/features.ts), every public read sees no vouches. Admin reads (pending) are unaffected. */
 async function all(): Promise<Vouch[]> {
   return readCollection<Vouch>(FILE);
 }
 
+async function allPublicSide(): Promise<Vouch[]> {
+  return VOUCHES_ENABLED ? all() : [];
+}
+
 /** Newest first. */
 export async function getPublicVouches(personId: string): Promise<Vouch[]> {
-  return (await all())
+  return (await allPublicSide())
     .filter((v) => v.personId === personId && v.status === "public")
     .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
 }
 
 export async function getVouchCounts(): Promise<Record<string, number>> {
   const counts: Record<string, number> = {};
-  for (const v of await all()) {
+  for (const v of await allPublicSide()) {
     if (v.status === "public") counts[v.personId] = (counts[v.personId] ?? 0) + 1;
   }
   return counts;
@@ -60,7 +66,7 @@ export interface VoucherStanding {
 
 /** Rankings built from public vouches only: who is vouched for most, and who vouches most. */
 export async function getLeaderboards(limit = 10): Promise<{ mostVouched: PersonStanding[]; topVouchers: VoucherStanding[]; total: number }> {
-  const vouches = (await all()).filter((v) => v.status === "public");
+  const vouches = (await allPublicSide()).filter((v) => v.status === "public");
 
   const received = new Map<string, number>();
   const given = new Map<string, VoucherStanding>();
@@ -78,12 +84,12 @@ export async function getLeaderboards(limit = 10): Promise<{ mostVouched: Person
 }
 
 export async function getRecentVouches(limit = 6): Promise<Vouch[]> {
-  return (await all())
+  return (await allPublicSide())
     .filter((v) => v.status === "public")
     .sort((a, b) => (a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : b.id.localeCompare(a.id)))
     .slice(0, limit);
 }
 
 export async function getAllPublicVouches(): Promise<Vouch[]> {
-  return (await all()).filter((v) => v.status === "public");
+  return (await allPublicSide()).filter((v) => v.status === "public");
 }

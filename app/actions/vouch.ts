@@ -1,5 +1,6 @@
 "use server";
 
+import { VOUCHES_ENABLED } from "@/lib/features";
 import { getPersonById } from "@/lib/data-access/people";
 import { addVouch, findDuplicateVouch, setVouchStatus } from "@/lib/data-access/vouches";
 import { moderateVouch } from "@/lib/server/vouch-moderator";
@@ -44,6 +45,8 @@ function normalizeLinkedIn(raw: string): string | null {
 const clean = (v: FormDataEntryValue | null): string => (typeof v === "string" ? v.trim().replace(/\s+/g, " ") : "");
 
 export async function submitVouch(_prev: VouchState, formData: FormData): Promise<VouchState> {
+  if (!VOUCHES_ENABLED) return { status: "error", message: "Vouching is paused for now." };
+
   // Honeypot: real visitors never see or fill this field.
   if (clean(formData.get("website"))) return { status: "published", message: "Thanks — your vouch is live." };
 

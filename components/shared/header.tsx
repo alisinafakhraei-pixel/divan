@@ -21,7 +21,6 @@ const primaryLinks = [
   { label: "Ecosystem map", href: "/ecosystem-map" },
   { label: "Events", href: "/events" },
   { label: "News", href: "/news" },
-  { label: "Vouch", href: "/vouch" },
   { label: "Volunteers", href: "/volunteers" },
   { label: "Contribute", href: "/contribute" },
   { label: "About", href: "/about" },

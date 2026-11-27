@@ -160,3 +160,12 @@
 .stagger-fade > *:nth-child(7) { --stagger-index: 7; }
 .stagger-fade > *:nth-child(8) { --stagger-index: 8; }
 .stagger-fade > *:nth-child(n + 9) { --stagger-index: 9; }
+/* Progress bar under the active homepage spotlight item. */
+@keyframes spotlight-bar {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

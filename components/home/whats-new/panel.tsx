@@ -1,5 +1,6 @@
 import { EXPLAINER, KIND_META, LiveDot } from "@/components/home/whats-new/shared";
 import type { ActivityFeed, ActivityKind } from "@/lib/data-access/activity";
+import { VOUCHES_ENABLED } from "@/lib/features";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 
@@ -7,7 +8,7 @@ const TILES: { kind: ActivityKind; href: string }[] = [
   { kind: "person", href: "/entrepreneurs" },
   { kind: "startup", href: "/startups" },
   { kind: "news", href: "/news" },
-  { kind: "vouch", href: "/vouch" },
+  ...(VOUCHES_ENABLED ? [{ kind: "vouch" as const, href: "/vouch" }] : []),
 ];
 
 /** The top of the section: what it is, in one paragraph, plus four live counters that link to the full lists. */
@@ -30,7 +31,10 @@ export function WhatsNewPanel({ summary }: { summary: ActivityFeed["summary"] })
             <Link
               key={kind}
               href={href}
-              className="rounded-2xl border border-border bg-background p-4 transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className={cn(
+                "rounded-2xl border border-border bg-background p-4 transition-all hover:-translate-y-0.5 hover:shadow-md",
+                TILES.length % 2 === 1 && kind === "news" && "col-span-2"
+              )}
             >
               <span className={cn("flex size-8 items-center justify-center rounded-full", meta.tint)}>
                 <meta.icon className="size-4" />

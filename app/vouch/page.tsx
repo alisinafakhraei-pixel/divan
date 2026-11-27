@@ -9,7 +9,9 @@ import { getLeaderboards, getRecentVouches } from "@/lib/data-access/vouches";
 import { cn } from "@/lib/utils";
 import { ExternalLink, PenLine, Search, ShieldCheck, Trophy, UserCheck } from "lucide-react";
 import type { Metadata } from "next";
+import { VOUCHES_ENABLED } from "@/lib/features";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Vouch for people | Divan",
@@ -42,6 +44,7 @@ function EmptyBoard({ text }: { text: string }) {
 }
 
 export default async function VouchPage() {
+  if (!VOUCHES_ENABLED) notFound();
   const [people, boards, recent] = await Promise.all([getPeople(), getLeaderboards(10), getRecentVouches(6)]);
   const byId = new Map(people.map((p) => [p.id, p]));
   const mostVouched = boards.mostVouched.filter((row) => byId.has(row.personId));

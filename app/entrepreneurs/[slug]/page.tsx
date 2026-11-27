@@ -8,6 +8,7 @@ import { ShareButtons } from "@/components/shared/share-buttons";
 import { getRelatedNews } from "@/lib/data-access/news";
 import { getPersonBySlug } from "@/lib/data-access/people";
 import { getStartupById, getStartups } from "@/lib/data-access/startups";
+import { VOUCHES_ENABLED } from "@/lib/features";
 import { getPublicVouches } from "@/lib/data-access/vouches";
 import { VouchList } from "@/components/vouches/vouch-list";
 import { VouchSheet } from "@/components/vouches/vouch-sheet";
@@ -79,6 +80,7 @@ export default async function PersonDetailPage({
 
           {person.auto ? <AutoAddedNote sourceName={person.sourceName} sourceUrl={person.sourceUrl} /> : null}
 
+          {VOUCHES_ENABLED ? (
           <div className="space-y-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h2 className="text-sm font-semibold tracking-wide text-muted-foreground uppercase">
@@ -94,6 +96,7 @@ export default async function PersonDetailPage({
               </p>
             )}
           </div>
+          ) : null}
 
           {relatedNews.length > 0 ? (
             <div className="space-y-4">
